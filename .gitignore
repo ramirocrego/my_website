@@ -41,9 +41,15 @@ vignettes/*.pdf
 
 # pkgdown site
 docs/
+/public/
+/resources/
 
 # translation temp files
 po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+.DS_Store
+Thumbs.db
+.hugo_build.lock
