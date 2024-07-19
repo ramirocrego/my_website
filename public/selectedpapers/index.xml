@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SelectedPapers | Ramiro D Crego</title>
+    <title>SelectedPapers | ramirodcrego</title>
     <link>http://localhost:4321/selectedpapers/</link>
       <atom:link href="http://localhost:4321/selectedpapers/index.xml" rel="self" type="application/rss+xml" />
     <description>SelectedPapers</description>

@@ -8,7 +8,7 @@ sections:
     background:
       color: black
       image:
-        filename: /gazelle.jpg
+        filename: gazelle.jpg
         size: cover
         filters:
           brightness: 1
@@ -25,7 +25,7 @@ sections:
     background:
       color: black
       image:
-        filename: /stacked-peaks.svg
+        filename: stacked-peaks.svg
         filters:
           brightness: 1
         parallax: false

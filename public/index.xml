@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ramiro D Crego</title>
+    <title>ramirodcrego</title>
     <link>http://localhost:4321/</link>
       <atom:link href="http://localhost:4321/index.xml" rel="self" type="application/rss+xml" />
-    <description>Ramiro D Crego</description>
+    <description>ramirodcrego</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>http://localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
-      <title>Ramiro D Crego</title>
+      <title>ramirodcrego</title>
       <link>http://localhost:4321/</link>
     </image>
     
@@ -278,7 +278,7 @@
 
 
 
-&lt;div id=&#34;chart-217853649&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-475281396&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -296,7 +296,7 @@
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-217853649&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-475281396&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
