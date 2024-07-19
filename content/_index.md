@@ -77,8 +77,15 @@ sections:
     title: Skills and Hobbies
     username: admin
   design:
-   columns: 2
-
+    columns: 2
+    spacing:
+        margin:
+        - 0
+        - 0
+        - 0
+        - 0
+        padding:
+        - 1rem
 title: ""
 type: landing
 ---
