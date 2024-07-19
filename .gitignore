@@ -41,7 +41,6 @@ vignettes/*.pdf
 
 # pkgdown site
 docs/
-/public/
 /resources/
 
 # translation temp files
