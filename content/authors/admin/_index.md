@@ -33,34 +33,28 @@ skills:
     - name: R
       description: ''
       percent: 90
-      icon: researcherid
-      icon_pack: academicons
+      icon: devicon/rstudio
     - name: Google Earth Engine
       description: ''
       percent: 80
-      icon: google
-      icon_pack: fas
+      icon: devicon/google
     - name: Bayesian Statistics
       description: ''
       percent: 75
-      icon: database
-      icon_pack: fas
+      icon: devicon/rstudio
   - name: Hobbies
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
     - name: Hiking
       percent: 90
-      icon: person-hiking
-      icon_pack: fas
+      icon: person-simple-walk
     - name: Cats
       percent: 100
       icon: cat
-      icon_pack: fas
-    - name: Photography
+    - name: Birding
       percent: 80
-      icon: camera-retro
-      icon_pack: fas
+      icon: binocular
 ---
 
 I am Ramiro D. Crego, an ecologist from Argentina and a lecturer at UCC, Ireland. 
