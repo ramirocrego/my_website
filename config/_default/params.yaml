@@ -31,11 +31,13 @@ header:
   navbar:
     enable: true
     blox: "navbar"
+    aling: "left"
     fixed_to_top: true
     show_search: true
     show_theme_chooser: true
+    highlight_active_link: true
     logo:
-      text: "Your Name"
+      text: "Ramiro D Crego"
 
 # Site footer
 footer:
@@ -52,9 +54,30 @@ locale:
   date_format: 'Jan 2, 2006'
   time_format: '3:04 PM'
 
+# Contact 
+email: ramirocrego84@gmail.com
+coordinates:
+  latitude: 40.7128
+  longitude: -74.0060
+address:
+  street: ''
+  city: 'Cork'
+  region: ''
+  postal_code: ''
+  country: 'Ireland'
+contact_links:
+  - icon: skype
+  - icon_pack: fab
+    name: Skype
+    url: 'skype:ramirocrego84?call'
+  
 # Site features
 features:
   math:
     enable: false
   privacy_pack:
     enable: false
+
+icon:
+  pack:
+   ai:true
