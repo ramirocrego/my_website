@@ -1,28 +1,20 @@
 ---
-date: "2023-10-24"
+date: "2024-05-19"
 design:
   spacing: 5rem
 sections:
-- block: resume-experience
+- block: collection
   content:
-    username: admin
+    filter:
+      folders:
+        - team
+    text: I enjoy making things. Here are a selection of projects that I have worked
+      on over the years.
+    title: The team
   design:
-    date_format: January 2006
-    is_education_first: false
-- block: resume-skills
-  content:
-    title: Skills & Hobbies
-    username: admin
-  design:
-    show_skill_percentage: false
-- block: resume-awards
-  content:
-    title: Awards
-    username: admin
-- block: resume-languages
-  content:
-    title: Languages
-    username: admin
-title: Experience
+    columns: 3
+    fill_image: true
+    view: article-grid
+title: Team
 type: landing
 ---

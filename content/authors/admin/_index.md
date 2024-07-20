@@ -3,6 +3,7 @@ first_name: Ramiro
 last_name: Crego
 highlight_name: true
 superuser: true
+user_groups: Principal Investigators
 organizations:
 - name: University College Cork
   url: https://www.ucc.ie/en/
@@ -54,7 +55,8 @@ skills:
       icon: cat
     - name: Birding
       percent: 80
-      icon: binocular
+      icon: bird
+      
 ---
 
 I am Ramiro D. Crego, an ecologist from Argentina and a lecturer at UCC, Ireland. 

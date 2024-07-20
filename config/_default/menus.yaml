@@ -13,15 +13,12 @@ main:
   - name: Publications
     url: publications/
     weight: 30
-  - name: Outreach
-    url: /#news
+  # - name: Outreach
+  #   url: teaching/
     weight: 40
   - name: Teaching
     url: teaching/
     weight: 50
-  - name: Students
-    url: students/
-    weight: 60
-  - name: Contact
-    url: /#Contact
-    weight: 70
+  # - name: Students
+  #   url: experience/
+  #   weight: 60
