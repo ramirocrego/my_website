@@ -1,12 +1,11 @@
 ---
-date: "2023-10-24"
+title: "Learn Python"
 image:
   caption: Embed rich media such as videos and LaTeX math
-math: false
+date: "2023-10-24"
 summary: Easily learn Python in 10 minutes!
-tags:
-- Python
-title: Learn Python
+tags: Python
+math: false
 type: docs
 ---
 

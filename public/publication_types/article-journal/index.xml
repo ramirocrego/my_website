@@ -5,12 +5,68 @@
     <link>//localhost:4321/publication_types/article-journal/</link>
       <atom:link href="//localhost:4321/publication_types/article-journal/index.xml" rel="self" type="application/rss+xml" />
     <description>Article-Journal</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Article-Journal</title>
       <link>//localhost:4321/publication_types/article-journal/</link>
     </image>
+    
+    <item>
+      <title>Moving through the mosaic: identifying critical linkage zones for large herbivores across a multiple‐use African landscape</title>
+      <link>//localhost:4321/papers/article21/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article21/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Colaboración científica con la Armada de Chile en estudios ornitológicos a largo plazo en el archipiélago Diego Ramírez: Primer monitoreo del ciclo anual del ensamble de aves en la isla Gonzalo</title>
+      <link>//localhost:4321/papers/article20/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Un centinela para el monitoreo del cambio climático y su impacto sobre la biodiversidad en la cumbre austral de América: La nueva red de estudios a largo Plazo Cabo de Hornos</title>
+      <link>//localhost:4321/papers/article19/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nest-site selection and breeding success of passerines in the world’s southernmost forests</title>
+      <link>//localhost:4321/papers/article17/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article17/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unexpected lack of effect of the invasive American mink on the nesting survival of forest birds</title>
+      <link>//localhost:4321/papers/article18/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatiotemporal dynamics of wild herbivore species richness and occupancy across a savannah rangeland: Implications for conservation</title>
+      <link>//localhost:4321/papers/article16/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article16/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Breeding strategies of open-cup-nesting birds in sub-Antarctic forests of Navarino Island, Chile</title>
+      <link>//localhost:4321/papers/article15/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article15/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>New records of invasive mammals from the sub-Antarctic Cape Horn Archipelago</title>
@@ -66,26 +122,6 @@
       <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/papers/article8/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>An example journal article</title>
-      <link>//localhost:4321/posters/poster1/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/posters/poster1/</guid>
-      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
-&lt;/div&gt;
-</description>
     </item>
     
     <item>

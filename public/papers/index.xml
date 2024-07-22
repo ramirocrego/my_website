@@ -5,12 +5,68 @@
     <link>//localhost:4321/papers/</link>
       <atom:link href="//localhost:4321/papers/index.xml" rel="self" type="application/rss+xml" />
     <description>Papers</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Papers</title>
       <link>//localhost:4321/papers/</link>
     </image>
+    
+    <item>
+      <title>Moving through the mosaic: identifying critical linkage zones for large herbivores across a multiple‐use African landscape</title>
+      <link>//localhost:4321/papers/article21/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article21/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Colaboración científica con la Armada de Chile en estudios ornitológicos a largo plazo en el archipiélago Diego Ramírez: Primer monitoreo del ciclo anual del ensamble de aves en la isla Gonzalo</title>
+      <link>//localhost:4321/papers/article20/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Un centinela para el monitoreo del cambio climático y su impacto sobre la biodiversidad en la cumbre austral de América: La nueva red de estudios a largo Plazo Cabo de Hornos</title>
+      <link>//localhost:4321/papers/article19/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nest-site selection and breeding success of passerines in the world’s southernmost forests</title>
+      <link>//localhost:4321/papers/article17/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article17/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unexpected lack of effect of the invasive American mink on the nesting survival of forest birds</title>
+      <link>//localhost:4321/papers/article18/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatiotemporal dynamics of wild herbivore species richness and occupancy across a savannah rangeland: Implications for conservation</title>
+      <link>//localhost:4321/papers/article16/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article16/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Breeding strategies of open-cup-nesting birds in sub-Antarctic forests of Navarino Island, Chile</title>
+      <link>//localhost:4321/papers/article15/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article15/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>New records of invasive mammals from the sub-Antarctic Cape Horn Archipelago</title>

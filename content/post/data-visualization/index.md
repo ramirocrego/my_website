@@ -1,6 +1,5 @@
 ---
-authors:
-- admin
+title: "\U0001F4C8 Communicate your results effectively with the best data visualizations"
 date: "2023-10-25"
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
@@ -9,7 +8,7 @@ tags:
 - Hugo
 - Hugo Blox
 - Markdown
-title: "\U0001F4C8 Communicate your results effectively with the best data visualizations"
+authors: admin
 ---
 
 Hugo Blox is designed to give technical content creators a seamless experience. You can focus on the content and Hugo Blox handles the rest.
