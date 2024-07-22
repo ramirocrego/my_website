@@ -10,6 +10,22 @@
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/teaching/r/</loc>
+    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/r/</loc>
+    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/</loc>
+    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/teaching/</loc>
+    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/projects/</loc>
     <lastmod>2024-07-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -27,14 +43,6 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/teaching/gee/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/tags/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/teaching/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -71,10 +79,6 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/project/naboisho/</loc>
-    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/tags/r/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -144,10 +148,6 @@
   </url><url>
     <loc>//localhost:4321/books/book2/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/teaching/r/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/teaching/rgee/</loc>
