@@ -1,13 +1,13 @@
 ---
-date: "2024-07-18"
-summary: Tutorial to extract pixel values from remote sensing data using Google Earth Engine and R
+date: "2022-08-18"
+summary: Tutorial to match animal GPS locations with remotely sensed data using Google Earth Engine and R
 tags:
 - GEE
 - R
-title: Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R
+title: Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R 
 ---
 
-Ramiro D. Crego a,b, Majaliwa M. Masolele c, Grant Connette a,b, and Jared A. Stabach a
+Ramiro D. Crego ^a,b^, Majaliwa M. Masolele ^c^, Grant Connette ^a,b^, and Jared A. Stabach ^a^
 
 a - Smithsonian National Zoo and Conservation Biology Institute,
 Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
@@ -26,6 +26,8 @@ The following tutorial describes the code workflow presented in the
 manuscript “Enhancing animal movement analyses - Spatiotemporal matching
 of animal positions with remotely sensed data using Google Earth Engine
 and R.”
+
+<figure><a href="https://www.mdpi.com/2072-4292/13/20/4154" target="_blank"><img src="./Figures/23.png"/></a></figure>
 
 The code workflow allows you to find the closest image from an image
 collection to the time at which each GPS location was acquired and
@@ -239,7 +241,7 @@ The time needed to run 100 points was:
 
     end_time - start_time
 
-    ## Time difference of 3.245632 secs
+    ## Time difference of 3.329701 secs
 
 The new sf data frame with the pixel values in now stored as the
 `dataoutput` object. You can use this for further analysis.
@@ -362,7 +364,6 @@ The new sf data frame with the pixel values in now stored as the
     ##  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.4.0)
     ##  pkgload             1.4.0     2024-06-28 [1] CRAN (R 4.4.0)
     ##  png                 0.1-8     2022-11-29 [1] CRAN (R 4.4.0)
-    ##  prettydoc           0.4.1     2021-01-10 [1] CRAN (R 4.4.0)
     ##  processx            3.8.4     2024-03-16 [1] CRAN (R 4.4.0)
     ##  profvis             0.3.8     2023-05-02 [1] CRAN (R 4.4.0)
     ##  promises            1.3.0     2024-04-05 [1] CRAN (R 4.4.0)
@@ -399,6 +400,7 @@ The new sf data frame with the pixel values in now stored as the
     ##  V8                  4.4.2     2024-02-15 [1] CRAN (R 4.4.0)
     ##  vctrs               0.6.5     2023-12-01 [1] CRAN (R 4.4.0)
     ##  viridisLite         0.4.2     2023-05-02 [1] CRAN (R 4.4.0)
+    ##  webshot             0.5.5     2023-06-26 [1] CRAN (R 4.4.0)
     ##  wk                  0.9.2     2024-07-09 [1] CRAN (R 4.4.0)
     ##  xfun                0.45      2024-06-16 [1] CRAN (R 4.4.0)
     ##  XML                 3.99-0.17 2024-06-25 [1] CRAN (R 4.4.0)
@@ -416,6 +418,6 @@ The new sf data frame with the pixel values in now stored as the
     ##  numpy_version:  1.25.1
     ##  ee:             /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/ee
     ##  
-    ##  NOTE: Python version was forced by use_python() function
+    ##  NOTE: Python version was forced by RETICULATE_PYTHON
     ## 
     ## ────────────────────────────────────────────────────────────────

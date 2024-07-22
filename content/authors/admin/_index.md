@@ -42,7 +42,7 @@ skills:
     - name: Bayesian Statistics
       description: ''
       percent: 75
-      icon: devicon/rstudio
+      icon: bug
   - name: Hobbies
     color: '#eeac02'
     color_border: '#f0bf23'
@@ -55,7 +55,7 @@ skills:
       icon: cat
     - name: Birding
       percent: 80
-      icon: bird
+      icon: crow
       
 ---
 

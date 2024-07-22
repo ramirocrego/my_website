@@ -5,7 +5,7 @@
     <link>//localhost:4321/project/</link>
       <atom:link href="//localhost:4321/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 30 Nov 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Projects</title>
@@ -13,27 +13,27 @@
     </image>
     
     <item>
-      <title>Pandas</title>
-      <link>//localhost:4321/project/pandas/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/pandas/</guid>
-      <description>&lt;p&gt;Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures.&lt;/p&gt;</description>
+      <title>Reticulated giraffe habitat suitability</title>
+      <link>//localhost:4321/project/gcf/</link>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/project/gcf/</guid>
+      <description>&lt;p&gt;This is a free web app powered by Goolge Earth Engine where managers can visualize and interact with the 30 m resolution map to help guide future surveys to search for existing populations and to inform future reintroduction assessments.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>PyTorch</title>
-      <link>//localhost:4321/project/pytorch/</link>
+      <title>Naboisho Conservancy</title>
+      <link>//localhost:4321/project/naboisho/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/pytorch/</guid>
-      <description>&lt;p&gt;PyTorch is a Python package that provides tensor computation (like NumPy) with strong GPU acceleration.&lt;/p&gt;</description>
+      <guid>//localhost:4321/project/naboisho/</guid>
+      <description>&lt;p&gt;This Shiny app is the result of a collaboration with the Naboisho Conservancy in Kenya. It is a tool to help them monitor the impact of their conservation efforts on the abundance of large herbivores. The app allows users to explore the data collected by the conservancy and to visualize the abundance trends of large herbivores.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>scikit-learn</title>
-      <link>//localhost:4321/project/scikit/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/scikit/</guid>
-      <description>&lt;p&gt;scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.&lt;/p&gt;</description>
+      <title>Laikipia Shiny app</title>
+      <link>//localhost:4321/project/laikipia/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/project/laikipia/</guid>
+      <description>&lt;p&gt;I have designed this Shiny app to help managers visualize the results of our studies across Laikipia, Kenya, and make decisions on the ground related to livestock management, fence deployment and their effects on herbivore species richness and landscape connectivity, and species abundance.&lt;/p&gt;</description>
     </item>
     
   </channel>

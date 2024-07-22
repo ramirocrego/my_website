@@ -21,8 +21,8 @@
 .Renviron
 
 # pkgdown site
-resources/
-public/
+/resources
+/public/
 
 # translation temp files
 po/*~

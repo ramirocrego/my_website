@@ -1,43 +1,21 @@
 ---
-title: "An example journal article"
-author_notes:
-- Equal contribution
-- Equal contribution
-date: "2015-09-01T00:00:00Z"
+title: "Fur Trade and the Biotic Homogenization of Subpolar Ecosystems"
+date: "2019-02-19T00:00:00Z"
 authors:
 - admin
-- Robert Ford
+- Ricardo Rozzi
+- Jaime E. Jiménez
 doi: ''
 featured: false
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
   focal_point: ''
   preview_only: false
-projects: []
+projects: [CHBR]
 publication: '*Journal of Source Themes, 1*(1)'
 publication_short: ''
-publication_types: "article-journal"
-publishDate: "2017-01-01T00:00:00Z"
-slides: example
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
-  ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
-tags: Source Themes
+publication_types: "Book section"
+publishDate: "2019-02-19T00:00:00Z"
+tags: Book chapter
 abstract: null
-url_code: "https://github.com/HugoBlox/hugo-blox-builder"
-url_dataset: ''
-url_pdf: http://arxiv.org/pdf/1512.04133v1
-url_poster: ''
-url_project: ''
-url_slides: ''
-url_source: ''
-url_video: ''
+url_pdf: https://drive.google.com/open?id=1YIpqmWbsB6m9Uk44o1im3CZrC70FcD9Q&usp=drive_fs
 ---
-
-{{% callout note %}}
-Click the *Cite* button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-{{% /callout %}}
-
-{{% callout note %}}
-Create your slides in Markdown - click the *Slides* button to check out the example.
-{{% /callout %}}
-

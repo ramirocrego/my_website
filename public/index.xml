@@ -34,392 +34,19 @@
     </item>
     
     <item>
-      <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
-      <link>//localhost:4321/teaching/rgee/</link>
-      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/teaching/rgee/</guid>
-      <description>&lt;p&gt;Ramiro D. Crego a,b, Majaliwa M. Masolele c, Grant Connette a,b, and Jared A. Stabach a&lt;/p&gt;
-&lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
-Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
-USA.&lt;/p&gt;
-&lt;p&gt;b - Working Land and Seascapes, Conservation Commons, Smithsonian
-Institution, Washington, DC 20013, USA.&lt;/p&gt;
-&lt;p&gt;c - Boyd Orr Centre for Population and Ecosystem Health, Institute of
-Biodiversity, Animal Health &amp;amp; Comparative Medicine (IBAHCM), University
-of Glasgow, G12 8QQ, UK.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;The following tutorial describes the code workflow presented in the
-manuscript “Enhancing animal movement analyses - Spatiotemporal matching
-of animal positions with remotely sensed data using Google Earth Engine
-and R.”&lt;/p&gt;
-&lt;p&gt;The code workflow allows you to find the closest image from an image
-collection to the time at which each GPS location was acquired and
-extract the pixel value.&lt;/p&gt;
-&lt;p&gt;To use this code it is necessary to have a &lt;a href=&#34;https://earthengine.google.com/&#34;&gt;Google Earth
-Engine&lt;/a&gt; account and to install the
-&lt;code&gt;rgee&lt;/code&gt;
-&lt;a href=&#34;https://r-spatial.github.io/rgee/#quick-start-users-guide-for-rgee&#34;&gt;package&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;loading-and-preparing-tracking-data&#34;&gt;Loading and preparing tracking data&lt;/h2&gt;
-&lt;p&gt;The first step is to read a csv file with the telemetry data.&lt;/p&gt;
-&lt;p&gt;For this example we randomly selected 100 GPS fixes from the entire
-wildebeest dataset used in the manuscript, obtained from
-&lt;a href=&#34;https://www.datarepository.movebank.org/handle/10255/move.1098&#34;&gt;Movebank&lt;/a&gt;.
-The data is provided in the repository within the folder Data.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(sf)
-library(dplyr)
-trackingdata &amp;lt;- read.csv(&amp;quot;./Data/Data.csv&amp;quot;, header = T) #Load your dataset
-head(trackingdata)
-
-##             timestamp location.long location.lat
-## 1 2010-08-10 15:00:00      35.21622    -1.164488
-## 2 2011-06-26 12:00:00      36.83339    -1.462866
-## 3 2011-10-19 03:00:00      36.90053    -1.404862
-## 4 2011-11-20 12:00:00      36.91039    -1.430901
-## 5 2010-08-29 14:00:00      35.30668    -1.345507
-## 6 2010-12-20 05:00:00      36.91189    -1.433012
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In the next step, we need to convert the dataframe into an sf object. We
-also need to set the date as a string with a ‘YYYY-MM-DDTHH:MM:SS’. We
-will use this data to convert it into milliseconds since midnight on
-January 1, 1970, a format used in Google Earth Engine to manage dates.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trackingdata$Date &amp;lt;- as.POSIXct(trackingdata$timestamp, format = &amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;, tz=&amp;quot;UTC&amp;quot;) #Modify as necessary
-trackingdata$Date &amp;lt;- as.factor(trackingdata$Date)
-trackingdata$Date &amp;lt;- sub(&amp;quot; &amp;quot;, &amp;quot;T&amp;quot;, trackingdata$Date) #Put in a format that can be read by javascript
-trackingdata$ID &amp;lt;- seq(1:nrow(trackingdata)) # Add ID to each point (optional)
-datasf &amp;lt;- st_as_sf(trackingdata, coords = c(&#39;location.long&#39;,&#39;location.lat&#39;), crs = 4326) #Transform the dataframe into sf object. Make sure the name of the columns for the coordinates match. CRS needs to be in longlat WGS84.
-head(datasf)
-
-## Simple feature collection with 6 features and 3 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 35.21622 ymin: -1.462866 xmax: 36.91189 ymax: -1.164488
-## Geodetic CRS:  WGS 84
-##             timestamp                Date ID
-## 1 2010-08-10 15:00:00 2010-08-10T15:00:00  1
-## 2 2011-06-26 12:00:00 2011-06-26T12:00:00  2
-## 3 2011-10-19 03:00:00 2011-10-19T03:00:00  3
-## 4 2011-11-20 12:00:00 2011-11-20T12:00:00  4
-## 5 2010-08-29 14:00:00 2010-08-29T14:00:00  5
-## 6 2010-12-20 05:00:00 2010-12-20T05:00:00  6
-##                     geometry
-## 1 POINT (35.21622 -1.164488)
-## 2 POINT (36.83339 -1.462866)
-## 3 POINT (36.90053 -1.404862)
-## 4 POINT (36.91039 -1.430901)
-## 5 POINT (35.30668 -1.345507)
-## 6 POINT (36.91189 -1.433012)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;initialize-rgee&#34;&gt;Initialize rgee&lt;/h2&gt;
-&lt;p&gt;Next, we need to load and initialize rgee.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(rgee)
-ee_Initialize()
-ee_check()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;define-google-earth-engine-functions&#34;&gt;Define Google Earth Engine functions&lt;/h2&gt;
-&lt;p&gt;The next set of functions will be used to match images to the data and
-extract pixel values.&lt;/p&gt;
-&lt;p&gt;Note that you can edit the maximum temporal window allowed to find a
-match.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#Function to add property with time in milliseconds
-add_date&amp;lt;-function(feature) {
-  date &amp;lt;- ee$Date(ee$String(feature$get(&amp;quot;Date&amp;quot;)))$millis()
-  feature$set(list(date_millis=date))
-}
-
-#Join Image and Points based on a maxDifference Filter within a temporal window
-
-#Set temporal window in days for filter. This will depend on the remote sensing data used.
-tempwin &amp;lt;- 16 
-
-#Set the filter
-maxDiffFilter&amp;lt;-ee$Filter$maxDifference(
-  difference=tempwin*24*60*60*1000, #days * hr * min * sec * milliseconds
-  leftField= &amp;quot;date_millis&amp;quot;, #Timestamp of the telemetry data
-  rightField=&amp;quot;system:time_start&amp;quot; #Image date
-)
-
-# Define the join. We implement the saveBest function for the join, which finds the image that best matches the filter (i.e., the image closest in time to the particular GPS fix location). 
-saveBestJoin&amp;lt;-ee$Join$saveBest(
-  matchKey=&amp;quot;bestImage&amp;quot;,
-  measureKey=&amp;quot;timeDiff&amp;quot;
-)
-
-#Function to add property with raster pixel value from the matched image
-add_value&amp;lt;-function(feature){
-  #Get the image selected by the join
-  img1&amp;lt;-ee$Image(feature$get(&amp;quot;bestImage&amp;quot;))$select(band)
-  #Extract geometry from the feature
-  point&amp;lt;-feature$geometry()
-  #Get pixel value for each point at the desired spatial resolution (argument scale)
-  pixel_value&amp;lt;-img1$sample(region=point, scale=250, tileScale = 16, dropNulls = F) 
-  #Return the data containing pixel value and image date.
-  feature$setMulti(list(PixelVal = pixel_value$first()$get(band), DateTimeImage = img1$get(&#39;system:index&#39;)))
-}
-
-# Function to remove image property from features
-removeProperty&amp;lt;- function(feature) {
-  #Get the properties of the data
-  properties = feature$propertyNames()
-  #Select all items except images
-  selectProperties = properties$filter(ee$Filter$neq(&amp;quot;item&amp;quot;, &amp;quot;bestImage&amp;quot;))
-  #Return selected features
-  feature$select(selectProperties)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;load-image-collection&#34;&gt;Load image collection&lt;/h2&gt;
-&lt;p&gt;In this example, we are using NDVI from MODIS Terra Vegetation Indexes
-16-Day Global 250m data set. However, you can use any other remote
-sensing product of interest and filter to the desired dates.&lt;/p&gt;
-&lt;p&gt;One of the main advantages offered by Google Earth Engine is the
-enormous amount of data available to be used. The constantly growing
-database consists on more than a petabyte archive of publicly available
-remotely sensed imagery and other related data sets. In the study cases
-of the manuscript we used MOD13Q1 and ERA5_LAND/HOURLY, but data
-available includes other products from MODIS, data from other satellites
-such as Landsat, National Oceanographic and Atmospheric Administration
-Advanced Very High Resolution Radiometer (NOAA AVHRR), Sentinel 1, 2, 3
-and 5-P, Advanced Land Observing Satellite (ALOS), and other products
-such as sea surface temperature data, CHIRPS climate data, topography
-data, and land cover data. The entire list of datasets is available at
-this
-&lt;a href=&#34;https://developers.google.com/earth-engine/datasets/catalog&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Note that all image collections in Earth Engine have a code that you can
-extract from the link provided above and use to import into the workflow
-by modifying this example.&lt;/p&gt;
-&lt;p&gt;We will set the start and end days to filter the image collections.
-Temporal availability depends on each dataset.&lt;/p&gt;
-&lt;p&gt;We will also create an object with the name of the band we are
-interested in working with. The name of the band is also specific to
-each image collection.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;start&amp;lt;-&amp;quot;2010-01-01&amp;quot;
-end&amp;lt;-&amp;quot;2013-01-01&amp;quot;
-imagecoll&amp;lt;-ee$ImageCollection(&#39;MODIS/006/MOD13Q1&#39;)$filterDate(start,end)
-band &amp;lt;- &amp;quot;NDVI&amp;quot; #Name of the band to use. You can change to EVI for instance when using MOD13Q1.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;extract-pixel-value&#34;&gt;Extract pixel value&lt;/h2&gt;
-&lt;p&gt;A key function in this process is the &lt;code&gt;ee_as_sf&lt;/code&gt; which converts the
-Google Earth Engine table in a sf object. This function provides three
-different options to convert the table (feature collection) into a sf
-object:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;getInfo: which is fast and direct but has a limit of 5000 features&lt;/li&gt;
-&lt;li&gt;drive: which exports data through your Google Drive account&lt;/li&gt;
-&lt;li&gt;gsc: which exports data through your Google Cloud Storage account&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;You can find more information about this function in the help:
-?ee_as_sf&lt;/p&gt;
-&lt;p&gt;We use here the &lt;code&gt;getInfo&lt;/code&gt; option given it is direct and simple. However,
-this option has a limit of 5000 features to convert. For that reason, we
-are going to run a loop, processing 1000 features (points) per time to
-avoid errors. If memory limit errors are display, then you can reduce
-the number of points to extract each time by changing the &lt;code&gt;each&lt;/code&gt;
-argument on the &lt;code&gt;rep&lt;/code&gt; function.&lt;/p&gt;
-&lt;p&gt;In this example we only have 100 points so the loop will only run once,
-but for larger datasets the loop may run multiple times.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;datasf$uniq &amp;lt;- rep(1:1000, each=1000)[1:nrow(datasf)] #This is for up to 1 million points. To increase the max number of points, increase the value for max repetitions. To change the number of points to run per time, change the value in the argument each (up to 5000).
-
-start_time &amp;lt;- Sys.time()
-dataoutput &amp;lt;- data.frame()
-for(x in unique(datasf$uniq)){
-  data1 &amp;lt;- datasf %&amp;gt;% filter(uniq == x)
-  # Send sf to GEE
-  data &amp;lt;- sf_as_ee(data1)
-  # Transform day into milliseconds
-  data&amp;lt;-data$map(add_date)
-  # Apply the join
-  Data_match&amp;lt;-saveBestJoin$apply(data, imagecoll, maxDiffFilter)
-  # Add pixel value to the data
-  DataFinal&amp;lt;-Data_match$map(add_value)
-  # Remove image property from the data
-  DataFinal&amp;lt;-DataFinal$map(removeProperty)
-  # Move GEE object into R
-  temp&amp;lt;- ee_as_sf(DataFinal, via = &#39;getInfo&#39;)
-  # Append
-  dataoutput &amp;lt;- rbind(dataoutput, temp)
-}
-end_time &amp;lt;- Sys.time()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The time needed to run 100 points was:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;end_time - start_time
-
-## Time difference of 3.245632 secs
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The new sf data frame with the pixel values in now stored as the
-&lt;code&gt;dataoutput&lt;/code&gt; object. You can use this for further analysis.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;names(dataoutput)[4] &amp;lt;- band
-dataoutput
-
-## Simple feature collection with 100 features and 7 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 34.99598 ymin: -2.693471 xmax: 37.5994 ymax: -1.148282
-## Geodetic CRS:  WGS 84
-## First 10 features:
-##                   Date DateTimeImage ID NDVI date_millis
-## 1  2010-08-10 15:00:00    2010_08_13  1 3011  1552145792
-## 2  2011-06-26 12:00:00    2011_06_26  2 3632  -875425280
-## 3  2011-10-19 03:00:00    2011_10_16  3 2957   438240128
-## 4  2011-11-20 12:00:00    2011_11_17  4 4952 -1059527168
-## 5  2010-08-29 14:00:00    2010_08_29  5 2699 -1104821504
-## 6  2010-12-20 05:00:00    2010_12_19  6 3518    36043904
-## 7  2010-07-16 18:01:00    2010_07_12  7 3227  -596994208
-## 8  2011-12-09 03:01:00    2011_12_03  8 4460   549732832
-## 9  2012-01-01 07:00:00    2012_01_01  9 2624 -1743694464
-## 10 2012-04-16 04:00:00    2012_04_22 10 5840 -1186029056
-##              timestamp uniq                   geometry
-## 1  2010-08-10 15:00:00    1 POINT (35.21622 -1.164488)
-## 2  2011-06-26 12:00:00    1 POINT (36.83339 -1.462866)
-## 3  2011-10-19 03:00:00    1 POINT (36.90053 -1.404862)
-## 4  2011-11-20 12:00:00    1 POINT (36.91039 -1.430901)
-## 5  2010-08-29 14:00:00    1 POINT (35.30668 -1.345507)
-## 6  2010-12-20 05:00:00    1 POINT (36.91189 -1.433012)
-## 7  2010-07-16 18:01:00    1 POINT (35.24742 -1.324172)
-## 8  2011-12-09 03:01:00    1   POINT (37.565 -2.446763)
-## 9  2012-01-01 07:00:00    1 POINT (37.03885 -2.620116)
-## 10 2012-04-16 04:00:00    1 POINT (35.52517 -1.233949)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;visualize-locations&#34;&gt;Visualize locations&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Pres &amp;lt;- dataoutput
-
-library(tmap)
-tmap_mode(&#39;plot&#39;)
-tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;tutorial_files/figure-markdown_strict/unnamed-chunk-11-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;session&#34;&gt;Session&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;devtools::session_info()
-
-## ─ Session info ─────────────────────────────────────────────────
-##  setting  value
-##  version  R version 4.4.1 (2024-06-14)
-##  os       macOS Sonoma 14.5
-##  system   aarch64, darwin20
-##  ui       RStudio
-##  language (EN)
-##  collate  en_US.UTF-8
-##  ctype    en_US.UTF-8
-##  tz       Europe/Dublin
-##  date     2024-07-20
-##  rstudio  2024.04.2+764 Chocolate Cosmos (desktop)
-##  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
-## 
-## ─ Packages ─────────────────────────────────────────────────────
-##  package           * version   date (UTC) lib source
-##  abind               1.4-5     2016-07-21 [1] CRAN (R 4.4.0)
-##  base64enc           0.1-3     2015-07-28 [1] CRAN (R 4.4.0)
-##  cachem              1.1.0     2024-05-16 [1] CRAN (R 4.4.0)
-##  class               7.3-22    2023-05-03 [1] CRAN (R 4.4.1)
-##  classInt            0.4-10    2023-09-05 [1] CRAN (R 4.4.0)
-##  cli                 3.6.3     2024-06-21 [1] CRAN (R 4.4.0)
-##  codetools           0.2-20    2024-03-31 [1] CRAN (R 4.4.1)
-##  crayon              1.5.3     2024-06-20 [1] CRAN (R 4.4.0)
-##  crosstalk           1.2.1     2023-11-23 [1] CRAN (R 4.4.0)
-##  crul                1.5.0     2024-07-19 [1] CRAN (R 4.4.0)
-##  curl                5.2.1     2024-03-01 [1] CRAN (R 4.4.0)
-##  DBI                 1.2.3     2024-06-02 [1] CRAN (R 4.4.0)
-##  devtools            2.4.5     2022-10-11 [1] CRAN (R 4.4.0)
-##  dichromat           2.0-0.1   2022-05-02 [1] CRAN (R 4.4.0)
-##  digest              0.6.36    2024-06-23 [1] CRAN (R 4.4.0)
-##  dplyr             * 1.1.4     2023-11-17 [1] CRAN (R 4.4.0)
-##  e1071               1.7-14    2023-12-06 [1] CRAN (R 4.4.0)
-##  ellipsis            0.3.2     2021-04-29 [1] CRAN (R 4.4.0)
-##  evaluate            0.24.0    2024-06-10 [1] CRAN (R 4.4.0)
-##  fansi               1.0.6     2023-12-08 [1] CRAN (R 4.4.0)
-##  fastmap             1.2.0     2024-05-15 [1] CRAN (R 4.4.0)
-##  fs                  1.6.4     2024-04-25 [1] CRAN (R 4.4.0)
-##  generics            0.1.3     2022-07-05 [1] CRAN (R 4.4.0)
-##  geojson             0.3.5     2023-08-08 [1] CRAN (R 4.4.0)
-##  geojsonio           0.11.3    2023-09-06 [1] CRAN (R 4.4.0)
-##  geojsonsf           2.0.3     2022-05-30 [1] CRAN (R 4.4.0)
-##  glue                1.7.0     2024-01-09 [1] CRAN (R 4.4.0)
-##  highr               0.11      2024-05-26 [1] CRAN (R 4.4.0)
-##  htmltools           0.5.8.1   2024-04-04 [1] CRAN (R 4.4.0)
-##  htmlwidgets         1.6.4     2023-12-06 [1] CRAN (R 4.4.0)
-##  httpcode            0.3.0     2020-04-10 [1] CRAN (R 4.4.0)
-##  httpuv              1.6.15    2024-03-26 [1] CRAN (R 4.4.0)
-##  jqr                 1.3.3     2023-12-04 [1] CRAN (R 4.4.0)
-##  jquerylib           0.1.4     2021-04-26 [1] CRAN (R 4.4.0)
-##  jsonlite            1.8.8     2023-12-04 [1] CRAN (R 4.4.0)
-##  KernSmooth          2.23-24   2024-05-17 [1] CRAN (R 4.4.1)
-##  knitr               1.48      2024-07-07 [1] CRAN (R 4.4.0)
-##  later               1.3.2     2023-12-06 [1] CRAN (R 4.4.0)
-##  lattice             0.22-6    2024-03-20 [1] CRAN (R 4.4.1)
-##  lazyeval            0.2.2     2019-03-15 [1] CRAN (R 4.4.0)
-##  leafem              0.2.3     2023-09-17 [1] CRAN (R 4.4.0)
-##  leaflet             2.2.2     2024-03-26 [1] CRAN (R 4.4.0)
-##  leaflet.providers   2.0.0     2023-10-17 [1] CRAN (R 4.4.0)
-##  leafsync            0.1.0     2019-03-05 [1] CRAN (R 4.4.0)
-##  lifecycle           1.0.4     2023-11-07 [1] CRAN (R 4.4.0)
-##  lwgeom              0.2-14    2024-02-21 [1] CRAN (R 4.4.0)
-##  magrittr            2.0.3     2022-03-30 [1] CRAN (R 4.4.0)
-##  Matrix              1.7-0     2024-04-26 [1] CRAN (R 4.4.1)
-##  memoise             2.0.1     2021-11-26 [1] CRAN (R 4.4.0)
-##  mime                0.12      2021-09-28 [1] CRAN (R 4.4.0)
-##  miniUI              0.1.1.1   2018-05-18 [1] CRAN (R 4.4.1)
-##  pillar              1.9.0     2023-03-22 [1] CRAN (R 4.4.0)
-##  pkgbuild            1.4.4     2024-03-17 [1] CRAN (R 4.4.0)
-##  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.4.0)
-##  pkgload             1.4.0     2024-06-28 [1] CRAN (R 4.4.0)
-##  png                 0.1-8     2022-11-29 [1] CRAN (R 4.4.0)
-##  prettydoc           0.4.1     2021-01-10 [1] CRAN (R 4.4.0)
-##  processx            3.8.4     2024-03-16 [1] CRAN (R 4.4.0)
-##  profvis             0.3.8     2023-05-02 [1] CRAN (R 4.4.0)
-##  promises            1.3.0     2024-04-05 [1] CRAN (R 4.4.0)
-##  proxy               0.4-27    2022-06-09 [1] CRAN (R 4.4.0)
-##  ps                  1.7.7     2024-07-02 [1] CRAN (R 4.4.0)
-##  purrr               1.0.2     2023-08-10 [1] CRAN (R 4.4.0)
-##  R6                  2.5.1     2021-08-19 [1] CRAN (R 4.4.0)
-##  raster              3.6-26    2023-10-14 [1] CRAN (R 4.4.0)
-##  RColorBrewer        1.1-3     2022-04-03 [1] CRAN (R 4.4.0)
-##  Rcpp                1.0.12    2024-01-09 [1] CRAN (R 4.4.0)
-##  remotes             2.5.0     2024-03-17 [1] CRAN (R 4.4.0)
-##  reticulate          1.38.0    2024-06-19 [1] CRAN (R 4.4.0)
-##  rgee              * 1.1.7     2023-09-27 [1] CRAN (R 4.4.0)
-##  rlang               1.1.4     2024-06-04 [1] CRAN (R 4.4.0)
-##  rmarkdown         * 2.27      2024-05-17 [1] CRAN (R 4.4.0)
-##  rstudioapi          0.16.0    2024-03-24 [1] CRAN (R 4.4.0)
-##  s2                  1.1.7     2024-07-17 [1] CRAN (R 4.4.0)
-##  sessioninfo         1.2.2     2021-12-06 [1] CRAN (R 4.4.0)
-##  sf                * 1.0-16    2024-03-24 [1] CRAN (R 4.4.0)
-##  shiny               1.8.1.1   2024-04-02 [1] CRAN (R 4.4.0)
-##  sp                  2.1-4     2024-04-30 [1] CRAN (R 4.4.0)
-##  stars               0.6-6     2024-07-16 [1] CRAN (R 4.4.0)
-##  stringi             1.8.4     2024-05-06 [1] CRAN (R 4.4.0)
-##  stringr             1.5.1     2023-11-14 [1] CRAN (R 4.4.0)
-##  terra               1.7-78    2024-05-22 [1] CRAN (R 4.4.0)
-##  tibble              3.2.1     2023-03-20 [1] CRAN (R 4.4.0)
-##  tidyselect          1.2.1     2024-03-11 [1] CRAN (R 4.4.0)
-##  tmap              * 3.3-4     2023-09-12 [1] CRAN (R 4.4.0)
-##  tmaptools           3.1-1     2021-01-19 [1] CRAN (R 4.4.0)
-##  units               0.8-5     2023-11-28 [1] CRAN (R 4.4.0)
-##  urlchecker          1.0.1     2021-11-30 [1] CRAN (R 4.4.0)
-##  usethis             2.2.3     2024-02-19 [1] CRAN (R 4.4.0)
-##  utf8                1.2.4     2023-10-22 [1] CRAN (R 4.4.0)
-##  V8                  4.4.2     2024-02-15 [1] CRAN (R 4.4.0)
-##  vctrs               0.6.5     2023-12-01 [1] CRAN (R 4.4.0)
-##  viridisLite         0.4.2     2023-05-02 [1] CRAN (R 4.4.0)
-##  wk                  0.9.2     2024-07-09 [1] CRAN (R 4.4.0)
-##  xfun                0.45      2024-06-16 [1] CRAN (R 4.4.0)
-##  XML                 3.99-0.17 2024-06-25 [1] CRAN (R 4.4.0)
-##  xtable              1.8-4     2019-04-21 [1] CRAN (R 4.4.0)
-##  yaml                2.3.9     2024-07-05 [1] CRAN (R 4.4.0)
-## 
-##  [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
-## 
-## ─ Python configuration ─────────────────────────────────────────
-##  python:         /Users/ramirocrego/.virtualenvs/rgee/bin/python
-##  libpython:      /Users/ramirocrego/Library/r-miniconda-arm64/lib/libpython3.10.dylib
-##  pythonhome:     /Users/ramirocrego/.virtualenvs/rgee:/Users/ramirocrego/.virtualenvs/rgee
-##  version:        3.10.12 (main, Jul  5 2023, 15:02:25) [Clang 14.0.6 ]
-##  numpy:          /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/numpy
-##  numpy_version:  1.25.1
-##  ee:             /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/ee
-##  
-##  NOTE: Python version was forced by use_python() function
-## 
-## ────────────────────────────────────────────────────────────────
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <title>Projects</title>
+      <link>//localhost:4321/projects/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web apps</title>
+      <link>//localhost:4321/apps/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/apps/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -443,6 +70,7 @@ Institution, Washington, DC 20013, USA.&lt;/p&gt;
 &lt;p&gt;This is a guide for modeling species distributions and habitat
 suitability in Google Earth Engine. This guide is intended to explain
 the details of the Earth Engine code developed for this manuscript.&lt;/p&gt;
+&lt;figure&gt;&lt;a href=&#34;https://onlinelibrary.wiley.com/doi/10.1111/ddi.13491&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;./Figures/26.png&#34;/&gt;&lt;/a&gt;&lt;/figure&gt;
 &lt;p&gt;We first cover the basics for importing data and setting the main
 arguments used in different functions, such as, grid size and the area
 of interest. We then expand on different modelling workflows using three
@@ -454,6 +82,34 @@ as user guidelines and tutorials visit:
 &lt;p&gt;The code found below can also be accessed through the GEE repository for
 this study:
 &lt;a href=&#34;https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript&#34;&gt;https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This are a set of video tutorials explaining step by step the basics of GEE and fitting species distribution models in GEE.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Introduction to GEE and JavaScript&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/e9QfJ0cIBcs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Management in GEE&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/5alN74QJbqI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Species Distribution Models in GEE&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/54PPKkblAks?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;general-settings-for-running-sdms-in-google-earth-engine&#34;&gt;General settings for running SDMs in Google Earth Engine&lt;/h2&gt;
 &lt;h3 id=&#34;importing-species-location-data-as-an-asset&#34;&gt;Importing species location data as an asset&lt;/h3&gt;
 &lt;p&gt;Datasets need to be uploaded as assets in Google Earth Engine. The
@@ -3243,14 +2899,6 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>//localhost:4321/projects/</link>
-      <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Publications</title>
       <link>//localhost:4321/publications/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
@@ -3259,11 +2907,11 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     </item>
     
     <item>
-      <title>Team</title>
-      <link>//localhost:4321/experience/</link>
-      <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/experience/</guid>
-      <description></description>
+      <title>Reticulated giraffe habitat suitability</title>
+      <link>//localhost:4321/project/gcf/</link>
+      <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/project/gcf/</guid>
+      <description>&lt;p&gt;This is a free web app powered by Goolge Earth Engine where managers can visualize and interact with the 30 m resolution map to help guide future surveys to search for existing populations and to inform future reintroduction assessments.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3353,27 +3001,11 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     </item>
     
     <item>
-      <title>Pandas</title>
-      <link>//localhost:4321/project/pandas/</link>
+      <title>Naboisho Conservancy</title>
+      <link>//localhost:4321/project/naboisho/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/pandas/</guid>
-      <description>&lt;p&gt;Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PyTorch</title>
-      <link>//localhost:4321/project/pytorch/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/pytorch/</guid>
-      <description>&lt;p&gt;PyTorch is a Python package that provides tensor computation (like NumPy) with strong GPU acceleration.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>scikit-learn</title>
-      <link>//localhost:4321/project/scikit/</link>
-      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/project/scikit/</guid>
-      <description>&lt;p&gt;scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.&lt;/p&gt;</description>
+      <guid>//localhost:4321/project/naboisho/</guid>
+      <description>&lt;p&gt;This Shiny app is the result of a collaboration with the Naboisho Conservancy in Kenya. It is a tool to help them monitor the impact of their conservation efforts on the abundance of large herbivores. The app allows users to explore the data collected by the conservancy and to visualize the abundance trends of large herbivores.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3495,7 +3127,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-528146937&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-238965174&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -3513,7 +3145,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-528146937&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-238965174&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -3804,6 +3436,132 @@ data.head()
     
     <item>
       <title>Learn JavaScript</title>
+      <link>//localhost:4321/post/js/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/post/js/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://hugoblox.com&#34;&gt;Hugo Blox Builder&lt;/a&gt; is designed to give technical content creators a seamless experience. You can focus on the content and the Hugo Blox Builder which this template is built upon handles the rest.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Embed videos, podcasts, code, LaTeX math, and even test students!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Hugo Blox.&lt;/p&gt;
+&lt;h2 id=&#34;video&#34;&gt;Video&lt;/h2&gt;
+&lt;p&gt;Teach your course by sharing videos with your students. Choose from one of the following approaches:&lt;/p&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/D2vj0WcvH5c?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Youtube&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; youtube w7Ft2ymGmfc &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Bilibili&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; bilibili id=&amp;quot;BV1WV4y1r7DF&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Video file&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Videos may be added to a page by either placing them in your &lt;code&gt;assets/media/&lt;/code&gt; media library or in your &lt;a href=&#34;https://gohugo.io/content-management/page-bundles/&#34;&gt;page&amp;rsquo;s folder&lt;/a&gt;, and then embedding them with the &lt;em&gt;video&lt;/em&gt; shortcode:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; video src=&amp;quot;my_video.mp4&amp;quot; controls=&amp;quot;yes&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;podcast&#34;&gt;Podcast&lt;/h2&gt;
+&lt;p&gt;You can add a podcast or music to a page by placing the MP3 file in the page&amp;rsquo;s folder or the media library folder and then embedding the audio on your page with the &lt;em&gt;audio&lt;/em&gt; shortcode:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; audio src=&amp;quot;ambient-piano.mp3&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+&lt;audio controls &gt;
+  &lt;source src=&#34;//localhost:4321/post/js/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+&lt;/audio&gt;
+
+&lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
+&lt;p&gt;Provide a simple yet fun self-assessment by revealing the solutions to challenges with the &lt;code&gt;spoiler&lt;/code&gt; shortcode:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;spoiler&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;👉 Click to view the solution&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You found me!
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;spoiler&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-2&#34;&gt;
+  &lt;summary class=&#34;cursor-pointer&#34;&gt;👉 Click to view the solution&lt;/summary&gt;
+  &lt;div class=&#34;rounded-lg bg-neutral-50 dark:bg-neutral-800 p-2&#34;&gt;
+    You found me 🎉
+  &lt;/div&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
+&lt;p&gt;Hugo Blox Builder supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the &lt;code&gt;math&lt;/code&gt; option in your &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;To render &lt;em&gt;inline&lt;/em&gt; or &lt;em&gt;block&lt;/em&gt; math, wrap your LaTeX math with &lt;code&gt;{{&amp;lt; math &amp;gt;}}$...${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; or &lt;code&gt;{{&amp;lt; math &amp;gt;}}$$...$${{&amp;lt; /math &amp;gt;}}&lt;/code&gt;, respectively.&lt;/p&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;We wrap the LaTeX math in the Hugo Blox &lt;em&gt;math&lt;/em&gt; shortcode to prevent Hugo rendering our math as Markdown.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;Example &lt;strong&gt;math block&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\gamma&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;_{n} &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\frac&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{ &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; | &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n} &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;^T &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; |}{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\|\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{x}_{n}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{x}_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\|&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;$$&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; /math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+
+$$\gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
+
+
+&lt;p&gt;Example &lt;strong&gt;inline math&lt;/strong&gt; &lt;code&gt;{{&amp;lt; math &amp;gt;}}$\nabla F(\mathbf{x}_{n})${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; renders as $\nabla F(\mathbf{x}_{n})$
+.&lt;/p&gt;
+&lt;p&gt;Example &lt;strong&gt;multi-line math&lt;/strong&gt; using the math linebreak (&lt;code&gt;\\&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;k;p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\begin&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{cases}p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &amp;amp; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\text&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{if }k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &amp;amp; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\text&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{if }k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\end&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{cases}&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;$$&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; /math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+
+
+$$
+f(k;p_{0}^{*}) = \begin{cases}p_{0}^{*} &amp; \text{if }k=1, \\
+1-p_{0}^{*} &amp; \text{if }k=0.\end{cases}
+$$
+
+
+
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Hugo Blox Builder utilises Hugo&amp;rsquo;s Markdown extension for highlighting code syntax. The code theme can be selected in the &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```python
+import pandas as pd
+data = pd.read_csv(&amp;quot;data.csv&amp;quot;)
+data.head()
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;renders as&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data.csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;inline-images&#34;&gt;Inline Images&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{{&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;icon&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;python&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;}}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+&lt;p&gt;
+  &lt;span class=&#34;inline-block  pr-1&#34;&gt;
+    &lt;svg style=&#34;height: 1em; transform: translateY(0.1em);&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; height=&#34;1em&#34; viewBox=&#34;0 0 448 512&#34; fill=&#34;currentColor&#34;&gt;&lt;path d=&#34;M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z&#34;/&gt;&lt;/svg&gt;
+  &lt;/span&gt; Python&lt;/p&gt;
+&lt;h2 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Learn JavaScript</title>
       <link>//localhost:4321/teaching/js/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/teaching/js/</guid>
@@ -3854,6 +3612,132 @@ data.head()
 
 &lt;audio controls &gt;
   &lt;source src=&#34;//localhost:4321/teaching/js/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+&lt;/audio&gt;
+
+&lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
+&lt;p&gt;Provide a simple yet fun self-assessment by revealing the solutions to challenges with the &lt;code&gt;spoiler&lt;/code&gt; shortcode:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;spoiler&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;👉 Click to view the solution&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You found me!
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;spoiler&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-2&#34;&gt;
+  &lt;summary class=&#34;cursor-pointer&#34;&gt;👉 Click to view the solution&lt;/summary&gt;
+  &lt;div class=&#34;rounded-lg bg-neutral-50 dark:bg-neutral-800 p-2&#34;&gt;
+    You found me 🎉
+  &lt;/div&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
+&lt;p&gt;Hugo Blox Builder supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the &lt;code&gt;math&lt;/code&gt; option in your &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;To render &lt;em&gt;inline&lt;/em&gt; or &lt;em&gt;block&lt;/em&gt; math, wrap your LaTeX math with &lt;code&gt;{{&amp;lt; math &amp;gt;}}$...${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; or &lt;code&gt;{{&amp;lt; math &amp;gt;}}$$...$${{&amp;lt; /math &amp;gt;}}&lt;/code&gt;, respectively.&lt;/p&gt;
+&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
+  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;We wrap the LaTeX math in the Hugo Blox &lt;em&gt;math&lt;/em&gt; shortcode to prevent Hugo rendering our math as Markdown.&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;Example &lt;strong&gt;math block&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\gamma&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;_{n} &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\frac&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{ &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; | &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n} &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;^T &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; x_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; |}{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\left&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\|\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{x}_{n}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\nabla&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; F&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\mathbf&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{x}_{n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\right&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\|&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;$$&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; /math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+
+$$\gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
+
+
+&lt;p&gt;Example &lt;strong&gt;inline math&lt;/strong&gt; &lt;code&gt;{{&amp;lt; math &amp;gt;}}$\nabla F(\mathbf{x}_{n})${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; renders as $\nabla F(\mathbf{x}_{n})$
+.&lt;/p&gt;
+&lt;p&gt;Example &lt;strong&gt;multi-line math&lt;/strong&gt; using the math linebreak (&lt;code&gt;\\&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sb&#34;&gt;$$&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;k;p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\begin&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{cases}p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &amp;amp; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\text&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{if }k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;, &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;p_{&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;}^{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;} &amp;amp; &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\text&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{if }k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;\end&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;{cases}&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;$$&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; /math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+
+
+$$
+f(k;p_{0}^{*}) = \begin{cases}p_{0}^{*} &amp; \text{if }k=1, \\
+1-p_{0}^{*} &amp; \text{if }k=0.\end{cases}
+$$
+
+
+
+&lt;h2 id=&#34;code&#34;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Hugo Blox Builder utilises Hugo&amp;rsquo;s Markdown extension for highlighting code syntax. The code theme can be selected in the &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```python
+import pandas as pd
+data = pd.read_csv(&amp;quot;data.csv&amp;quot;)
+data.head()
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;renders as&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_csv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data.csv&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;inline-images&#34;&gt;Inline Images&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{{&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;icon&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;python&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;}}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;renders as&lt;/p&gt;
+&lt;p&gt;
+  &lt;span class=&#34;inline-block  pr-1&#34;&gt;
+    &lt;svg style=&#34;height: 1em; transform: translateY(0.1em);&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; height=&#34;1em&#34; viewBox=&#34;0 0 448 512&#34; fill=&#34;currentColor&#34;&gt;&lt;path d=&#34;M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z&#34;/&gt;&lt;/svg&gt;
+  &lt;/span&gt; Python&lt;/p&gt;
+&lt;h2 id=&#34;did-you-find-this-page-helpful-consider-sharing-it-&#34;&gt;Did you find this page helpful? Consider sharing it 🙌&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Learn Python</title>
+      <link>//localhost:4321/post/python/</link>
+      <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/post/python/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://hugoblox.com&#34;&gt;Hugo Blox Builder&lt;/a&gt; is designed to give technical content creators a seamless experience. You can focus on the content and the Hugo Blox Builder which this template is built upon handles the rest.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Embed videos, podcasts, code, LaTeX math, and even test students!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Hugo Blox.&lt;/p&gt;
+&lt;h2 id=&#34;video&#34;&gt;Video&lt;/h2&gt;
+&lt;p&gt;Teach your course by sharing videos with your students. Choose from one of the following approaches:&lt;/p&gt;
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/D2vj0WcvH5c?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Youtube&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; youtube w7Ft2ymGmfc &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Bilibili&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; bilibili id=&amp;quot;BV1WV4y1r7DF&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Video file&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Videos may be added to a page by either placing them in your &lt;code&gt;assets/media/&lt;/code&gt; media library or in your &lt;a href=&#34;https://gohugo.io/content-management/page-bundles/&#34;&gt;page&amp;rsquo;s folder&lt;/a&gt;, and then embedding them with the &lt;em&gt;video&lt;/em&gt; shortcode:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; video src=&amp;quot;my_video.mp4&amp;quot; controls=&amp;quot;yes&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;podcast&#34;&gt;Podcast&lt;/h2&gt;
+&lt;p&gt;You can add a podcast or music to a page by placing the MP3 file in the page&amp;rsquo;s folder or the media library folder and then embedding the audio on your page with the &lt;em&gt;audio&lt;/em&gt; shortcode:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; audio src=&amp;quot;ambient-piano.mp3&amp;quot; &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+&lt;audio controls &gt;
+  &lt;source src=&#34;//localhost:4321/post/python/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
 &lt;/audio&gt;
 
 &lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
@@ -4130,6 +4014,404 @@ Parallel 4   :         des6, after des4, 1d
     </item>
     
     <item>
+      <title>The Eyes of the Tree: Applying Field Environmental Philosophy to Tackle Conservation Problems at Long-Term Socio-ecological Research Sites</title>
+      <link>//localhost:4321/books/book2/</link>
+      <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/books/book2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
+      <link>//localhost:4321/teaching/rgee/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/teaching/rgee/</guid>
+      <description>&lt;p&gt;Ramiro D. Crego &lt;sup&gt;a,b&lt;/sup&gt;, Majaliwa M. Masolele &lt;sup&gt;c&lt;/sup&gt;, Grant Connette &lt;sup&gt;a,b&lt;/sup&gt;, and Jared A. Stabach &lt;sup&gt;a&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
+Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
+USA.&lt;/p&gt;
+&lt;p&gt;b - Working Land and Seascapes, Conservation Commons, Smithsonian
+Institution, Washington, DC 20013, USA.&lt;/p&gt;
+&lt;p&gt;c - Boyd Orr Centre for Population and Ecosystem Health, Institute of
+Biodiversity, Animal Health &amp;amp; Comparative Medicine (IBAHCM), University
+of Glasgow, G12 8QQ, UK.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The following tutorial describes the code workflow presented in the
+manuscript “Enhancing animal movement analyses - Spatiotemporal matching
+of animal positions with remotely sensed data using Google Earth Engine
+and R.”&lt;/p&gt;
+&lt;figure&gt;&lt;a href=&#34;https://www.mdpi.com/2072-4292/13/20/4154&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;./Figures/23.png&#34;/&gt;&lt;/a&gt;&lt;/figure&gt;
+&lt;p&gt;The code workflow allows you to find the closest image from an image
+collection to the time at which each GPS location was acquired and
+extract the pixel value.&lt;/p&gt;
+&lt;p&gt;To use this code it is necessary to have a &lt;a href=&#34;https://earthengine.google.com/&#34;&gt;Google Earth
+Engine&lt;/a&gt; account and to install the
+&lt;code&gt;rgee&lt;/code&gt;
+&lt;a href=&#34;https://r-spatial.github.io/rgee/#quick-start-users-guide-for-rgee&#34;&gt;package&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;loading-and-preparing-tracking-data&#34;&gt;Loading and preparing tracking data&lt;/h2&gt;
+&lt;p&gt;The first step is to read a csv file with the telemetry data.&lt;/p&gt;
+&lt;p&gt;For this example we randomly selected 100 GPS fixes from the entire
+wildebeest dataset used in the manuscript, obtained from
+&lt;a href=&#34;https://www.datarepository.movebank.org/handle/10255/move.1098&#34;&gt;Movebank&lt;/a&gt;.
+The data is provided in the repository within the folder Data.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(sf)
+library(dplyr)
+trackingdata &amp;lt;- read.csv(&amp;quot;./Data/Data.csv&amp;quot;, header = T) #Load your dataset
+head(trackingdata)
+
+##             timestamp location.long location.lat
+## 1 2010-08-10 15:00:00      35.21622    -1.164488
+## 2 2011-06-26 12:00:00      36.83339    -1.462866
+## 3 2011-10-19 03:00:00      36.90053    -1.404862
+## 4 2011-11-20 12:00:00      36.91039    -1.430901
+## 5 2010-08-29 14:00:00      35.30668    -1.345507
+## 6 2010-12-20 05:00:00      36.91189    -1.433012
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the next step, we need to convert the dataframe into an sf object. We
+also need to set the date as a string with a ‘YYYY-MM-DDTHH:MM:SS’. We
+will use this data to convert it into milliseconds since midnight on
+January 1, 1970, a format used in Google Earth Engine to manage dates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trackingdata$Date &amp;lt;- as.POSIXct(trackingdata$timestamp, format = &amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;, tz=&amp;quot;UTC&amp;quot;) #Modify as necessary
+trackingdata$Date &amp;lt;- as.factor(trackingdata$Date)
+trackingdata$Date &amp;lt;- sub(&amp;quot; &amp;quot;, &amp;quot;T&amp;quot;, trackingdata$Date) #Put in a format that can be read by javascript
+trackingdata$ID &amp;lt;- seq(1:nrow(trackingdata)) # Add ID to each point (optional)
+datasf &amp;lt;- st_as_sf(trackingdata, coords = c(&#39;location.long&#39;,&#39;location.lat&#39;), crs = 4326) #Transform the dataframe into sf object. Make sure the name of the columns for the coordinates match. CRS needs to be in longlat WGS84.
+head(datasf)
+
+## Simple feature collection with 6 features and 3 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 35.21622 ymin: -1.462866 xmax: 36.91189 ymax: -1.164488
+## Geodetic CRS:  WGS 84
+##             timestamp                Date ID
+## 1 2010-08-10 15:00:00 2010-08-10T15:00:00  1
+## 2 2011-06-26 12:00:00 2011-06-26T12:00:00  2
+## 3 2011-10-19 03:00:00 2011-10-19T03:00:00  3
+## 4 2011-11-20 12:00:00 2011-11-20T12:00:00  4
+## 5 2010-08-29 14:00:00 2010-08-29T14:00:00  5
+## 6 2010-12-20 05:00:00 2010-12-20T05:00:00  6
+##                     geometry
+## 1 POINT (35.21622 -1.164488)
+## 2 POINT (36.83339 -1.462866)
+## 3 POINT (36.90053 -1.404862)
+## 4 POINT (36.91039 -1.430901)
+## 5 POINT (35.30668 -1.345507)
+## 6 POINT (36.91189 -1.433012)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;initialize-rgee&#34;&gt;Initialize rgee&lt;/h2&gt;
+&lt;p&gt;Next, we need to load and initialize rgee.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(rgee)
+ee_Initialize()
+ee_check()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;define-google-earth-engine-functions&#34;&gt;Define Google Earth Engine functions&lt;/h2&gt;
+&lt;p&gt;The next set of functions will be used to match images to the data and
+extract pixel values.&lt;/p&gt;
+&lt;p&gt;Note that you can edit the maximum temporal window allowed to find a
+match.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#Function to add property with time in milliseconds
+add_date&amp;lt;-function(feature) {
+  date &amp;lt;- ee$Date(ee$String(feature$get(&amp;quot;Date&amp;quot;)))$millis()
+  feature$set(list(date_millis=date))
+}
+
+#Join Image and Points based on a maxDifference Filter within a temporal window
+
+#Set temporal window in days for filter. This will depend on the remote sensing data used.
+tempwin &amp;lt;- 16 
+
+#Set the filter
+maxDiffFilter&amp;lt;-ee$Filter$maxDifference(
+  difference=tempwin*24*60*60*1000, #days * hr * min * sec * milliseconds
+  leftField= &amp;quot;date_millis&amp;quot;, #Timestamp of the telemetry data
+  rightField=&amp;quot;system:time_start&amp;quot; #Image date
+)
+
+# Define the join. We implement the saveBest function for the join, which finds the image that best matches the filter (i.e., the image closest in time to the particular GPS fix location). 
+saveBestJoin&amp;lt;-ee$Join$saveBest(
+  matchKey=&amp;quot;bestImage&amp;quot;,
+  measureKey=&amp;quot;timeDiff&amp;quot;
+)
+
+#Function to add property with raster pixel value from the matched image
+add_value&amp;lt;-function(feature){
+  #Get the image selected by the join
+  img1&amp;lt;-ee$Image(feature$get(&amp;quot;bestImage&amp;quot;))$select(band)
+  #Extract geometry from the feature
+  point&amp;lt;-feature$geometry()
+  #Get pixel value for each point at the desired spatial resolution (argument scale)
+  pixel_value&amp;lt;-img1$sample(region=point, scale=250, tileScale = 16, dropNulls = F) 
+  #Return the data containing pixel value and image date.
+  feature$setMulti(list(PixelVal = pixel_value$first()$get(band), DateTimeImage = img1$get(&#39;system:index&#39;)))
+}
+
+# Function to remove image property from features
+removeProperty&amp;lt;- function(feature) {
+  #Get the properties of the data
+  properties = feature$propertyNames()
+  #Select all items except images
+  selectProperties = properties$filter(ee$Filter$neq(&amp;quot;item&amp;quot;, &amp;quot;bestImage&amp;quot;))
+  #Return selected features
+  feature$select(selectProperties)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;load-image-collection&#34;&gt;Load image collection&lt;/h2&gt;
+&lt;p&gt;In this example, we are using NDVI from MODIS Terra Vegetation Indexes
+16-Day Global 250m data set. However, you can use any other remote
+sensing product of interest and filter to the desired dates.&lt;/p&gt;
+&lt;p&gt;One of the main advantages offered by Google Earth Engine is the
+enormous amount of data available to be used. The constantly growing
+database consists on more than a petabyte archive of publicly available
+remotely sensed imagery and other related data sets. In the study cases
+of the manuscript we used MOD13Q1 and ERA5_LAND/HOURLY, but data
+available includes other products from MODIS, data from other satellites
+such as Landsat, National Oceanographic and Atmospheric Administration
+Advanced Very High Resolution Radiometer (NOAA AVHRR), Sentinel 1, 2, 3
+and 5-P, Advanced Land Observing Satellite (ALOS), and other products
+such as sea surface temperature data, CHIRPS climate data, topography
+data, and land cover data. The entire list of datasets is available at
+this
+&lt;a href=&#34;https://developers.google.com/earth-engine/datasets/catalog&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that all image collections in Earth Engine have a code that you can
+extract from the link provided above and use to import into the workflow
+by modifying this example.&lt;/p&gt;
+&lt;p&gt;We will set the start and end days to filter the image collections.
+Temporal availability depends on each dataset.&lt;/p&gt;
+&lt;p&gt;We will also create an object with the name of the band we are
+interested in working with. The name of the band is also specific to
+each image collection.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start&amp;lt;-&amp;quot;2010-01-01&amp;quot;
+end&amp;lt;-&amp;quot;2013-01-01&amp;quot;
+imagecoll&amp;lt;-ee$ImageCollection(&#39;MODIS/006/MOD13Q1&#39;)$filterDate(start,end)
+band &amp;lt;- &amp;quot;NDVI&amp;quot; #Name of the band to use. You can change to EVI for instance when using MOD13Q1.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;extract-pixel-value&#34;&gt;Extract pixel value&lt;/h2&gt;
+&lt;p&gt;A key function in this process is the &lt;code&gt;ee_as_sf&lt;/code&gt; which converts the
+Google Earth Engine table in a sf object. This function provides three
+different options to convert the table (feature collection) into a sf
+object:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;getInfo: which is fast and direct but has a limit of 5000 features&lt;/li&gt;
+&lt;li&gt;drive: which exports data through your Google Drive account&lt;/li&gt;
+&lt;li&gt;gsc: which exports data through your Google Cloud Storage account&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can find more information about this function in the help:
+?ee_as_sf&lt;/p&gt;
+&lt;p&gt;We use here the &lt;code&gt;getInfo&lt;/code&gt; option given it is direct and simple. However,
+this option has a limit of 5000 features to convert. For that reason, we
+are going to run a loop, processing 1000 features (points) per time to
+avoid errors. If memory limit errors are display, then you can reduce
+the number of points to extract each time by changing the &lt;code&gt;each&lt;/code&gt;
+argument on the &lt;code&gt;rep&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;In this example we only have 100 points so the loop will only run once,
+but for larger datasets the loop may run multiple times.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;datasf$uniq &amp;lt;- rep(1:1000, each=1000)[1:nrow(datasf)] #This is for up to 1 million points. To increase the max number of points, increase the value for max repetitions. To change the number of points to run per time, change the value in the argument each (up to 5000).
+
+start_time &amp;lt;- Sys.time()
+dataoutput &amp;lt;- data.frame()
+for(x in unique(datasf$uniq)){
+  data1 &amp;lt;- datasf %&amp;gt;% filter(uniq == x)
+  # Send sf to GEE
+  data &amp;lt;- sf_as_ee(data1)
+  # Transform day into milliseconds
+  data&amp;lt;-data$map(add_date)
+  # Apply the join
+  Data_match&amp;lt;-saveBestJoin$apply(data, imagecoll, maxDiffFilter)
+  # Add pixel value to the data
+  DataFinal&amp;lt;-Data_match$map(add_value)
+  # Remove image property from the data
+  DataFinal&amp;lt;-DataFinal$map(removeProperty)
+  # Move GEE object into R
+  temp&amp;lt;- ee_as_sf(DataFinal, via = &#39;getInfo&#39;)
+  # Append
+  dataoutput &amp;lt;- rbind(dataoutput, temp)
+}
+end_time &amp;lt;- Sys.time()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The time needed to run 100 points was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;end_time - start_time
+
+## Time difference of 3.329701 secs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The new sf data frame with the pixel values in now stored as the
+&lt;code&gt;dataoutput&lt;/code&gt; object. You can use this for further analysis.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;names(dataoutput)[4] &amp;lt;- band
+dataoutput
+
+## Simple feature collection with 100 features and 7 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 34.99598 ymin: -2.693471 xmax: 37.5994 ymax: -1.148282
+## Geodetic CRS:  WGS 84
+## First 10 features:
+##                   Date DateTimeImage ID NDVI date_millis
+## 1  2010-08-10 15:00:00    2010_08_13  1 3011  1552145792
+## 2  2011-06-26 12:00:00    2011_06_26  2 3632  -875425280
+## 3  2011-10-19 03:00:00    2011_10_16  3 2957   438240128
+## 4  2011-11-20 12:00:00    2011_11_17  4 4952 -1059527168
+## 5  2010-08-29 14:00:00    2010_08_29  5 2699 -1104821504
+## 6  2010-12-20 05:00:00    2010_12_19  6 3518    36043904
+## 7  2010-07-16 18:01:00    2010_07_12  7 3227  -596994208
+## 8  2011-12-09 03:01:00    2011_12_03  8 4460   549732832
+## 9  2012-01-01 07:00:00    2012_01_01  9 2624 -1743694464
+## 10 2012-04-16 04:00:00    2012_04_22 10 5840 -1186029056
+##              timestamp uniq                   geometry
+## 1  2010-08-10 15:00:00    1 POINT (35.21622 -1.164488)
+## 2  2011-06-26 12:00:00    1 POINT (36.83339 -1.462866)
+## 3  2011-10-19 03:00:00    1 POINT (36.90053 -1.404862)
+## 4  2011-11-20 12:00:00    1 POINT (36.91039 -1.430901)
+## 5  2010-08-29 14:00:00    1 POINT (35.30668 -1.345507)
+## 6  2010-12-20 05:00:00    1 POINT (36.91189 -1.433012)
+## 7  2010-07-16 18:01:00    1 POINT (35.24742 -1.324172)
+## 8  2011-12-09 03:01:00    1   POINT (37.565 -2.446763)
+## 9  2012-01-01 07:00:00    1 POINT (37.03885 -2.620116)
+## 10 2012-04-16 04:00:00    1 POINT (35.52517 -1.233949)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;visualize-locations&#34;&gt;Visualize locations&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Pres &amp;lt;- dataoutput
+
+library(tmap)
+tmap_mode(&#39;plot&#39;)
+tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;tutorial_files/figure-markdown_strict/unnamed-chunk-11-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;session&#34;&gt;Session&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;devtools::session_info()
+
+## ─ Session info ─────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.4.1 (2024-06-14)
+##  os       macOS Sonoma 14.5
+##  system   aarch64, darwin20
+##  ui       RStudio
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       Europe/Dublin
+##  date     2024-07-20
+##  rstudio  2024.04.2+764 Chocolate Cosmos (desktop)
+##  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
+## 
+## ─ Packages ─────────────────────────────────────────────────────
+##  package           * version   date (UTC) lib source
+##  abind               1.4-5     2016-07-21 [1] CRAN (R 4.4.0)
+##  base64enc           0.1-3     2015-07-28 [1] CRAN (R 4.4.0)
+##  cachem              1.1.0     2024-05-16 [1] CRAN (R 4.4.0)
+##  class               7.3-22    2023-05-03 [1] CRAN (R 4.4.1)
+##  classInt            0.4-10    2023-09-05 [1] CRAN (R 4.4.0)
+##  cli                 3.6.3     2024-06-21 [1] CRAN (R 4.4.0)
+##  codetools           0.2-20    2024-03-31 [1] CRAN (R 4.4.1)
+##  crayon              1.5.3     2024-06-20 [1] CRAN (R 4.4.0)
+##  crosstalk           1.2.1     2023-11-23 [1] CRAN (R 4.4.0)
+##  crul                1.5.0     2024-07-19 [1] CRAN (R 4.4.0)
+##  curl                5.2.1     2024-03-01 [1] CRAN (R 4.4.0)
+##  DBI                 1.2.3     2024-06-02 [1] CRAN (R 4.4.0)
+##  devtools            2.4.5     2022-10-11 [1] CRAN (R 4.4.0)
+##  dichromat           2.0-0.1   2022-05-02 [1] CRAN (R 4.4.0)
+##  digest              0.6.36    2024-06-23 [1] CRAN (R 4.4.0)
+##  dplyr             * 1.1.4     2023-11-17 [1] CRAN (R 4.4.0)
+##  e1071               1.7-14    2023-12-06 [1] CRAN (R 4.4.0)
+##  ellipsis            0.3.2     2021-04-29 [1] CRAN (R 4.4.0)
+##  evaluate            0.24.0    2024-06-10 [1] CRAN (R 4.4.0)
+##  fansi               1.0.6     2023-12-08 [1] CRAN (R 4.4.0)
+##  fastmap             1.2.0     2024-05-15 [1] CRAN (R 4.4.0)
+##  fs                  1.6.4     2024-04-25 [1] CRAN (R 4.4.0)
+##  generics            0.1.3     2022-07-05 [1] CRAN (R 4.4.0)
+##  geojson             0.3.5     2023-08-08 [1] CRAN (R 4.4.0)
+##  geojsonio           0.11.3    2023-09-06 [1] CRAN (R 4.4.0)
+##  geojsonsf           2.0.3     2022-05-30 [1] CRAN (R 4.4.0)
+##  glue                1.7.0     2024-01-09 [1] CRAN (R 4.4.0)
+##  highr               0.11      2024-05-26 [1] CRAN (R 4.4.0)
+##  htmltools           0.5.8.1   2024-04-04 [1] CRAN (R 4.4.0)
+##  htmlwidgets         1.6.4     2023-12-06 [1] CRAN (R 4.4.0)
+##  httpcode            0.3.0     2020-04-10 [1] CRAN (R 4.4.0)
+##  httpuv              1.6.15    2024-03-26 [1] CRAN (R 4.4.0)
+##  jqr                 1.3.3     2023-12-04 [1] CRAN (R 4.4.0)
+##  jquerylib           0.1.4     2021-04-26 [1] CRAN (R 4.4.0)
+##  jsonlite            1.8.8     2023-12-04 [1] CRAN (R 4.4.0)
+##  KernSmooth          2.23-24   2024-05-17 [1] CRAN (R 4.4.1)
+##  knitr               1.48      2024-07-07 [1] CRAN (R 4.4.0)
+##  later               1.3.2     2023-12-06 [1] CRAN (R 4.4.0)
+##  lattice             0.22-6    2024-03-20 [1] CRAN (R 4.4.1)
+##  lazyeval            0.2.2     2019-03-15 [1] CRAN (R 4.4.0)
+##  leafem              0.2.3     2023-09-17 [1] CRAN (R 4.4.0)
+##  leaflet             2.2.2     2024-03-26 [1] CRAN (R 4.4.0)
+##  leaflet.providers   2.0.0     2023-10-17 [1] CRAN (R 4.4.0)
+##  leafsync            0.1.0     2019-03-05 [1] CRAN (R 4.4.0)
+##  lifecycle           1.0.4     2023-11-07 [1] CRAN (R 4.4.0)
+##  lwgeom              0.2-14    2024-02-21 [1] CRAN (R 4.4.0)
+##  magrittr            2.0.3     2022-03-30 [1] CRAN (R 4.4.0)
+##  Matrix              1.7-0     2024-04-26 [1] CRAN (R 4.4.1)
+##  memoise             2.0.1     2021-11-26 [1] CRAN (R 4.4.0)
+##  mime                0.12      2021-09-28 [1] CRAN (R 4.4.0)
+##  miniUI              0.1.1.1   2018-05-18 [1] CRAN (R 4.4.1)
+##  pillar              1.9.0     2023-03-22 [1] CRAN (R 4.4.0)
+##  pkgbuild            1.4.4     2024-03-17 [1] CRAN (R 4.4.0)
+##  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.4.0)
+##  pkgload             1.4.0     2024-06-28 [1] CRAN (R 4.4.0)
+##  png                 0.1-8     2022-11-29 [1] CRAN (R 4.4.0)
+##  processx            3.8.4     2024-03-16 [1] CRAN (R 4.4.0)
+##  profvis             0.3.8     2023-05-02 [1] CRAN (R 4.4.0)
+##  promises            1.3.0     2024-04-05 [1] CRAN (R 4.4.0)
+##  proxy               0.4-27    2022-06-09 [1] CRAN (R 4.4.0)
+##  ps                  1.7.7     2024-07-02 [1] CRAN (R 4.4.0)
+##  purrr               1.0.2     2023-08-10 [1] CRAN (R 4.4.0)
+##  R6                  2.5.1     2021-08-19 [1] CRAN (R 4.4.0)
+##  raster              3.6-26    2023-10-14 [1] CRAN (R 4.4.0)
+##  RColorBrewer        1.1-3     2022-04-03 [1] CRAN (R 4.4.0)
+##  Rcpp                1.0.12    2024-01-09 [1] CRAN (R 4.4.0)
+##  remotes             2.5.0     2024-03-17 [1] CRAN (R 4.4.0)
+##  reticulate          1.38.0    2024-06-19 [1] CRAN (R 4.4.0)
+##  rgee              * 1.1.7     2023-09-27 [1] CRAN (R 4.4.0)
+##  rlang               1.1.4     2024-06-04 [1] CRAN (R 4.4.0)
+##  rmarkdown         * 2.27      2024-05-17 [1] CRAN (R 4.4.0)
+##  rstudioapi          0.16.0    2024-03-24 [1] CRAN (R 4.4.0)
+##  s2                  1.1.7     2024-07-17 [1] CRAN (R 4.4.0)
+##  sessioninfo         1.2.2     2021-12-06 [1] CRAN (R 4.4.0)
+##  sf                * 1.0-16    2024-03-24 [1] CRAN (R 4.4.0)
+##  shiny               1.8.1.1   2024-04-02 [1] CRAN (R 4.4.0)
+##  sp                  2.1-4     2024-04-30 [1] CRAN (R 4.4.0)
+##  stars               0.6-6     2024-07-16 [1] CRAN (R 4.4.0)
+##  stringi             1.8.4     2024-05-06 [1] CRAN (R 4.4.0)
+##  stringr             1.5.1     2023-11-14 [1] CRAN (R 4.4.0)
+##  terra               1.7-78    2024-05-22 [1] CRAN (R 4.4.0)
+##  tibble              3.2.1     2023-03-20 [1] CRAN (R 4.4.0)
+##  tidyselect          1.2.1     2024-03-11 [1] CRAN (R 4.4.0)
+##  tmap              * 3.3-4     2023-09-12 [1] CRAN (R 4.4.0)
+##  tmaptools           3.1-1     2021-01-19 [1] CRAN (R 4.4.0)
+##  units               0.8-5     2023-11-28 [1] CRAN (R 4.4.0)
+##  urlchecker          1.0.1     2021-11-30 [1] CRAN (R 4.4.0)
+##  usethis             2.2.3     2024-02-19 [1] CRAN (R 4.4.0)
+##  utf8                1.2.4     2023-10-22 [1] CRAN (R 4.4.0)
+##  V8                  4.4.2     2024-02-15 [1] CRAN (R 4.4.0)
+##  vctrs               0.6.5     2023-12-01 [1] CRAN (R 4.4.0)
+##  viridisLite         0.4.2     2023-05-02 [1] CRAN (R 4.4.0)
+##  webshot             0.5.5     2023-06-26 [1] CRAN (R 4.4.0)
+##  wk                  0.9.2     2024-07-09 [1] CRAN (R 4.4.0)
+##  xfun                0.45      2024-06-16 [1] CRAN (R 4.4.0)
+##  XML                 3.99-0.17 2024-06-25 [1] CRAN (R 4.4.0)
+##  xtable              1.8-4     2019-04-21 [1] CRAN (R 4.4.0)
+##  yaml                2.3.9     2024-07-05 [1] CRAN (R 4.4.0)
+## 
+##  [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+## 
+## ─ Python configuration ─────────────────────────────────────────
+##  python:         /Users/ramirocrego/.virtualenvs/rgee/bin/python
+##  libpython:      /Users/ramirocrego/Library/r-miniconda-arm64/lib/libpython3.10.dylib
+##  pythonhome:     /Users/ramirocrego/.virtualenvs/rgee:/Users/ramirocrego/.virtualenvs/rgee
+##  version:        3.10.12 (main, Jul  5 2023, 15:02:25) [Clang 14.0.6 ]
+##  numpy:          /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/numpy
+##  numpy_version:  1.25.1
+##  ee:             /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/ee
+##  
+##  NOTE: Python version was forced by RETICULATE_PYTHON
+## 
+## ────────────────────────────────────────────────────────────────
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hello R Markdown</title>
       <link>//localhost:4321/post/2020-12-01-r-rmarkdown/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
@@ -4171,104 +4453,75 @@ Parallel 4   :         des6, after des4, 1d
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>//localhost:4321/teaching/r/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>//localhost:4321/teaching/r/</guid>
-      <description>&lt;h1 id=&#34;r-markdown&#34;&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##      speed           dist       &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Min.   : 4.0   Min.   :  2.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  1st Qu.:12.0   1st Qu.: 26.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Median :15.0   Median : 36.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Mean   :15.4   Mean   : 42.98  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  3rd Qu.:19.0   3rd Qu.: 56.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Max.   :25.0   Max.   :120.00&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;lm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fit&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Call:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## lm(formula = dist ~ speed, data = cars)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Coefficients:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## (Intercept)        speed  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##     -17.579        3.932&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;including-plots&#34;&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;par&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;pie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;280&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;Sky&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Sunny side of pyramid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Shady side of pyramid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;#0292D8&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;#F7EA39&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;#C4B632&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;init.angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;-50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;border&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;//localhost:4321/teaching/r/index_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;Figure 1: A fancy pie chart.&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <title>Laikipia Shiny app</title>
+      <link>//localhost:4321/project/laikipia/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/project/laikipia/</guid>
+      <description>&lt;p&gt;I have designed this Shiny app to help managers visualize the results of our studies across Laikipia, Kenya, and make decisions on the ground related to livestock management, fence deployment and their effects on herbivore species richness and landscape connectivity, and species abundance.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>An example journal article</title>
+      <title>New records of invasive mammals from the sub-Antarctic Cape Horn Archipelago</title>
+      <link>//localhost:4321/papers/article14/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fur Trade and the Biotic Homogenization of Subpolar Ecosystems</title>
       <link>//localhost:4321/books/book1/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/books/book1/</guid>
-      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
-&lt;/div&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
-      <title>An example journal article</title>
-      <link>//localhost:4321/papers/article-copy/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article-copy/</guid>
-      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
-&lt;/div&gt;
-</description>
+      <title>Los ojos del árbol: percibiendo, registrando, comprendiendo y contrarrestando las invasiones biológicas en tiempos de rápida homogeneizacion biocultural</title>
+      <link>//localhost:4321/papers/article13/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article13/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>An example journal article</title>
-      <link>//localhost:4321/papers/article/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article/</guid>
-      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
-&lt;/div&gt;
-</description>
+      <title>Macro- and micro-habitat selection of small rodents and their predation risk perception under a novel invasive predator at the southern end of the Americas</title>
+      <link>//localhost:4321/papers/article11/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Potential niche expansion of the American mink invading a remote island free of native-predatory mammals</title>
+      <link>//localhost:4321/papers/article12/</link>
+      <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Native-predator-invasive-prey trophic interactions in Tierra del Fuego: the beginning of biological resistance?</title>
+      <link>//localhost:4321/papers/article10/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Primer registro de Vespula vulgaris (Linnaeus 1758) (Hymenoptera: Vespidae) en la isla Navarino, Chile</title>
+      <link>//localhost:4321/papers/article9/</link>
+      <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A synergistic trio of invasive mammals? Facilitative interactions among beavers, muskrats, and mink at the southern end of the Americas</title>
+      <link>//localhost:4321/papers/article8/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article8/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -4289,6 +4542,70 @@ Parallel 4   :         des6, after des4, 1d
   &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.&lt;/span&gt;
 &lt;/div&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Expansión de la invasión del Visón Norteamericano (Neovison vison) en la Reserva de la Biosfera de Cabo de Hornos, Chile</title>
+      <link>//localhost:4321/papers/article7/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filosofía ambiental de campo: ecología y ética en las redes LTER-Chile e ILTER</title>
+      <link>//localhost:4321/papers/article6/</link>
+      <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Potential impact of the alien American mink (Neovison vison) on Magellanic woodpeckers (Campephilus magallanicus) in Navarino Island, southern Chile</title>
+      <link>//localhost:4321/papers/article5/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Climate change and conservation implications for wet meadows in dry Patagonia</title>
+      <link>//localhost:4321/papers/article4/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Modeling meadow distribution for conservation action in arid and semi-arid Patagonia, Argentina</title>
+      <link>//localhost:4321/papers/article3/</link>
+      <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Capturing and radio ear-tagging neonatal vicuñas</title>
+      <link>//localhost:4321/papers/article2/</link>
+      <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Una técnica para la estimación de la densidad y el monitoreo de poblaciones de inambú común (Nothura maculosa) en ambientes de pastizal</title>
+      <link>//localhost:4321/papers/article1/</link>
+      <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>//localhost:4321/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/experience/</guid>
+      <description></description>
     </item>
     
   </channel>

@@ -15,10 +15,13 @@ main:
     weight: 30
   # - name: Outreach
   #   url: teaching/
-    weight: 40
-  - name: Teaching
+  #  weight: 40
+  - name: Tutorials
     url: teaching/
     weight: 50
+  - name: Web apps
+    url: apps/
+    weight: 60
   # - name: Students
   #   url: experience/
-  #   weight: 60
+  #   weight: 70

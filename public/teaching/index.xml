@@ -1,405 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Teaching | ramirodcrego</title>
+    <title>Tutorials | ramirodcrego</title>
     <link>//localhost:4321/teaching/</link>
       <atom:link href="//localhost:4321/teaching/index.xml" rel="self" type="application/rss+xml" />
-    <description>Teaching</description>
+    <description>Tutorials</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
-      <title>Teaching</title>
+      <title>Tutorials</title>
       <link>//localhost:4321/teaching/</link>
     </image>
-    
-    <item>
-      <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
-      <link>//localhost:4321/teaching/rgee/</link>
-      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/teaching/rgee/</guid>
-      <description>&lt;p&gt;Ramiro D. Crego a,b, Majaliwa M. Masolele c, Grant Connette a,b, and Jared A. Stabach a&lt;/p&gt;
-&lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
-Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
-USA.&lt;/p&gt;
-&lt;p&gt;b - Working Land and Seascapes, Conservation Commons, Smithsonian
-Institution, Washington, DC 20013, USA.&lt;/p&gt;
-&lt;p&gt;c - Boyd Orr Centre for Population and Ecosystem Health, Institute of
-Biodiversity, Animal Health &amp;amp; Comparative Medicine (IBAHCM), University
-of Glasgow, G12 8QQ, UK.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;The following tutorial describes the code workflow presented in the
-manuscript “Enhancing animal movement analyses - Spatiotemporal matching
-of animal positions with remotely sensed data using Google Earth Engine
-and R.”&lt;/p&gt;
-&lt;p&gt;The code workflow allows you to find the closest image from an image
-collection to the time at which each GPS location was acquired and
-extract the pixel value.&lt;/p&gt;
-&lt;p&gt;To use this code it is necessary to have a &lt;a href=&#34;https://earthengine.google.com/&#34;&gt;Google Earth
-Engine&lt;/a&gt; account and to install the
-&lt;code&gt;rgee&lt;/code&gt;
-&lt;a href=&#34;https://r-spatial.github.io/rgee/#quick-start-users-guide-for-rgee&#34;&gt;package&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;loading-and-preparing-tracking-data&#34;&gt;Loading and preparing tracking data&lt;/h2&gt;
-&lt;p&gt;The first step is to read a csv file with the telemetry data.&lt;/p&gt;
-&lt;p&gt;For this example we randomly selected 100 GPS fixes from the entire
-wildebeest dataset used in the manuscript, obtained from
-&lt;a href=&#34;https://www.datarepository.movebank.org/handle/10255/move.1098&#34;&gt;Movebank&lt;/a&gt;.
-The data is provided in the repository within the folder Data.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(sf)
-library(dplyr)
-trackingdata &amp;lt;- read.csv(&amp;quot;./Data/Data.csv&amp;quot;, header = T) #Load your dataset
-head(trackingdata)
-
-##             timestamp location.long location.lat
-## 1 2010-08-10 15:00:00      35.21622    -1.164488
-## 2 2011-06-26 12:00:00      36.83339    -1.462866
-## 3 2011-10-19 03:00:00      36.90053    -1.404862
-## 4 2011-11-20 12:00:00      36.91039    -1.430901
-## 5 2010-08-29 14:00:00      35.30668    -1.345507
-## 6 2010-12-20 05:00:00      36.91189    -1.433012
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In the next step, we need to convert the dataframe into an sf object. We
-also need to set the date as a string with a ‘YYYY-MM-DDTHH:MM:SS’. We
-will use this data to convert it into milliseconds since midnight on
-January 1, 1970, a format used in Google Earth Engine to manage dates.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trackingdata$Date &amp;lt;- as.POSIXct(trackingdata$timestamp, format = &amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;, tz=&amp;quot;UTC&amp;quot;) #Modify as necessary
-trackingdata$Date &amp;lt;- as.factor(trackingdata$Date)
-trackingdata$Date &amp;lt;- sub(&amp;quot; &amp;quot;, &amp;quot;T&amp;quot;, trackingdata$Date) #Put in a format that can be read by javascript
-trackingdata$ID &amp;lt;- seq(1:nrow(trackingdata)) # Add ID to each point (optional)
-datasf &amp;lt;- st_as_sf(trackingdata, coords = c(&#39;location.long&#39;,&#39;location.lat&#39;), crs = 4326) #Transform the dataframe into sf object. Make sure the name of the columns for the coordinates match. CRS needs to be in longlat WGS84.
-head(datasf)
-
-## Simple feature collection with 6 features and 3 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 35.21622 ymin: -1.462866 xmax: 36.91189 ymax: -1.164488
-## Geodetic CRS:  WGS 84
-##             timestamp                Date ID
-## 1 2010-08-10 15:00:00 2010-08-10T15:00:00  1
-## 2 2011-06-26 12:00:00 2011-06-26T12:00:00  2
-## 3 2011-10-19 03:00:00 2011-10-19T03:00:00  3
-## 4 2011-11-20 12:00:00 2011-11-20T12:00:00  4
-## 5 2010-08-29 14:00:00 2010-08-29T14:00:00  5
-## 6 2010-12-20 05:00:00 2010-12-20T05:00:00  6
-##                     geometry
-## 1 POINT (35.21622 -1.164488)
-## 2 POINT (36.83339 -1.462866)
-## 3 POINT (36.90053 -1.404862)
-## 4 POINT (36.91039 -1.430901)
-## 5 POINT (35.30668 -1.345507)
-## 6 POINT (36.91189 -1.433012)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;initialize-rgee&#34;&gt;Initialize rgee&lt;/h2&gt;
-&lt;p&gt;Next, we need to load and initialize rgee.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(rgee)
-ee_Initialize()
-ee_check()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;define-google-earth-engine-functions&#34;&gt;Define Google Earth Engine functions&lt;/h2&gt;
-&lt;p&gt;The next set of functions will be used to match images to the data and
-extract pixel values.&lt;/p&gt;
-&lt;p&gt;Note that you can edit the maximum temporal window allowed to find a
-match.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#Function to add property with time in milliseconds
-add_date&amp;lt;-function(feature) {
-  date &amp;lt;- ee$Date(ee$String(feature$get(&amp;quot;Date&amp;quot;)))$millis()
-  feature$set(list(date_millis=date))
-}
-
-#Join Image and Points based on a maxDifference Filter within a temporal window
-
-#Set temporal window in days for filter. This will depend on the remote sensing data used.
-tempwin &amp;lt;- 16 
-
-#Set the filter
-maxDiffFilter&amp;lt;-ee$Filter$maxDifference(
-  difference=tempwin*24*60*60*1000, #days * hr * min * sec * milliseconds
-  leftField= &amp;quot;date_millis&amp;quot;, #Timestamp of the telemetry data
-  rightField=&amp;quot;system:time_start&amp;quot; #Image date
-)
-
-# Define the join. We implement the saveBest function for the join, which finds the image that best matches the filter (i.e., the image closest in time to the particular GPS fix location). 
-saveBestJoin&amp;lt;-ee$Join$saveBest(
-  matchKey=&amp;quot;bestImage&amp;quot;,
-  measureKey=&amp;quot;timeDiff&amp;quot;
-)
-
-#Function to add property with raster pixel value from the matched image
-add_value&amp;lt;-function(feature){
-  #Get the image selected by the join
-  img1&amp;lt;-ee$Image(feature$get(&amp;quot;bestImage&amp;quot;))$select(band)
-  #Extract geometry from the feature
-  point&amp;lt;-feature$geometry()
-  #Get pixel value for each point at the desired spatial resolution (argument scale)
-  pixel_value&amp;lt;-img1$sample(region=point, scale=250, tileScale = 16, dropNulls = F) 
-  #Return the data containing pixel value and image date.
-  feature$setMulti(list(PixelVal = pixel_value$first()$get(band), DateTimeImage = img1$get(&#39;system:index&#39;)))
-}
-
-# Function to remove image property from features
-removeProperty&amp;lt;- function(feature) {
-  #Get the properties of the data
-  properties = feature$propertyNames()
-  #Select all items except images
-  selectProperties = properties$filter(ee$Filter$neq(&amp;quot;item&amp;quot;, &amp;quot;bestImage&amp;quot;))
-  #Return selected features
-  feature$select(selectProperties)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;load-image-collection&#34;&gt;Load image collection&lt;/h2&gt;
-&lt;p&gt;In this example, we are using NDVI from MODIS Terra Vegetation Indexes
-16-Day Global 250m data set. However, you can use any other remote
-sensing product of interest and filter to the desired dates.&lt;/p&gt;
-&lt;p&gt;One of the main advantages offered by Google Earth Engine is the
-enormous amount of data available to be used. The constantly growing
-database consists on more than a petabyte archive of publicly available
-remotely sensed imagery and other related data sets. In the study cases
-of the manuscript we used MOD13Q1 and ERA5_LAND/HOURLY, but data
-available includes other products from MODIS, data from other satellites
-such as Landsat, National Oceanographic and Atmospheric Administration
-Advanced Very High Resolution Radiometer (NOAA AVHRR), Sentinel 1, 2, 3
-and 5-P, Advanced Land Observing Satellite (ALOS), and other products
-such as sea surface temperature data, CHIRPS climate data, topography
-data, and land cover data. The entire list of datasets is available at
-this
-&lt;a href=&#34;https://developers.google.com/earth-engine/datasets/catalog&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Note that all image collections in Earth Engine have a code that you can
-extract from the link provided above and use to import into the workflow
-by modifying this example.&lt;/p&gt;
-&lt;p&gt;We will set the start and end days to filter the image collections.
-Temporal availability depends on each dataset.&lt;/p&gt;
-&lt;p&gt;We will also create an object with the name of the band we are
-interested in working with. The name of the band is also specific to
-each image collection.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;start&amp;lt;-&amp;quot;2010-01-01&amp;quot;
-end&amp;lt;-&amp;quot;2013-01-01&amp;quot;
-imagecoll&amp;lt;-ee$ImageCollection(&#39;MODIS/006/MOD13Q1&#39;)$filterDate(start,end)
-band &amp;lt;- &amp;quot;NDVI&amp;quot; #Name of the band to use. You can change to EVI for instance when using MOD13Q1.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;extract-pixel-value&#34;&gt;Extract pixel value&lt;/h2&gt;
-&lt;p&gt;A key function in this process is the &lt;code&gt;ee_as_sf&lt;/code&gt; which converts the
-Google Earth Engine table in a sf object. This function provides three
-different options to convert the table (feature collection) into a sf
-object:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;getInfo: which is fast and direct but has a limit of 5000 features&lt;/li&gt;
-&lt;li&gt;drive: which exports data through your Google Drive account&lt;/li&gt;
-&lt;li&gt;gsc: which exports data through your Google Cloud Storage account&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;You can find more information about this function in the help:
-?ee_as_sf&lt;/p&gt;
-&lt;p&gt;We use here the &lt;code&gt;getInfo&lt;/code&gt; option given it is direct and simple. However,
-this option has a limit of 5000 features to convert. For that reason, we
-are going to run a loop, processing 1000 features (points) per time to
-avoid errors. If memory limit errors are display, then you can reduce
-the number of points to extract each time by changing the &lt;code&gt;each&lt;/code&gt;
-argument on the &lt;code&gt;rep&lt;/code&gt; function.&lt;/p&gt;
-&lt;p&gt;In this example we only have 100 points so the loop will only run once,
-but for larger datasets the loop may run multiple times.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;datasf$uniq &amp;lt;- rep(1:1000, each=1000)[1:nrow(datasf)] #This is for up to 1 million points. To increase the max number of points, increase the value for max repetitions. To change the number of points to run per time, change the value in the argument each (up to 5000).
-
-start_time &amp;lt;- Sys.time()
-dataoutput &amp;lt;- data.frame()
-for(x in unique(datasf$uniq)){
-  data1 &amp;lt;- datasf %&amp;gt;% filter(uniq == x)
-  # Send sf to GEE
-  data &amp;lt;- sf_as_ee(data1)
-  # Transform day into milliseconds
-  data&amp;lt;-data$map(add_date)
-  # Apply the join
-  Data_match&amp;lt;-saveBestJoin$apply(data, imagecoll, maxDiffFilter)
-  # Add pixel value to the data
-  DataFinal&amp;lt;-Data_match$map(add_value)
-  # Remove image property from the data
-  DataFinal&amp;lt;-DataFinal$map(removeProperty)
-  # Move GEE object into R
-  temp&amp;lt;- ee_as_sf(DataFinal, via = &#39;getInfo&#39;)
-  # Append
-  dataoutput &amp;lt;- rbind(dataoutput, temp)
-}
-end_time &amp;lt;- Sys.time()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The time needed to run 100 points was:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;end_time - start_time
-
-## Time difference of 3.245632 secs
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The new sf data frame with the pixel values in now stored as the
-&lt;code&gt;dataoutput&lt;/code&gt; object. You can use this for further analysis.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;names(dataoutput)[4] &amp;lt;- band
-dataoutput
-
-## Simple feature collection with 100 features and 7 fields
-## Geometry type: POINT
-## Dimension:     XY
-## Bounding box:  xmin: 34.99598 ymin: -2.693471 xmax: 37.5994 ymax: -1.148282
-## Geodetic CRS:  WGS 84
-## First 10 features:
-##                   Date DateTimeImage ID NDVI date_millis
-## 1  2010-08-10 15:00:00    2010_08_13  1 3011  1552145792
-## 2  2011-06-26 12:00:00    2011_06_26  2 3632  -875425280
-## 3  2011-10-19 03:00:00    2011_10_16  3 2957   438240128
-## 4  2011-11-20 12:00:00    2011_11_17  4 4952 -1059527168
-## 5  2010-08-29 14:00:00    2010_08_29  5 2699 -1104821504
-## 6  2010-12-20 05:00:00    2010_12_19  6 3518    36043904
-## 7  2010-07-16 18:01:00    2010_07_12  7 3227  -596994208
-## 8  2011-12-09 03:01:00    2011_12_03  8 4460   549732832
-## 9  2012-01-01 07:00:00    2012_01_01  9 2624 -1743694464
-## 10 2012-04-16 04:00:00    2012_04_22 10 5840 -1186029056
-##              timestamp uniq                   geometry
-## 1  2010-08-10 15:00:00    1 POINT (35.21622 -1.164488)
-## 2  2011-06-26 12:00:00    1 POINT (36.83339 -1.462866)
-## 3  2011-10-19 03:00:00    1 POINT (36.90053 -1.404862)
-## 4  2011-11-20 12:00:00    1 POINT (36.91039 -1.430901)
-## 5  2010-08-29 14:00:00    1 POINT (35.30668 -1.345507)
-## 6  2010-12-20 05:00:00    1 POINT (36.91189 -1.433012)
-## 7  2010-07-16 18:01:00    1 POINT (35.24742 -1.324172)
-## 8  2011-12-09 03:01:00    1   POINT (37.565 -2.446763)
-## 9  2012-01-01 07:00:00    1 POINT (37.03885 -2.620116)
-## 10 2012-04-16 04:00:00    1 POINT (35.52517 -1.233949)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;visualize-locations&#34;&gt;Visualize locations&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Pres &amp;lt;- dataoutput
-
-library(tmap)
-tmap_mode(&#39;plot&#39;)
-tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;tutorial_files/figure-markdown_strict/unnamed-chunk-11-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;session&#34;&gt;Session&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;devtools::session_info()
-
-## ─ Session info ─────────────────────────────────────────────────
-##  setting  value
-##  version  R version 4.4.1 (2024-06-14)
-##  os       macOS Sonoma 14.5
-##  system   aarch64, darwin20
-##  ui       RStudio
-##  language (EN)
-##  collate  en_US.UTF-8
-##  ctype    en_US.UTF-8
-##  tz       Europe/Dublin
-##  date     2024-07-20
-##  rstudio  2024.04.2+764 Chocolate Cosmos (desktop)
-##  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
-## 
-## ─ Packages ─────────────────────────────────────────────────────
-##  package           * version   date (UTC) lib source
-##  abind               1.4-5     2016-07-21 [1] CRAN (R 4.4.0)
-##  base64enc           0.1-3     2015-07-28 [1] CRAN (R 4.4.0)
-##  cachem              1.1.0     2024-05-16 [1] CRAN (R 4.4.0)
-##  class               7.3-22    2023-05-03 [1] CRAN (R 4.4.1)
-##  classInt            0.4-10    2023-09-05 [1] CRAN (R 4.4.0)
-##  cli                 3.6.3     2024-06-21 [1] CRAN (R 4.4.0)
-##  codetools           0.2-20    2024-03-31 [1] CRAN (R 4.4.1)
-##  crayon              1.5.3     2024-06-20 [1] CRAN (R 4.4.0)
-##  crosstalk           1.2.1     2023-11-23 [1] CRAN (R 4.4.0)
-##  crul                1.5.0     2024-07-19 [1] CRAN (R 4.4.0)
-##  curl                5.2.1     2024-03-01 [1] CRAN (R 4.4.0)
-##  DBI                 1.2.3     2024-06-02 [1] CRAN (R 4.4.0)
-##  devtools            2.4.5     2022-10-11 [1] CRAN (R 4.4.0)
-##  dichromat           2.0-0.1   2022-05-02 [1] CRAN (R 4.4.0)
-##  digest              0.6.36    2024-06-23 [1] CRAN (R 4.4.0)
-##  dplyr             * 1.1.4     2023-11-17 [1] CRAN (R 4.4.0)
-##  e1071               1.7-14    2023-12-06 [1] CRAN (R 4.4.0)
-##  ellipsis            0.3.2     2021-04-29 [1] CRAN (R 4.4.0)
-##  evaluate            0.24.0    2024-06-10 [1] CRAN (R 4.4.0)
-##  fansi               1.0.6     2023-12-08 [1] CRAN (R 4.4.0)
-##  fastmap             1.2.0     2024-05-15 [1] CRAN (R 4.4.0)
-##  fs                  1.6.4     2024-04-25 [1] CRAN (R 4.4.0)
-##  generics            0.1.3     2022-07-05 [1] CRAN (R 4.4.0)
-##  geojson             0.3.5     2023-08-08 [1] CRAN (R 4.4.0)
-##  geojsonio           0.11.3    2023-09-06 [1] CRAN (R 4.4.0)
-##  geojsonsf           2.0.3     2022-05-30 [1] CRAN (R 4.4.0)
-##  glue                1.7.0     2024-01-09 [1] CRAN (R 4.4.0)
-##  highr               0.11      2024-05-26 [1] CRAN (R 4.4.0)
-##  htmltools           0.5.8.1   2024-04-04 [1] CRAN (R 4.4.0)
-##  htmlwidgets         1.6.4     2023-12-06 [1] CRAN (R 4.4.0)
-##  httpcode            0.3.0     2020-04-10 [1] CRAN (R 4.4.0)
-##  httpuv              1.6.15    2024-03-26 [1] CRAN (R 4.4.0)
-##  jqr                 1.3.3     2023-12-04 [1] CRAN (R 4.4.0)
-##  jquerylib           0.1.4     2021-04-26 [1] CRAN (R 4.4.0)
-##  jsonlite            1.8.8     2023-12-04 [1] CRAN (R 4.4.0)
-##  KernSmooth          2.23-24   2024-05-17 [1] CRAN (R 4.4.1)
-##  knitr               1.48      2024-07-07 [1] CRAN (R 4.4.0)
-##  later               1.3.2     2023-12-06 [1] CRAN (R 4.4.0)
-##  lattice             0.22-6    2024-03-20 [1] CRAN (R 4.4.1)
-##  lazyeval            0.2.2     2019-03-15 [1] CRAN (R 4.4.0)
-##  leafem              0.2.3     2023-09-17 [1] CRAN (R 4.4.0)
-##  leaflet             2.2.2     2024-03-26 [1] CRAN (R 4.4.0)
-##  leaflet.providers   2.0.0     2023-10-17 [1] CRAN (R 4.4.0)
-##  leafsync            0.1.0     2019-03-05 [1] CRAN (R 4.4.0)
-##  lifecycle           1.0.4     2023-11-07 [1] CRAN (R 4.4.0)
-##  lwgeom              0.2-14    2024-02-21 [1] CRAN (R 4.4.0)
-##  magrittr            2.0.3     2022-03-30 [1] CRAN (R 4.4.0)
-##  Matrix              1.7-0     2024-04-26 [1] CRAN (R 4.4.1)
-##  memoise             2.0.1     2021-11-26 [1] CRAN (R 4.4.0)
-##  mime                0.12      2021-09-28 [1] CRAN (R 4.4.0)
-##  miniUI              0.1.1.1   2018-05-18 [1] CRAN (R 4.4.1)
-##  pillar              1.9.0     2023-03-22 [1] CRAN (R 4.4.0)
-##  pkgbuild            1.4.4     2024-03-17 [1] CRAN (R 4.4.0)
-##  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.4.0)
-##  pkgload             1.4.0     2024-06-28 [1] CRAN (R 4.4.0)
-##  png                 0.1-8     2022-11-29 [1] CRAN (R 4.4.0)
-##  prettydoc           0.4.1     2021-01-10 [1] CRAN (R 4.4.0)
-##  processx            3.8.4     2024-03-16 [1] CRAN (R 4.4.0)
-##  profvis             0.3.8     2023-05-02 [1] CRAN (R 4.4.0)
-##  promises            1.3.0     2024-04-05 [1] CRAN (R 4.4.0)
-##  proxy               0.4-27    2022-06-09 [1] CRAN (R 4.4.0)
-##  ps                  1.7.7     2024-07-02 [1] CRAN (R 4.4.0)
-##  purrr               1.0.2     2023-08-10 [1] CRAN (R 4.4.0)
-##  R6                  2.5.1     2021-08-19 [1] CRAN (R 4.4.0)
-##  raster              3.6-26    2023-10-14 [1] CRAN (R 4.4.0)
-##  RColorBrewer        1.1-3     2022-04-03 [1] CRAN (R 4.4.0)
-##  Rcpp                1.0.12    2024-01-09 [1] CRAN (R 4.4.0)
-##  remotes             2.5.0     2024-03-17 [1] CRAN (R 4.4.0)
-##  reticulate          1.38.0    2024-06-19 [1] CRAN (R 4.4.0)
-##  rgee              * 1.1.7     2023-09-27 [1] CRAN (R 4.4.0)
-##  rlang               1.1.4     2024-06-04 [1] CRAN (R 4.4.0)
-##  rmarkdown         * 2.27      2024-05-17 [1] CRAN (R 4.4.0)
-##  rstudioapi          0.16.0    2024-03-24 [1] CRAN (R 4.4.0)
-##  s2                  1.1.7     2024-07-17 [1] CRAN (R 4.4.0)
-##  sessioninfo         1.2.2     2021-12-06 [1] CRAN (R 4.4.0)
-##  sf                * 1.0-16    2024-03-24 [1] CRAN (R 4.4.0)
-##  shiny               1.8.1.1   2024-04-02 [1] CRAN (R 4.4.0)
-##  sp                  2.1-4     2024-04-30 [1] CRAN (R 4.4.0)
-##  stars               0.6-6     2024-07-16 [1] CRAN (R 4.4.0)
-##  stringi             1.8.4     2024-05-06 [1] CRAN (R 4.4.0)
-##  stringr             1.5.1     2023-11-14 [1] CRAN (R 4.4.0)
-##  terra               1.7-78    2024-05-22 [1] CRAN (R 4.4.0)
-##  tibble              3.2.1     2023-03-20 [1] CRAN (R 4.4.0)
-##  tidyselect          1.2.1     2024-03-11 [1] CRAN (R 4.4.0)
-##  tmap              * 3.3-4     2023-09-12 [1] CRAN (R 4.4.0)
-##  tmaptools           3.1-1     2021-01-19 [1] CRAN (R 4.4.0)
-##  units               0.8-5     2023-11-28 [1] CRAN (R 4.4.0)
-##  urlchecker          1.0.1     2021-11-30 [1] CRAN (R 4.4.0)
-##  usethis             2.2.3     2024-02-19 [1] CRAN (R 4.4.0)
-##  utf8                1.2.4     2023-10-22 [1] CRAN (R 4.4.0)
-##  V8                  4.4.2     2024-02-15 [1] CRAN (R 4.4.0)
-##  vctrs               0.6.5     2023-12-01 [1] CRAN (R 4.4.0)
-##  viridisLite         0.4.2     2023-05-02 [1] CRAN (R 4.4.0)
-##  wk                  0.9.2     2024-07-09 [1] CRAN (R 4.4.0)
-##  xfun                0.45      2024-06-16 [1] CRAN (R 4.4.0)
-##  XML                 3.99-0.17 2024-06-25 [1] CRAN (R 4.4.0)
-##  xtable              1.8-4     2019-04-21 [1] CRAN (R 4.4.0)
-##  yaml                2.3.9     2024-07-05 [1] CRAN (R 4.4.0)
-## 
-##  [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
-## 
-## ─ Python configuration ─────────────────────────────────────────
-##  python:         /Users/ramirocrego/.virtualenvs/rgee/bin/python
-##  libpython:      /Users/ramirocrego/Library/r-miniconda-arm64/lib/libpython3.10.dylib
-##  pythonhome:     /Users/ramirocrego/.virtualenvs/rgee:/Users/ramirocrego/.virtualenvs/rgee
-##  version:        3.10.12 (main, Jul  5 2023, 15:02:25) [Clang 14.0.6 ]
-##  numpy:          /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/numpy
-##  numpy_version:  1.25.1
-##  ee:             /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/ee
-##  
-##  NOTE: Python version was forced by use_python() function
-## 
-## ────────────────────────────────────────────────────────────────
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>
@@ -422,6 +33,7 @@ Institution, Washington, DC 20013, USA.&lt;/p&gt;
 &lt;p&gt;This is a guide for modeling species distributions and habitat
 suitability in Google Earth Engine. This guide is intended to explain
 the details of the Earth Engine code developed for this manuscript.&lt;/p&gt;
+&lt;figure&gt;&lt;a href=&#34;https://onlinelibrary.wiley.com/doi/10.1111/ddi.13491&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;./Figures/26.png&#34;/&gt;&lt;/a&gt;&lt;/figure&gt;
 &lt;p&gt;We first cover the basics for importing data and setting the main
 arguments used in different functions, such as, grid size and the area
 of interest. We then expand on different modelling workflows using three
@@ -433,6 +45,34 @@ as user guidelines and tutorials visit:
 &lt;p&gt;The code found below can also be accessed through the GEE repository for
 this study:
 &lt;a href=&#34;https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript&#34;&gt;https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This are a set of video tutorials explaining step by step the basics of GEE and fitting species distribution models in GEE.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Introduction to GEE and JavaScript&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/e9QfJ0cIBcs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data Management in GEE&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/5alN74QJbqI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Species Distribution Models in GEE&lt;/strong&gt;:
+
+
+    
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/54PPKkblAks?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;
+      &gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/p&gt;
 &lt;h2 id=&#34;general-settings-for-running-sdms-in-google-earth-engine&#34;&gt;General settings for running SDMs in Google Earth Engine&lt;/h2&gt;
 &lt;h3 id=&#34;importing-species-location-data-as-an-asset&#34;&gt;Importing species location data as an asset&lt;/h3&gt;
 &lt;p&gt;Datasets need to be uploaded as assets in Google Earth Engine. The
@@ -3474,43 +3114,392 @@ data.head()
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>//localhost:4321/teaching/r/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>//localhost:4321/teaching/r/</guid>
-      <description>&lt;h1 id=&#34;r-markdown&#34;&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;summary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##      speed           dist       &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Min.   : 4.0   Min.   :  2.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  1st Qu.:12.0   1st Qu.: 26.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Median :15.0   Median : 36.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Mean   :15.4   Mean   : 42.98  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  3rd Qu.:19.0   3rd Qu.: 56.00  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##  Max.   :25.0   Max.   :120.00&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;lm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cars&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fit&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Call:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## lm(formula = dist ~ speed, data = cars)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Coefficients:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## (Intercept)        speed  &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;##     -17.579        3.932&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;including-plots&#34;&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;par&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;pie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;280&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;Sky&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Sunny side of pyramid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;Shady side of pyramid&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;col&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;#0292D8&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;#F7EA39&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;#C4B632&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;init.angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;-50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;border&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;//localhost:4321/teaching/r/index_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;Figure 1: A fancy pie chart.&lt;/p&gt;
-&lt;/div&gt;
+      <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
+      <link>//localhost:4321/teaching/rgee/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/teaching/rgee/</guid>
+      <description>&lt;p&gt;Ramiro D. Crego &lt;sup&gt;a,b&lt;/sup&gt;, Majaliwa M. Masolele &lt;sup&gt;c&lt;/sup&gt;, Grant Connette &lt;sup&gt;a,b&lt;/sup&gt;, and Jared A. Stabach &lt;sup&gt;a&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
+Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
+USA.&lt;/p&gt;
+&lt;p&gt;b - Working Land and Seascapes, Conservation Commons, Smithsonian
+Institution, Washington, DC 20013, USA.&lt;/p&gt;
+&lt;p&gt;c - Boyd Orr Centre for Population and Ecosystem Health, Institute of
+Biodiversity, Animal Health &amp;amp; Comparative Medicine (IBAHCM), University
+of Glasgow, G12 8QQ, UK.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The following tutorial describes the code workflow presented in the
+manuscript “Enhancing animal movement analyses - Spatiotemporal matching
+of animal positions with remotely sensed data using Google Earth Engine
+and R.”&lt;/p&gt;
+&lt;figure&gt;&lt;a href=&#34;https://www.mdpi.com/2072-4292/13/20/4154&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;./Figures/23.png&#34;/&gt;&lt;/a&gt;&lt;/figure&gt;
+&lt;p&gt;The code workflow allows you to find the closest image from an image
+collection to the time at which each GPS location was acquired and
+extract the pixel value.&lt;/p&gt;
+&lt;p&gt;To use this code it is necessary to have a &lt;a href=&#34;https://earthengine.google.com/&#34;&gt;Google Earth
+Engine&lt;/a&gt; account and to install the
+&lt;code&gt;rgee&lt;/code&gt;
+&lt;a href=&#34;https://r-spatial.github.io/rgee/#quick-start-users-guide-for-rgee&#34;&gt;package&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;loading-and-preparing-tracking-data&#34;&gt;Loading and preparing tracking data&lt;/h2&gt;
+&lt;p&gt;The first step is to read a csv file with the telemetry data.&lt;/p&gt;
+&lt;p&gt;For this example we randomly selected 100 GPS fixes from the entire
+wildebeest dataset used in the manuscript, obtained from
+&lt;a href=&#34;https://www.datarepository.movebank.org/handle/10255/move.1098&#34;&gt;Movebank&lt;/a&gt;.
+The data is provided in the repository within the folder Data.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(sf)
+library(dplyr)
+trackingdata &amp;lt;- read.csv(&amp;quot;./Data/Data.csv&amp;quot;, header = T) #Load your dataset
+head(trackingdata)
+
+##             timestamp location.long location.lat
+## 1 2010-08-10 15:00:00      35.21622    -1.164488
+## 2 2011-06-26 12:00:00      36.83339    -1.462866
+## 3 2011-10-19 03:00:00      36.90053    -1.404862
+## 4 2011-11-20 12:00:00      36.91039    -1.430901
+## 5 2010-08-29 14:00:00      35.30668    -1.345507
+## 6 2010-12-20 05:00:00      36.91189    -1.433012
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the next step, we need to convert the dataframe into an sf object. We
+also need to set the date as a string with a ‘YYYY-MM-DDTHH:MM:SS’. We
+will use this data to convert it into milliseconds since midnight on
+January 1, 1970, a format used in Google Earth Engine to manage dates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trackingdata$Date &amp;lt;- as.POSIXct(trackingdata$timestamp, format = &amp;quot;%Y-%m-%d %H:%M:%S&amp;quot;, tz=&amp;quot;UTC&amp;quot;) #Modify as necessary
+trackingdata$Date &amp;lt;- as.factor(trackingdata$Date)
+trackingdata$Date &amp;lt;- sub(&amp;quot; &amp;quot;, &amp;quot;T&amp;quot;, trackingdata$Date) #Put in a format that can be read by javascript
+trackingdata$ID &amp;lt;- seq(1:nrow(trackingdata)) # Add ID to each point (optional)
+datasf &amp;lt;- st_as_sf(trackingdata, coords = c(&#39;location.long&#39;,&#39;location.lat&#39;), crs = 4326) #Transform the dataframe into sf object. Make sure the name of the columns for the coordinates match. CRS needs to be in longlat WGS84.
+head(datasf)
+
+## Simple feature collection with 6 features and 3 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 35.21622 ymin: -1.462866 xmax: 36.91189 ymax: -1.164488
+## Geodetic CRS:  WGS 84
+##             timestamp                Date ID
+## 1 2010-08-10 15:00:00 2010-08-10T15:00:00  1
+## 2 2011-06-26 12:00:00 2011-06-26T12:00:00  2
+## 3 2011-10-19 03:00:00 2011-10-19T03:00:00  3
+## 4 2011-11-20 12:00:00 2011-11-20T12:00:00  4
+## 5 2010-08-29 14:00:00 2010-08-29T14:00:00  5
+## 6 2010-12-20 05:00:00 2010-12-20T05:00:00  6
+##                     geometry
+## 1 POINT (35.21622 -1.164488)
+## 2 POINT (36.83339 -1.462866)
+## 3 POINT (36.90053 -1.404862)
+## 4 POINT (36.91039 -1.430901)
+## 5 POINT (35.30668 -1.345507)
+## 6 POINT (36.91189 -1.433012)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;initialize-rgee&#34;&gt;Initialize rgee&lt;/h2&gt;
+&lt;p&gt;Next, we need to load and initialize rgee.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(rgee)
+ee_Initialize()
+ee_check()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;define-google-earth-engine-functions&#34;&gt;Define Google Earth Engine functions&lt;/h2&gt;
+&lt;p&gt;The next set of functions will be used to match images to the data and
+extract pixel values.&lt;/p&gt;
+&lt;p&gt;Note that you can edit the maximum temporal window allowed to find a
+match.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#Function to add property with time in milliseconds
+add_date&amp;lt;-function(feature) {
+  date &amp;lt;- ee$Date(ee$String(feature$get(&amp;quot;Date&amp;quot;)))$millis()
+  feature$set(list(date_millis=date))
+}
+
+#Join Image and Points based on a maxDifference Filter within a temporal window
+
+#Set temporal window in days for filter. This will depend on the remote sensing data used.
+tempwin &amp;lt;- 16 
+
+#Set the filter
+maxDiffFilter&amp;lt;-ee$Filter$maxDifference(
+  difference=tempwin*24*60*60*1000, #days * hr * min * sec * milliseconds
+  leftField= &amp;quot;date_millis&amp;quot;, #Timestamp of the telemetry data
+  rightField=&amp;quot;system:time_start&amp;quot; #Image date
+)
+
+# Define the join. We implement the saveBest function for the join, which finds the image that best matches the filter (i.e., the image closest in time to the particular GPS fix location). 
+saveBestJoin&amp;lt;-ee$Join$saveBest(
+  matchKey=&amp;quot;bestImage&amp;quot;,
+  measureKey=&amp;quot;timeDiff&amp;quot;
+)
+
+#Function to add property with raster pixel value from the matched image
+add_value&amp;lt;-function(feature){
+  #Get the image selected by the join
+  img1&amp;lt;-ee$Image(feature$get(&amp;quot;bestImage&amp;quot;))$select(band)
+  #Extract geometry from the feature
+  point&amp;lt;-feature$geometry()
+  #Get pixel value for each point at the desired spatial resolution (argument scale)
+  pixel_value&amp;lt;-img1$sample(region=point, scale=250, tileScale = 16, dropNulls = F) 
+  #Return the data containing pixel value and image date.
+  feature$setMulti(list(PixelVal = pixel_value$first()$get(band), DateTimeImage = img1$get(&#39;system:index&#39;)))
+}
+
+# Function to remove image property from features
+removeProperty&amp;lt;- function(feature) {
+  #Get the properties of the data
+  properties = feature$propertyNames()
+  #Select all items except images
+  selectProperties = properties$filter(ee$Filter$neq(&amp;quot;item&amp;quot;, &amp;quot;bestImage&amp;quot;))
+  #Return selected features
+  feature$select(selectProperties)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;load-image-collection&#34;&gt;Load image collection&lt;/h2&gt;
+&lt;p&gt;In this example, we are using NDVI from MODIS Terra Vegetation Indexes
+16-Day Global 250m data set. However, you can use any other remote
+sensing product of interest and filter to the desired dates.&lt;/p&gt;
+&lt;p&gt;One of the main advantages offered by Google Earth Engine is the
+enormous amount of data available to be used. The constantly growing
+database consists on more than a petabyte archive of publicly available
+remotely sensed imagery and other related data sets. In the study cases
+of the manuscript we used MOD13Q1 and ERA5_LAND/HOURLY, but data
+available includes other products from MODIS, data from other satellites
+such as Landsat, National Oceanographic and Atmospheric Administration
+Advanced Very High Resolution Radiometer (NOAA AVHRR), Sentinel 1, 2, 3
+and 5-P, Advanced Land Observing Satellite (ALOS), and other products
+such as sea surface temperature data, CHIRPS climate data, topography
+data, and land cover data. The entire list of datasets is available at
+this
+&lt;a href=&#34;https://developers.google.com/earth-engine/datasets/catalog&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that all image collections in Earth Engine have a code that you can
+extract from the link provided above and use to import into the workflow
+by modifying this example.&lt;/p&gt;
+&lt;p&gt;We will set the start and end days to filter the image collections.
+Temporal availability depends on each dataset.&lt;/p&gt;
+&lt;p&gt;We will also create an object with the name of the band we are
+interested in working with. The name of the band is also specific to
+each image collection.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start&amp;lt;-&amp;quot;2010-01-01&amp;quot;
+end&amp;lt;-&amp;quot;2013-01-01&amp;quot;
+imagecoll&amp;lt;-ee$ImageCollection(&#39;MODIS/006/MOD13Q1&#39;)$filterDate(start,end)
+band &amp;lt;- &amp;quot;NDVI&amp;quot; #Name of the band to use. You can change to EVI for instance when using MOD13Q1.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;extract-pixel-value&#34;&gt;Extract pixel value&lt;/h2&gt;
+&lt;p&gt;A key function in this process is the &lt;code&gt;ee_as_sf&lt;/code&gt; which converts the
+Google Earth Engine table in a sf object. This function provides three
+different options to convert the table (feature collection) into a sf
+object:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;getInfo: which is fast and direct but has a limit of 5000 features&lt;/li&gt;
+&lt;li&gt;drive: which exports data through your Google Drive account&lt;/li&gt;
+&lt;li&gt;gsc: which exports data through your Google Cloud Storage account&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can find more information about this function in the help:
+?ee_as_sf&lt;/p&gt;
+&lt;p&gt;We use here the &lt;code&gt;getInfo&lt;/code&gt; option given it is direct and simple. However,
+this option has a limit of 5000 features to convert. For that reason, we
+are going to run a loop, processing 1000 features (points) per time to
+avoid errors. If memory limit errors are display, then you can reduce
+the number of points to extract each time by changing the &lt;code&gt;each&lt;/code&gt;
+argument on the &lt;code&gt;rep&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;In this example we only have 100 points so the loop will only run once,
+but for larger datasets the loop may run multiple times.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;datasf$uniq &amp;lt;- rep(1:1000, each=1000)[1:nrow(datasf)] #This is for up to 1 million points. To increase the max number of points, increase the value for max repetitions. To change the number of points to run per time, change the value in the argument each (up to 5000).
+
+start_time &amp;lt;- Sys.time()
+dataoutput &amp;lt;- data.frame()
+for(x in unique(datasf$uniq)){
+  data1 &amp;lt;- datasf %&amp;gt;% filter(uniq == x)
+  # Send sf to GEE
+  data &amp;lt;- sf_as_ee(data1)
+  # Transform day into milliseconds
+  data&amp;lt;-data$map(add_date)
+  # Apply the join
+  Data_match&amp;lt;-saveBestJoin$apply(data, imagecoll, maxDiffFilter)
+  # Add pixel value to the data
+  DataFinal&amp;lt;-Data_match$map(add_value)
+  # Remove image property from the data
+  DataFinal&amp;lt;-DataFinal$map(removeProperty)
+  # Move GEE object into R
+  temp&amp;lt;- ee_as_sf(DataFinal, via = &#39;getInfo&#39;)
+  # Append
+  dataoutput &amp;lt;- rbind(dataoutput, temp)
+}
+end_time &amp;lt;- Sys.time()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The time needed to run 100 points was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;end_time - start_time
+
+## Time difference of 3.329701 secs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The new sf data frame with the pixel values in now stored as the
+&lt;code&gt;dataoutput&lt;/code&gt; object. You can use this for further analysis.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;names(dataoutput)[4] &amp;lt;- band
+dataoutput
+
+## Simple feature collection with 100 features and 7 fields
+## Geometry type: POINT
+## Dimension:     XY
+## Bounding box:  xmin: 34.99598 ymin: -2.693471 xmax: 37.5994 ymax: -1.148282
+## Geodetic CRS:  WGS 84
+## First 10 features:
+##                   Date DateTimeImage ID NDVI date_millis
+## 1  2010-08-10 15:00:00    2010_08_13  1 3011  1552145792
+## 2  2011-06-26 12:00:00    2011_06_26  2 3632  -875425280
+## 3  2011-10-19 03:00:00    2011_10_16  3 2957   438240128
+## 4  2011-11-20 12:00:00    2011_11_17  4 4952 -1059527168
+## 5  2010-08-29 14:00:00    2010_08_29  5 2699 -1104821504
+## 6  2010-12-20 05:00:00    2010_12_19  6 3518    36043904
+## 7  2010-07-16 18:01:00    2010_07_12  7 3227  -596994208
+## 8  2011-12-09 03:01:00    2011_12_03  8 4460   549732832
+## 9  2012-01-01 07:00:00    2012_01_01  9 2624 -1743694464
+## 10 2012-04-16 04:00:00    2012_04_22 10 5840 -1186029056
+##              timestamp uniq                   geometry
+## 1  2010-08-10 15:00:00    1 POINT (35.21622 -1.164488)
+## 2  2011-06-26 12:00:00    1 POINT (36.83339 -1.462866)
+## 3  2011-10-19 03:00:00    1 POINT (36.90053 -1.404862)
+## 4  2011-11-20 12:00:00    1 POINT (36.91039 -1.430901)
+## 5  2010-08-29 14:00:00    1 POINT (35.30668 -1.345507)
+## 6  2010-12-20 05:00:00    1 POINT (36.91189 -1.433012)
+## 7  2010-07-16 18:01:00    1 POINT (35.24742 -1.324172)
+## 8  2011-12-09 03:01:00    1   POINT (37.565 -2.446763)
+## 9  2012-01-01 07:00:00    1 POINT (37.03885 -2.620116)
+## 10 2012-04-16 04:00:00    1 POINT (35.52517 -1.233949)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;visualize-locations&#34;&gt;Visualize locations&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Pres &amp;lt;- dataoutput
+
+library(tmap)
+tmap_mode(&#39;plot&#39;)
+tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;tutorial_files/figure-markdown_strict/unnamed-chunk-11-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;session&#34;&gt;Session&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;devtools::session_info()
+
+## ─ Session info ─────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.4.1 (2024-06-14)
+##  os       macOS Sonoma 14.5
+##  system   aarch64, darwin20
+##  ui       RStudio
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       Europe/Dublin
+##  date     2024-07-20
+##  rstudio  2024.04.2+764 Chocolate Cosmos (desktop)
+##  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
+## 
+## ─ Packages ─────────────────────────────────────────────────────
+##  package           * version   date (UTC) lib source
+##  abind               1.4-5     2016-07-21 [1] CRAN (R 4.4.0)
+##  base64enc           0.1-3     2015-07-28 [1] CRAN (R 4.4.0)
+##  cachem              1.1.0     2024-05-16 [1] CRAN (R 4.4.0)
+##  class               7.3-22    2023-05-03 [1] CRAN (R 4.4.1)
+##  classInt            0.4-10    2023-09-05 [1] CRAN (R 4.4.0)
+##  cli                 3.6.3     2024-06-21 [1] CRAN (R 4.4.0)
+##  codetools           0.2-20    2024-03-31 [1] CRAN (R 4.4.1)
+##  crayon              1.5.3     2024-06-20 [1] CRAN (R 4.4.0)
+##  crosstalk           1.2.1     2023-11-23 [1] CRAN (R 4.4.0)
+##  crul                1.5.0     2024-07-19 [1] CRAN (R 4.4.0)
+##  curl                5.2.1     2024-03-01 [1] CRAN (R 4.4.0)
+##  DBI                 1.2.3     2024-06-02 [1] CRAN (R 4.4.0)
+##  devtools            2.4.5     2022-10-11 [1] CRAN (R 4.4.0)
+##  dichromat           2.0-0.1   2022-05-02 [1] CRAN (R 4.4.0)
+##  digest              0.6.36    2024-06-23 [1] CRAN (R 4.4.0)
+##  dplyr             * 1.1.4     2023-11-17 [1] CRAN (R 4.4.0)
+##  e1071               1.7-14    2023-12-06 [1] CRAN (R 4.4.0)
+##  ellipsis            0.3.2     2021-04-29 [1] CRAN (R 4.4.0)
+##  evaluate            0.24.0    2024-06-10 [1] CRAN (R 4.4.0)
+##  fansi               1.0.6     2023-12-08 [1] CRAN (R 4.4.0)
+##  fastmap             1.2.0     2024-05-15 [1] CRAN (R 4.4.0)
+##  fs                  1.6.4     2024-04-25 [1] CRAN (R 4.4.0)
+##  generics            0.1.3     2022-07-05 [1] CRAN (R 4.4.0)
+##  geojson             0.3.5     2023-08-08 [1] CRAN (R 4.4.0)
+##  geojsonio           0.11.3    2023-09-06 [1] CRAN (R 4.4.0)
+##  geojsonsf           2.0.3     2022-05-30 [1] CRAN (R 4.4.0)
+##  glue                1.7.0     2024-01-09 [1] CRAN (R 4.4.0)
+##  highr               0.11      2024-05-26 [1] CRAN (R 4.4.0)
+##  htmltools           0.5.8.1   2024-04-04 [1] CRAN (R 4.4.0)
+##  htmlwidgets         1.6.4     2023-12-06 [1] CRAN (R 4.4.0)
+##  httpcode            0.3.0     2020-04-10 [1] CRAN (R 4.4.0)
+##  httpuv              1.6.15    2024-03-26 [1] CRAN (R 4.4.0)
+##  jqr                 1.3.3     2023-12-04 [1] CRAN (R 4.4.0)
+##  jquerylib           0.1.4     2021-04-26 [1] CRAN (R 4.4.0)
+##  jsonlite            1.8.8     2023-12-04 [1] CRAN (R 4.4.0)
+##  KernSmooth          2.23-24   2024-05-17 [1] CRAN (R 4.4.1)
+##  knitr               1.48      2024-07-07 [1] CRAN (R 4.4.0)
+##  later               1.3.2     2023-12-06 [1] CRAN (R 4.4.0)
+##  lattice             0.22-6    2024-03-20 [1] CRAN (R 4.4.1)
+##  lazyeval            0.2.2     2019-03-15 [1] CRAN (R 4.4.0)
+##  leafem              0.2.3     2023-09-17 [1] CRAN (R 4.4.0)
+##  leaflet             2.2.2     2024-03-26 [1] CRAN (R 4.4.0)
+##  leaflet.providers   2.0.0     2023-10-17 [1] CRAN (R 4.4.0)
+##  leafsync            0.1.0     2019-03-05 [1] CRAN (R 4.4.0)
+##  lifecycle           1.0.4     2023-11-07 [1] CRAN (R 4.4.0)
+##  lwgeom              0.2-14    2024-02-21 [1] CRAN (R 4.4.0)
+##  magrittr            2.0.3     2022-03-30 [1] CRAN (R 4.4.0)
+##  Matrix              1.7-0     2024-04-26 [1] CRAN (R 4.4.1)
+##  memoise             2.0.1     2021-11-26 [1] CRAN (R 4.4.0)
+##  mime                0.12      2021-09-28 [1] CRAN (R 4.4.0)
+##  miniUI              0.1.1.1   2018-05-18 [1] CRAN (R 4.4.1)
+##  pillar              1.9.0     2023-03-22 [1] CRAN (R 4.4.0)
+##  pkgbuild            1.4.4     2024-03-17 [1] CRAN (R 4.4.0)
+##  pkgconfig           2.0.3     2019-09-22 [1] CRAN (R 4.4.0)
+##  pkgload             1.4.0     2024-06-28 [1] CRAN (R 4.4.0)
+##  png                 0.1-8     2022-11-29 [1] CRAN (R 4.4.0)
+##  processx            3.8.4     2024-03-16 [1] CRAN (R 4.4.0)
+##  profvis             0.3.8     2023-05-02 [1] CRAN (R 4.4.0)
+##  promises            1.3.0     2024-04-05 [1] CRAN (R 4.4.0)
+##  proxy               0.4-27    2022-06-09 [1] CRAN (R 4.4.0)
+##  ps                  1.7.7     2024-07-02 [1] CRAN (R 4.4.0)
+##  purrr               1.0.2     2023-08-10 [1] CRAN (R 4.4.0)
+##  R6                  2.5.1     2021-08-19 [1] CRAN (R 4.4.0)
+##  raster              3.6-26    2023-10-14 [1] CRAN (R 4.4.0)
+##  RColorBrewer        1.1-3     2022-04-03 [1] CRAN (R 4.4.0)
+##  Rcpp                1.0.12    2024-01-09 [1] CRAN (R 4.4.0)
+##  remotes             2.5.0     2024-03-17 [1] CRAN (R 4.4.0)
+##  reticulate          1.38.0    2024-06-19 [1] CRAN (R 4.4.0)
+##  rgee              * 1.1.7     2023-09-27 [1] CRAN (R 4.4.0)
+##  rlang               1.1.4     2024-06-04 [1] CRAN (R 4.4.0)
+##  rmarkdown         * 2.27      2024-05-17 [1] CRAN (R 4.4.0)
+##  rstudioapi          0.16.0    2024-03-24 [1] CRAN (R 4.4.0)
+##  s2                  1.1.7     2024-07-17 [1] CRAN (R 4.4.0)
+##  sessioninfo         1.2.2     2021-12-06 [1] CRAN (R 4.4.0)
+##  sf                * 1.0-16    2024-03-24 [1] CRAN (R 4.4.0)
+##  shiny               1.8.1.1   2024-04-02 [1] CRAN (R 4.4.0)
+##  sp                  2.1-4     2024-04-30 [1] CRAN (R 4.4.0)
+##  stars               0.6-6     2024-07-16 [1] CRAN (R 4.4.0)
+##  stringi             1.8.4     2024-05-06 [1] CRAN (R 4.4.0)
+##  stringr             1.5.1     2023-11-14 [1] CRAN (R 4.4.0)
+##  terra               1.7-78    2024-05-22 [1] CRAN (R 4.4.0)
+##  tibble              3.2.1     2023-03-20 [1] CRAN (R 4.4.0)
+##  tidyselect          1.2.1     2024-03-11 [1] CRAN (R 4.4.0)
+##  tmap              * 3.3-4     2023-09-12 [1] CRAN (R 4.4.0)
+##  tmaptools           3.1-1     2021-01-19 [1] CRAN (R 4.4.0)
+##  units               0.8-5     2023-11-28 [1] CRAN (R 4.4.0)
+##  urlchecker          1.0.1     2021-11-30 [1] CRAN (R 4.4.0)
+##  usethis             2.2.3     2024-02-19 [1] CRAN (R 4.4.0)
+##  utf8                1.2.4     2023-10-22 [1] CRAN (R 4.4.0)
+##  V8                  4.4.2     2024-02-15 [1] CRAN (R 4.4.0)
+##  vctrs               0.6.5     2023-12-01 [1] CRAN (R 4.4.0)
+##  viridisLite         0.4.2     2023-05-02 [1] CRAN (R 4.4.0)
+##  webshot             0.5.5     2023-06-26 [1] CRAN (R 4.4.0)
+##  wk                  0.9.2     2024-07-09 [1] CRAN (R 4.4.0)
+##  xfun                0.45      2024-06-16 [1] CRAN (R 4.4.0)
+##  XML                 3.99-0.17 2024-06-25 [1] CRAN (R 4.4.0)
+##  xtable              1.8-4     2019-04-21 [1] CRAN (R 4.4.0)
+##  yaml                2.3.9     2024-07-05 [1] CRAN (R 4.4.0)
+## 
+##  [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
+## 
+## ─ Python configuration ─────────────────────────────────────────
+##  python:         /Users/ramirocrego/.virtualenvs/rgee/bin/python
+##  libpython:      /Users/ramirocrego/Library/r-miniconda-arm64/lib/libpython3.10.dylib
+##  pythonhome:     /Users/ramirocrego/.virtualenvs/rgee:/Users/ramirocrego/.virtualenvs/rgee
+##  version:        3.10.12 (main, Jul  5 2023, 15:02:25) [Clang 14.0.6 ]
+##  numpy:          /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/numpy
+##  numpy_version:  1.25.1
+##  ee:             /Users/ramirocrego/.virtualenvs/rgee/lib/python3.10/site-packages/ee
+##  
+##  NOTE: Python version was forced by RETICULATE_PYTHON
+## 
+## ────────────────────────────────────────────────────────────────
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

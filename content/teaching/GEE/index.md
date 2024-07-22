@@ -21,6 +21,8 @@ This is a guide for modeling species distributions and habitat
 suitability in Google Earth Engine. This guide is intended to explain
 the details of the Earth Engine code developed for this manuscript.
 
+<figure><a href="https://onlinelibrary.wiley.com/doi/10.1111/ddi.13491" target="_blank"><img src="./Figures/26.png"/></a></figure>
+
 We first cover the basics for importing data and setting the main
 arguments used in different functions, such as, grid size and the area
 of interest. We then expand on different modelling workflows using three
@@ -34,6 +36,17 @@ as user guidelines and tutorials visit:
 The code found below can also be accessed through the GEE repository for
 this study:
 <https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript>
+
+This are a set of video tutorials explaining step by step the basics of GEE and fitting species distribution models in GEE.
+
+**Introduction to GEE and JavaScript**:
+{{< youtube e9QfJ0cIBcs >}}
+
+**Data Management in GEE**:
+{{< youtube 5alN74QJbqI >}}
+
+**Species Distribution Models in GEE**:
+{{< youtube 54PPKkblAks >}}
 
 ## General settings for running SDMs in Google Earth Engine
 
