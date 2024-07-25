@@ -155,14 +155,42 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/publication_types/article-journal/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/papers/article21/</loc>
-    <lastmod>2021-04-01T00:00:00+00:00</lastmod>
+    <loc>//localhost:4321/papers/article26/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/papers/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article27/</loc>
+    <lastmod>2022-04-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article28/</loc>
+    <lastmod>2022-03-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article25/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article24/</loc>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article22/</loc>
+    <lastmod>2021-11-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article23/</loc>
+    <lastmod>2021-10-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/article21/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>

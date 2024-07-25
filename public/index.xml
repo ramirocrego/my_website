@@ -3135,7 +3135,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-213796845&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-764519832&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -3153,7 +3153,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-213796845&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-764519832&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -3778,6 +3778,30 @@ Parallel 4   :         des6, after des4, 1d
     </item>
     
     <item>
+      <title>Ranging behaviours across ecological and anthropogenic disturbance gradients: a pan-African perspective of giraffe (Giraffa spp.) space use</title>
+      <link>//localhost:4321/papers/article31-copy/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article31-copy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ranging behaviours across ecological and anthropogenic disturbance gradients: a pan-African perspective of giraffe (Giraffa spp.) space use</title>
+      <link>//localhost:4321/papers/article31/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article31/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wild herbivores enhance resistance to invasion by exotic cacti in an African savanna</title>
+      <link>//localhost:4321/papers/article30/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article30/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
       <link>//localhost:4321/teaching/rgee/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
@@ -4165,6 +4189,70 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
 ## ────────────────────────────────────────────────────────────────
 &lt;/code&gt;&lt;/pre&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>The Subantarctic Rayadito (Aphrastura subantarctica), a new bird species on the southernmost islands of the Americas</title>
+      <link>//localhost:4321/papers/article29/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article29/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Implementation of species distribution models in Google Earth Engine</title>
+      <link>//localhost:4321/papers/article26/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article26/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cascading effects of a disease outbreak in a remote protected area</title>
+      <link>//localhost:4321/papers/article27/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article27/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Increasing Anthropogenic Disturbance Restricts Wildebeest Movement Across East African Grazing Systems</title>
+      <link>//localhost:4321/papers/article28/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article28/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Less Is More: Lowering Cattle Stocking Rates Enhances Wild Herbivore Habitat Use and Cattle Foraging Efficiency</title>
+      <link>//localhost:4321/papers/article25/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article25/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spatial segregation between wild ungulates and livestock outside protected areas in the lowlands of Nepal</title>
+      <link>//localhost:4321/papers/article24/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article24/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experimental evidence that effects of megaherbivores on mesoherbivore space use are influenced by species&#39; traits</title>
+      <link>//localhost:4321/papers/article22/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article22/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Enhancing Animal Movement Analyses: Spatiotemporal Matching of Animal Positions with Remotely Sensed Data Using Google Earth Engine and R</title>
+      <link>//localhost:4321/papers/article23/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article23/</guid>
+      <description></description>
     </item>
     
     <item>
