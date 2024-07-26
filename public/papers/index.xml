@@ -5,12 +5,100 @@
     <link>//localhost:4321/papers/</link>
       <atom:link href="//localhost:4321/papers/index.xml" rel="self" type="application/rss+xml" />
     <description>Papers</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 25 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
       <title>Papers</title>
       <link>//localhost:4321/papers/</link>
     </image>
+    
+    <item>
+      <title>Human footprint and rainfall shape Masai giraffe&#39;s habitat suitability and connectivity in a multiple‐use landscape</title>
+      <link>//localhost:4321/papers/article39/</link>
+      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article39/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A camera-trap assessment of the native and invasive mammals present in protected areas of Magallanes, Chilean Patagonia</title>
+      <link>//localhost:4321/papers/article38/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article38/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Understanding ground-nesting habitat selection by waterbirds to prioritize invasive predator control on islands</title>
+      <link>//localhost:4321/papers/article37/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article37/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Understanding the transition of community land use from shifting cultivation to cash cropping in southern Tanintharyi, Myanmar</title>
+      <link>//localhost:4321/papers/article36/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article36/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Beyond protected areas: The importance of mixed-use landscapes for the conservation of Sumatran elephants (Elephas maximus sumatranus)</title>
+      <link>//localhost:4321/papers/article33/</link>
+      <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article33/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Non-systematic surveys reveal increases in areas occupied by endangered and data-deficient Nubian bustard</title>
+      <link>//localhost:4321/papers/article35/</link>
+      <pubDate>Tue, 31 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article35/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monitoring spatiotemporal dynamics of large herbivores across an African rangeland using hierarchical multi‐species distance sampling</title>
+      <link>//localhost:4321/papers/article34/</link>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article34/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Combining species distribution models and moderate resolution satellite information to guide conservation programs for reticulated giraffe</title>
+      <link>//localhost:4321/papers/article32/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ranging behaviours across ecological and anthropogenic disturbance gradients: a pan-African perspective of giraffe (Giraffa spp.) space use</title>
+      <link>//localhost:4321/papers/article31/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article31/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wild herbivores enhance resistance to invasion by exotic cacti in an African savanna</title>
+      <link>//localhost:4321/papers/article30/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article30/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Subantarctic Rayadito (Aphrastura subantarctica), a new bird species on the southernmost islands of the Americas</title>
+      <link>//localhost:4321/papers/article29/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article29/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>

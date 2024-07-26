@@ -1,6 +1,6 @@
 ---
 date: "2024-07-18"
-summary: Tutorial to implement SDMs in Google Earth Entine
+summary: Tutorial to implement SDMs in Google Earth Engine
 tags:
 - GEE
 title: Implementation of species distribution models in Google Earth Engine
@@ -37,13 +37,9 @@ The code found below can also be accessed through the GEE repository for
 this study:
 <https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript>
 
-This are a set of video tutorials explaining step by step the basics of GEE and fitting species distribution models in GEE.
+If you are new to GEE, I recommend you starting with the tutorial An Introduction to Google Earth Engine for Ecologists and Practitioners. 
 
-**Introduction to GEE and JavaScript**:
-{{< youtube e9QfJ0cIBcs >}}
-
-**Data Management in GEE**:
-{{< youtube 5alN74QJbqI >}}
+This a video tutorial explaining step by step the code forfitting species distribution models in GEE. 
 
 **Species Distribution Models in GEE**:
 {{< youtube 54PPKkblAks >}}
@@ -64,8 +60,8 @@ Year-Month-Day (e.g., 2000-01-30).
 
 <figure>
 <img src="./Figures/Fig1.jpg"
-alt="Figure S1. Steps for uploading assets to Google Earth Engine. 1) Click ‘New’ under the Assets tab and then select ‘CSV file (.csv)’. 2) Click ‘SELECT’. 3) Browse and select the file from your computer. 4) Provide a name for the asset and the names of the columns containing coordinates in degrees." />
-<figcaption aria-hidden="true">Figure S1. Steps for uploading assets to
+alt="Figure 1. Steps for uploading assets to Google Earth Engine. 1) Click ‘New’ under the Assets tab and then select ‘CSV file (.csv)’. 2) Click ‘SELECT’. 3) Browse and select the file from your computer. 4) Provide a name for the asset and the names of the columns containing coordinates in degrees." />
+<figcaption aria-hidden="true">Figure 1. Steps for uploading assets to
 Google Earth Engine. 1) Click ‘New’ under the Assets tab and then select
 ‘CSV file (.csv)’. 2) Click ‘SELECT’. 3) Browse and select the file from
 your computer. 4) Provide a name for the asset and the names of the
@@ -113,8 +109,8 @@ size.
 
 <figure>
 <img src="./Figures/Fig2.png"
-alt="Figure S2. Example of presence point filtering. A) Original dataset; B) Final dataset with only one presence point retained per pixel." />
-<figcaption aria-hidden="true">Figure S2. Example of presence point
+alt="Figure 2. Example of presence point filtering. A) Original dataset; B) Final dataset with only one presence point retained per pixel." />
+<figcaption aria-hidden="true">Figure 2. Example of presence point
 filtering. A) Original dataset; B) Final dataset with only one presence
 point retained per pixel.</figcaption>
 </figure>
@@ -194,8 +190,8 @@ shown in the following figure.
 
 <figure>
 <img src="./Figures/Fig3.JPG"
-alt="Figure S3. SRTM Digital Elevation Data description with code to import the dataset" />
-<figcaption aria-hidden="true">Figure S3. SRTM Digital Elevation Data
+alt="Figure 3. SRTM Digital Elevation Data description with code to import the dataset" />
+<figcaption aria-hidden="true">Figure 3. SRTM Digital Elevation Data
 description with code to import the dataset</figcaption>
 </figure>
 
@@ -386,8 +382,8 @@ map and one for the potential distribution map.
 
 <figure>
 <img src="./Figures/Fig4.png"
-alt="Figure S4. Presence data for Bradypus variegatus. Data were obtained from GBIF." />
-<figcaption aria-hidden="true">Figure S4. Presence data for Bradypus
+alt="Figure 4. Presence data for Bradypus variegatus. Data were obtained from GBIF." />
+<figcaption aria-hidden="true">Figure 4. Presence data for Bradypus
 variegatus. Data were obtained from GBIF.</figcaption>
 </figure>
 
@@ -420,8 +416,8 @@ data. The argument for the buffer distance is in meters.
 
 <figure>
 <img src="./Figures/Fig5.png"
-alt="Figure S5. This figure shows the area of interest, which was defined as a 100 km buffer around the bounding box containing all presence locations." />
-<figcaption aria-hidden="true">Figure S5. This figure shows the area of
+alt="Figure 5. This figure shows the area of interest, which was defined as a 100 km buffer around the bounding box containing all presence locations." />
+<figcaption aria-hidden="true">Figure 5. This figure shows the area of
 interest, which was defined as a 100 km buffer around the bounding box
 containing all presence locations.</figcaption>
 </figure>
@@ -477,8 +473,8 @@ can be for raster processing when creating predictor variables.
 
 <figure>
 <img src="./Figures/Fig6.png"
-alt="Figure S6. Examples of predictor variables. A) Elevation; B) Temperature seasonality; C) Annual precipitation; D) Median percentage of tree cover between 2003 and 2020." />
-<figcaption aria-hidden="true">Figure S6. Examples of predictor
+alt="Figure 6. Examples of predictor variables. A) Elevation; B) Temperature seasonality; C) Annual precipitation; D) Median percentage of tree cover between 2003 and 2020." />
+<figcaption aria-hidden="true">Figure 6. Examples of predictor
 variables. A) Elevation; B) Temperature seasonality; C) Annual
 precipitation; D) Median percentage of tree cover between 2003 and
 2020.</figcaption>
@@ -569,8 +565,17 @@ more dissimilar to the presence data.
     // Display area for creation of pseudo-absence
     right.addLayer(AreaForPA, {palette: 'black'},'Area to create pseudo-absences', 0);
 
-![Figure S7a. Results from cluster analysis.](./Figures/Fig7a.png)
-![Figure S7b. Area to create pseudo-absences.](./Figures/Fig7b.png)
+<figure>
+<img src="./Figures/Fig7a.png"
+alt="Figure 7a. Results from cluster analysis." />
+<figcaption aria-hidden="true">Figure 7a. Results from cluster analysis.</figcaption>
+</figure>
+
+<figure>
+<img src="./Figures/Fig7b.png"
+alt="Figure 7b. Area to create pseudo-absences." />
+<figcaption aria-hidden="true">Figure 7b. Area to create pseudo-absences.</figcaption>
+</figure>
 
 For this case study, we implement a block repeated split-sample
 cross-validation technique to randomly partition data for model training
@@ -612,8 +617,8 @@ case, we are using 200 km.
 
 <figure>
 <img src="./Figures/Fig8.png"
-alt="Figure S8. Visualization of blocks created for cross validation." />
-<figcaption aria-hidden="true">Figure S8. Visualization of blocks
+alt="Figure 8. Visualization of blocks created for cross validation." />
+<figcaption aria-hidden="true">Figure 8. Visualization of blocks
 created for cross validation.</figcaption>
 </figure>
 
@@ -873,8 +878,8 @@ Note that we will also create some legends for each map.
 
 <figure>
 <img src="./Figures/Fig9.png"
-alt="Figure S9. Visualization of predicted habitat suitability and potential distribution of Bradypus variegatus." />
-<figcaption aria-hidden="true">Figure S9. Visualization of predicted
+alt="Figure 9. Visualization of predicted habitat suitability and potential distribution of Bradypus variegatus." />
+<figcaption aria-hidden="true">Figure 9. Visualization of predicted
 habitat suitability and potential distribution of <em>Bradypus
 variegatus</em>.</figcaption>
 </figure>
@@ -1165,8 +1170,8 @@ to then display it on a third party software.
 
 <figure>
 <img src="./Figures/Fig10.png"
-alt="Figure S10. Potential distribution of Bradypus variegatus calculated using a custom threshold. The final map was exported to Google Drive and displayed using QGIS." />
-<figcaption aria-hidden="true">Figure S10. Potential distribution of
+alt="Figure 10. Potential distribution of Bradypus variegatus calculated using a custom threshold. The final map was exported to Google Drive and displayed using QGIS." />
+<figcaption aria-hidden="true">Figure 10. Potential distribution of
 <em>Bradypus variegatus</em> calculated using a custom threshold. The
 final map was exported to Google Drive and displayed using
 QGIS.</figcaption>
@@ -1321,8 +1326,8 @@ encompassing the countries of Costa Rica and Panama.
 
 <figure>
 <img src="./Figures/Fig11.png"
-alt="Figure S11. Defined area of interest to study change in Cebus capucinus habitat suitability." />
-<figcaption aria-hidden="true">Figure S11. Defined area of interest to
+alt="Figure 11. Defined area of interest to study change in Cebus capucinus habitat suitability." />
+<figcaption aria-hidden="true">Figure 11. Defined area of interest to
 study change in Cebus capucinus habitat suitability.</figcaption>
 </figure>
 
@@ -1458,8 +1463,8 @@ product is produced yearly, we define a max difference of 360 days.
 
 <figure>
 <img src="./Figures/Fig12.png"
-alt="Figure S12. Cebus capucinus presence locations." />
-<figcaption aria-hidden="true">Figure S12. <em>Cebus capucinus</em>
+alt="Figure 12. Cebus capucinus presence locations." />
+<figcaption aria-hidden="true">Figure 12. <em>Cebus capucinus</em>
 presence locations.</figcaption>
 </figure>
 
@@ -1670,8 +1675,8 @@ example.
 
 <figure>
 <img src="./Figures/Fig13.png"
-alt="Figure S13. 2019 presence data used for model validation." />
-<figcaption aria-hidden="true">Figure S13. 2019 presence data used for
+alt="Figure 13. 2019 presence data used for model validation." />
+<figcaption aria-hidden="true">Figure 13. 2019 presence data used for
 model validation.</figcaption>
 </figure>
 
@@ -1800,13 +1805,17 @@ and 2019.
 
 <figure>
 <img src="./Figures/Fig14.png"
-alt="Figure S14. Predicted Cebus capucinus habitat suitability for 2000." />
-<figcaption aria-hidden="true">Figure S14. Predicted <em>Cebus
+alt="Figure 14. Predicted Cebus capucinus habitat suitability for 2000." />
+<figcaption aria-hidden="true">Figure 14. Predicted <em>Cebus
 capucinus</em> habitat suitability for 2000.</figcaption>
 </figure>
 
-![Figure S15. Predicted *Cebus capucinus* habitat suitability for
-2019.](./Figures/Fig15.png) 
+<figure>
+<img src="./Figures/Fig15.png"
+alt="Figure 15. Predicted Cebus capucinus habitat suitability for 2019." />
+<figcaption aria-hidden="true">Figure 15. Predicted <em>Cebus
+capucinus</em> habitat suitability for 2019.</figcaption>
+</figure>
 
 ## Habitat suitability change assessment
 
@@ -1868,8 +1877,8 @@ decreased in habitat suitability.
 
 <figure>
 <img src="./Figures/Fig16.png"
-alt="Figure S16. Regression slope values show areas with positive (blue) to negative (red) trends in habitat suitability change between 2000 and 2019 for Cebus capucinus. Only pixels with significant trends are shown." />
-<figcaption aria-hidden="true">Figure S16. Regression slope values show
+alt="Figure 16. Regression slope values show areas with positive (blue) to negative (red) trends in habitat suitability change between 2000 and 2019 for Cebus capucinus. Only pixels with significant trends are shown." />
+<figcaption aria-hidden="true">Figure 16. Regression slope values show
 areas with positive (blue) to negative (red) trends in habitat
 suitability change between 2000 and 2019 for Cebus capucinus. Only
 pixels with significant trends are shown.</figcaption>
@@ -1897,8 +1906,8 @@ habitat suitability across years.
 
 <figure>
 <img src="./Figures/Fig17.gif"
-alt="Figure S17. Cebus capucinus habitat suitability change across years." />
-<figcaption aria-hidden="true">Figure S17. <em>Cebus capucinus</em>
+alt="Figure 17. Cebus capucinus habitat suitability change across years." />
+<figcaption aria-hidden="true">Figure 17. <em>Cebus capucinus</em>
 habitat suitability change across years.</figcaption>
 </figure>
 
@@ -2411,6 +2420,19 @@ Because exporting results for this analysis takes a long time, instead
 of directly exporting the binary presence-absence map, we manually
 calculated the average threshold from the exported accuracy metrics and
 set the threshold on the visualization parameters in QGIS.
+
+This is the resulting figure we produced for the publication.
+
+<center>
+
+<figure>
+<img src="Figures/Fig18.jpg" style="width:90.0%"
+alt="Figure 18. Habitat suitability prediction for Hylocichla mustelina across the eastern continental USA (4,606,284 km2) at 90 m spatial resolution. This analysis used a combination of Landsat 8 surface reflectance collection 2 and Advanced Land Observing Satellite (ALOS) Phased Arrayed L-band Synthetic Aperture Radar (SAR) mosaics and averaged temperature datasets. The zoom-in boxes show details of habitat suitability predictions at 90 m spatial resolution. Red dots represent 2,000 presence locations of Hylocichla mustelina, randomly selected from the 34,880 observations used for modelling. The potential distribution is also shown in the bottom left corner of the figure." />
+<figcaption aria-hidden="true">Figure 18. Habitat suitability prediction for <em>Hylocichla mustelina<em> across the eastern continental USA (4,606,284 km2) at 90 m spatial resolution. This analysis used a combination of Landsat 8 surface reflectance collection 2 and Advanced Land Observing Satellite (ALOS) Phased Arrayed L-band Synthetic Aperture Radar (SAR) mosaics and averaged temperature datasets. The zoom-in boxes show details of habitat suitability predictions at 90 m spatial resolution. Red dots represent 2,000 presence locations of <em>Hylocichla mustelina<em>, randomly selected from the 34,880 observations used for modelling. The potential distribution is also shown in the bottom left corner of the figure.</figcaption>
+</figure>
+
+</center>
+
 
 ## Code to model presence-absence data
 
