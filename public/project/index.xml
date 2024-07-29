@@ -21,6 +21,14 @@
     </item>
     
     <item>
+      <title>Distance Sampling Demo</title>
+      <link>//localhost:4321/project/distsampling/</link>
+      <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/project/distsampling/</guid>
+      <description>&lt;p&gt;This Shiny app aims to show how distance sampling works allowing you to change parameters and understand the theory behind this methodology to estimate abundance.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Naboisho Conservancy</title>
       <link>//localhost:4321/project/naboisho/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>

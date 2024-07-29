@@ -27,7 +27,13 @@ education:
   institution: Southern Illinois University Carbondale, USA
 - area: 2002-2008 - BSc Zoology
   institution: Universidad Nacional de La Plata, Argentina
-  
+
+interests:
+- Applied Animal Ecology
+- Conservation Biology
+- Bayesian Hierarchical Models
+- Biocultural Conservation
+
 skills:
   - name: Technical
     items:

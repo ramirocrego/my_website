@@ -16,9 +16,9 @@ sections:
 - block: resume-biography-3
   id: about
   content:
-    button:
-      text: Download CV
-      url: uploads/resume.pdf
+    # button:
+    #   text: Download CV
+    #   url: uploads/resume.pdf
     text: ""
     username: admin
   design:
@@ -39,27 +39,27 @@ sections:
       - 0
       - 0
       padding:
-      - 1rem
-      - 0
-      - 0
-      - 0
+      - 0rem
+      - 0rem
+      - 2rem
+      - 0rem
 
-- block: markdown
-  id: section-1
-  content:
-    title: A map of my publications
-    subtitle: Click on each mark to display paper cover and pdf link
-    text: <iframe width="850" height="500" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
-  design:
-    columns: '1'
-    spacing:
-          margin:
-          - 0
-          - 0
-          - 0
-          - 0
-          padding:
-          - 1rem
+# - block: markdown
+#   id: section-1
+#   content:
+#     title: A map of my publications
+#     subtitle: Click on each mark to display paper cover and pdf link
+#     text: <iframe width="850" height="500" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
+#   design:
+#     columns: '1'
+#     spacing:
+#           margin:
+#           - 0
+#           - 0
+#           - 0
+#           - 0
+#           padding:
+#           - 1rem
 
 # - block: collection
 #   content:
@@ -85,6 +85,9 @@ sections:
         - 0
         - 0
         padding:
+        - 2rem
+        - 1rem
+        - 1rem
         - 1rem
 
 title: ""

@@ -12,8 +12,8 @@ sections:
     filters:
       folders:
       - teaching
-    title: Teaching
-    text: On of my main interests is in democratizing research. Conducting analyses in R, Google Earth Engine, and other powerful open souce tools is an incredible way to achieve that. In that spirit is that I have created a list of tutorials. I hope you find them useful and inspiring for your own creations and research.
+    title: Tutorials and teaching
+    text: On of my main interests is in democratizing research. I am extremely grateful for all the people that thought me in the past or wrote tutorials and books from which I learned. Conducting analyses in R, Google Earth Engine, and other open source tools is an incredible way to empower people and create new knowledge. In that spirit is that I have created a list of tutorials. This is my gift back. I hope you find them useful and inspiring for your own creations and research. 
     author: "Ramiro D Crego"
     sort_by: 'Date'
   design:

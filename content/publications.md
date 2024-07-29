@@ -10,7 +10,7 @@ sections:
   id: section-1
   content:
     title: A map of my publications
-    text: Click on each mark to display paper cover and pdf link <iframe width="850" height="500" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
+    text: Click on each mark to display paper cover and pdf link <iframe width="850" height="600" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
   design:
     columns: '1'
     spacing:
