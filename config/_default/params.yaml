@@ -14,8 +14,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'GetResearchDev'
+    description: 'I am Ramiro D. Crego, an ecologist from Argentina and a lecturer at UCC, Ireland.'
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -51,7 +50,7 @@ footer:
 
 # Localization
 locale:
-  date_format: 'Jan 2, 2006'
+  date_format: 'Jul 28, 2024'
   time_format: '3:04 PM'
 
 # Contact 
