@@ -7,7 +7,7 @@
     <description>ramirodcrego</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>//localhost:4321/media/icon_hu68170e94a17a2a43d6dcb45cf0e8e589_3079_512x512_fill_lanczos_center_3.png</url>
+      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>ramirodcrego</title>
       <link>//localhost:4321/</link>
     </image>
@@ -31,6 +31,14 @@
 &lt;/ul&gt;
 &lt;p&gt;Further event details, including &lt;a href=&#34;https://docs.hugoblox.com/reference/markdown/&#34;&gt;page elements&lt;/a&gt; such as image galleries, can be added to the body of this page.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Direct comparative assessment of radial and transect surveys to document wild mammal activity across diverse habitat types</title>
+      <link>//localhost:4321/papers/article40/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article40/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -8037,7 +8045,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-157962348&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-695821347&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -8055,7 +8063,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-157962348&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-695821347&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
