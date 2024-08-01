@@ -1,5 +1,5 @@
 ---
-date: "2022-08-18"
+date: "2022-01-01"
 summary: Tutorial to match animal GPS locations with remotely sensed data using Google Earth Engine and R
 tags:
 - GEE

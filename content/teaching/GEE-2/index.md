@@ -1,5 +1,5 @@
 ---
-date: "2024-07-18"
+date: "2024-03-18"
 summary: An introduction to Google Earth Engine
 tags:
 - GEE

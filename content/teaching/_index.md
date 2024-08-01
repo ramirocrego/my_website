@@ -18,6 +18,7 @@ sections:
     sort_by: 'Date'
   design:
     columns: 2
+    fill_image: true
     view: article-grid
   id: teaching
 summary: 

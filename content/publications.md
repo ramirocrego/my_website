@@ -32,7 +32,7 @@ sections:
     title: Peer-reviewed articles
   design:
     columns: 1
-    fill_image: false
+    fill_image: true
     view: compact
     
 - block: collection
@@ -45,7 +45,7 @@ sections:
     title: Books and book chapters
   design:
     columns: 1
-    fill_image: false
+    fill_image: true
     view: compact
     
 - block: collection
@@ -57,7 +57,7 @@ sections:
     text: Posters presented at conferences
     title: Posters
   design:
-    columns: 1
+    columns: 3
     fill_image: false
     view: compact
 

@@ -50,7 +50,7 @@ footer:
 
 # Localization
 locale:
-  date_format: 'Jul 28, 2024'
+  date_format: '2006-Jan-02'
   time_format: '3:04 PM'
 
 # Contact 

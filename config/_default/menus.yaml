@@ -22,6 +22,6 @@ main:
   - name: Web apps
     url: apps/
     weight: 60
-  # - name: Students
-  #   url: experience/
-  #   weight: 70
+  - name: Blog and news
+    url: blog/
+    weight: 70

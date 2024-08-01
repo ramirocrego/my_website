@@ -9,16 +9,14 @@ sections:
       color: black
       image:
         filename: gazelle.jpg
-        size: cover
+        placement: 3
+        focal_point: "Smart"
         filters:
           brightness: 1
     css_class: dark
 - block: resume-biography-3
   id: about
   content:
-    # button:
-    #   text: Download CV
-    #   url: uploads/resume.pdf
     text: ""
     username: admin
   design:
@@ -44,34 +42,6 @@ sections:
       - 2rem
       - 0rem
 
-# - block: markdown
-#   id: section-1
-#   content:
-#     title: A map of my publications
-#     subtitle: Click on each mark to display paper cover and pdf link
-#     text: <iframe width="850" height="500" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
-#   design:
-#     columns: '1'
-#     spacing:
-#           margin:
-#           - 0
-#           - 0
-#           - 0
-#           - 0
-#           padding:
-#           - 1rem
-
-# - block: collection
-#   content:
-#     filters:
-#       exclude_featured: false
-#       folders:
-#       - SelectedPapers
-#     text: ""
-#     title: Selected Publications
-#   design:
-#     view: compact
-
 - block: resume-skills
   content:
     title: Skills and Hobbies
@@ -90,6 +60,18 @@ sections:
         - 1rem
         - 1rem
 
+# - block: hero
+#   design:
+#     background:
+#       color: black
+#       image:
+#         filename: coast.jpg
+#         placement: 3
+#         focal_point: "Center"
+#         filters:
+#           brightness: 1
+#     css_class: dark 
+    
 title: ""
 type: landing
 ---

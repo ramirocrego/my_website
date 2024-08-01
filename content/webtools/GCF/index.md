@@ -3,6 +3,7 @@ date: "2023-11-30"
 external_link: https://gcfspatial.users.earthengine.app/view/reticulatedgiraffesdm
 tags:
 - GEE
+- Giraffe
 title: Reticulated giraffe habitat suitability
 ---
 

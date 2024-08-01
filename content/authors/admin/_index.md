@@ -62,7 +62,6 @@ skills:
     - name: Birding
       percent: 80
       icon: crow
-      
 ---
 
 I am Ramiro D. Crego, an ecologist from Argentina and a lecturer at UCC, Ireland. 

@@ -58,14 +58,6 @@
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/teaching/gee/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/teaching/gee-2/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
     <loc>//localhost:4321/projects/chbr/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -88,6 +80,18 @@
   </url><url>
     <loc>//localhost:4321/publications/</loc>
     <lastmod>2024-05-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/teaching/gee-2/</loc>
+    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/teaching/gee/</loc>
+    <lastmod>2024-02-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/giraffe/</loc>
+    <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/webtools/gcf/</loc>
@@ -186,6 +190,14 @@
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/blog/</loc>
+    <lastmod>2023-08-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/blog/news1/</loc>
+    <lastmod>2023-08-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/tags/book-chapter/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -214,8 +226,12 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/teaching/rgee/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <loc>//localhost:4321/blog/news2/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/chbr/</loc>
+    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/papers/article29/</loc>
@@ -238,6 +254,10 @@
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/teaching/rgee/</loc>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/papers/article24/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -248,6 +268,14 @@
   </url><url>
     <loc>//localhost:4321/papers/article23/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/blog/podcast1/</loc>
+    <lastmod>2021-04-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/podcast/</loc>
+    <lastmod>2021-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/papers/article21/</loc>
@@ -296,6 +324,22 @@
   </url><url>
     <loc>//localhost:4321/papers/article15/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/blog/</loc>
+    <lastmod>2019-11-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/blog/blog3/</loc>
+    <lastmod>2019-11-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/blog/blog2/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/blog/blog1/</loc>
+    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/papers/article14/</loc>

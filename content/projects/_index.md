@@ -13,14 +13,33 @@ sections:
       folders:
       - projects
     title: Projects
-    text: My research interests are primarily in the fields of applied animal ecology and conservation biology. I address critical research questions by integrating a combination of field data collection (e.g., trapping, camera traps, field surveys, telemetry data), geographic information systems (GIS), remote sensing (e.g., Landsat, MODIS, Sentinel products), and advanced modelling techniques (e.g., Bayesian hierarchical models, machine learning). Key deliverables from my research include peer-reviewed publications, reports, and online web applications, with a goal of helping managers make science-based decisions to promote sustainability and conservation of ecosystems. I am not just interested in ecological questions that have conservation implications, but in interdisciplinary approaches that can bridge cultural diversity and biological diversity. Conservation approaches are in need of new ethical frameworks that can guide narratives and cultural reformulations required to address the ecological and climatic crises. As such, I collaborate with social scientists and environmental philosophers. 
+    text: This is a list of projects I am working with students and collaborators. 
 
     author: "Ramiro D Crego"
     sort_by: 'Date'
   design:
-    columns: 2
+    columns: 3
+    fill_image: true
     view: article-grid
   id: projects
+  
+- block: markdown
+  id: section-1
+  content:
+    title: 
+    subtitle:
+    text: If you are a passionate and self-motivated student interested in conservation biology and/or ecology and looking for opportunities to conduct a Master's or Ph.D. at University College Cork, contact me with your ideas, interests, and CV. I do not currently have funding but I am willing to support fellowship applications. Make sure your interest and motivation comes along clear, make your research, basically, make sure your email stands out and does not look like a generic email created by AI.
+  design:
+    columns: '1'
+    spacing:
+          margin:
+          - 0
+          - 0
+          - 0
+          - 0
+          padding:
+          - 1rem
+       
 summary: 
 title: Projects
 type: landing

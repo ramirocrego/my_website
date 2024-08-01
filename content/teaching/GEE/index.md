@@ -1,5 +1,5 @@
 ---
-date: "2024-07-18"
+date: "2024-02-18"
 summary: Tutorial to implement SDMs in Google Earth Engine
 tags:
 - GEE
