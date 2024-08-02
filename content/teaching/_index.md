@@ -2,6 +2,7 @@
 cascade:
 - _target:
     kind: page
+    path: /teaching/**
   params:
     show_breadcrumb: true
 design:

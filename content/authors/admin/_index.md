@@ -27,7 +27,7 @@ education:
   institution: Southern Illinois University Carbondale, USA
 - area: 2002-2008 - BSc Zoology
   institution: Universidad Nacional de La Plata, Argentina
-
+title: Ramiro D Crego
 interests:
 - Applied Animal Ecology
 - Conservation Biology
@@ -64,7 +64,7 @@ skills:
       icon: crow
 ---
 
-I am Ramiro D. Crego, an ecologist from Argentina and a lecturer at UCC, Ireland. 
+I am an ecologist from Argentina and a lecturer at UCC, Ireland. 
 
 My research interests are primarily in the fields of applied animal ecology and conservation biology. I address critical research questions by integrating a combination of field data collection (e.g., trapping, camera traps, field surveys, telemetry data), geographic information systems (GIS), remote sensing (e.g., Landsat, MODIS, Sentinel products), and advanced modelling techniques (e.g., Bayesian hierarchical models, machine learning). Key deliverables from my research include peer-reviewed publications, reports, and online web applications, with a goal of helping managers make science-based decisions to promote sustainability and conservation of ecosystems. 
 

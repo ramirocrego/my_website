@@ -36,8 +36,7 @@ header:
     show_theme_chooser: true
     highlight_active_link: true
     logo:
-      text: "Ramiro D Crego"
-
+      text: "RDC"
 # Site footer
 footer:
   copyright:

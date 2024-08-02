@@ -2,333 +2,333 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Papers | ramirodcrego</title>
-    <link>//localhost:4321/papers/</link>
-      <atom:link href="//localhost:4321/papers/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4321/ramirodcrego.com/papers/</link>
+      <atom:link href="http://localhost:4321/ramirodcrego.com/papers/index.xml" rel="self" type="application/rss+xml" />
     <description>Papers</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
+      <url>http://localhost:4321/ramirodcrego.com/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Papers</title>
-      <link>//localhost:4321/papers/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/</link>
     </image>
     
     <item>
       <title>Direct comparative assessment of radial and transect surveys to document wild mammal activity across diverse habitat types</title>
-      <link>//localhost:4321/papers/article40/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article40/</link>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article40/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article40/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Human footprint and rainfall shape Masai giraffe&#39;s habitat suitability and connectivity in a multiple‐use landscape</title>
-      <link>//localhost:4321/papers/article39/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article39/</link>
       <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article39/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article39/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A camera-trap assessment of the native and invasive mammals present in protected areas of Magallanes, Chilean Patagonia</title>
-      <link>//localhost:4321/papers/article38/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article38/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article38/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article38/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Understanding ground-nesting habitat selection by waterbirds to prioritize invasive predator control on islands</title>
-      <link>//localhost:4321/papers/article37/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article37/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article37/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article37/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Understanding the transition of community land use from shifting cultivation to cash cropping in southern Tanintharyi, Myanmar</title>
-      <link>//localhost:4321/papers/article36/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article36/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article36/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article36/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Beyond protected areas: The importance of mixed-use landscapes for the conservation of Sumatran elephants (Elephas maximus sumatranus)</title>
-      <link>//localhost:4321/papers/article33/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article33/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article33/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article33/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Non-systematic surveys reveal increases in areas occupied by endangered and data-deficient Nubian bustard</title>
-      <link>//localhost:4321/papers/article35/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article35/</link>
       <pubDate>Tue, 31 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article35/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article35/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monitoring spatiotemporal dynamics of large herbivores across an African rangeland using hierarchical multi‐species distance sampling</title>
-      <link>//localhost:4321/papers/article34/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article34/</link>
       <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article34/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article34/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Combining species distribution models and moderate resolution satellite information to guide conservation programs for reticulated giraffe</title>
-      <link>//localhost:4321/papers/article32/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article32/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article32/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article32/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ranging behaviours across ecological and anthropogenic disturbance gradients: a pan-African perspective of giraffe (Giraffa spp.) space use</title>
-      <link>//localhost:4321/papers/article31/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article31/</link>
       <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article31/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article31/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wild herbivores enhance resistance to invasion by exotic cacti in an African savanna</title>
-      <link>//localhost:4321/papers/article30/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article30/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article30/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article30/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The Subantarctic Rayadito (Aphrastura subantarctica), a new bird species on the southernmost islands of the Americas</title>
-      <link>//localhost:4321/papers/article29/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article29/</link>
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article29/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article29/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>
-      <link>//localhost:4321/papers/article26/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article26/</link>
       <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article26/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article26/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cascading effects of a disease outbreak in a remote protected area</title>
-      <link>//localhost:4321/papers/article27/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article27/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article27/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article27/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Increasing Anthropogenic Disturbance Restricts Wildebeest Movement Across East African Grazing Systems</title>
-      <link>//localhost:4321/papers/article28/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article28/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article28/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article28/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Less Is More: Lowering Cattle Stocking Rates Enhances Wild Herbivore Habitat Use and Cattle Foraging Efficiency</title>
-      <link>//localhost:4321/papers/article25/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article25/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article25/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article25/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spatial segregation between wild ungulates and livestock outside protected areas in the lowlands of Nepal</title>
-      <link>//localhost:4321/papers/article24/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article24/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article24/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article24/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Experimental evidence that effects of megaherbivores on mesoherbivore space use are influenced by species&#39; traits</title>
-      <link>//localhost:4321/papers/article22/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article22/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article22/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article22/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enhancing Animal Movement Analyses: Spatiotemporal Matching of Animal Positions with Remotely Sensed Data Using Google Earth Engine and R</title>
-      <link>//localhost:4321/papers/article23/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article23/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article23/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article23/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Moving through the mosaic: identifying critical linkage zones for large herbivores across a multiple‐use African landscape</title>
-      <link>//localhost:4321/papers/article21/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article21/</link>
       <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article21/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article21/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Colaboración científica con la Armada de Chile en estudios ornitológicos a largo plazo en el archipiélago Diego Ramírez: Primer monitoreo del ciclo anual del ensamble de aves en la isla Gonzalo</title>
-      <link>//localhost:4321/papers/article20/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article20/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article20/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article20/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Un centinela para el monitoreo del cambio climático y su impacto sobre la biodiversidad en la cumbre austral de América: La nueva red de estudios a largo Plazo Cabo de Hornos</title>
-      <link>//localhost:4321/papers/article19/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article19/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article19/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article19/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nest-site selection and breeding success of passerines in the world’s southernmost forests</title>
-      <link>//localhost:4321/papers/article17/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article17/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article17/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article17/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unexpected lack of effect of the invasive American mink on the nesting survival of forest birds</title>
-      <link>//localhost:4321/papers/article18/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article18/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article18/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article18/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spatiotemporal dynamics of wild herbivore species richness and occupancy across a savannah rangeland: Implications for conservation</title>
-      <link>//localhost:4321/papers/article16/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article16/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article16/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article16/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Breeding strategies of open-cup-nesting birds in sub-Antarctic forests of Navarino Island, Chile</title>
-      <link>//localhost:4321/papers/article15/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article15/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article15/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article15/</guid>
       <description></description>
     </item>
     
     <item>
       <title>New records of invasive mammals from the sub-Antarctic Cape Horn Archipelago</title>
-      <link>//localhost:4321/papers/article14/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article14/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article14/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article14/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Los ojos del árbol: percibiendo, registrando, comprendiendo y contrarrestando las invasiones biológicas en tiempos de rápida homogeneizacion biocultural</title>
-      <link>//localhost:4321/papers/article13/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article13/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article13/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article13/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Macro- and micro-habitat selection of small rodents and their predation risk perception under a novel invasive predator at the southern end of the Americas</title>
-      <link>//localhost:4321/papers/article11/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article11/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article11/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article11/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Potential niche expansion of the American mink invading a remote island free of native-predatory mammals</title>
-      <link>//localhost:4321/papers/article12/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article12/</link>
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article12/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article12/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Native-predator-invasive-prey trophic interactions in Tierra del Fuego: the beginning of biological resistance?</title>
-      <link>//localhost:4321/papers/article10/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article10/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article10/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article10/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Primer registro de Vespula vulgaris (Linnaeus 1758) (Hymenoptera: Vespidae) en la isla Navarino, Chile</title>
-      <link>//localhost:4321/papers/article9/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article9/</link>
       <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article9/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article9/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A synergistic trio of invasive mammals? Facilitative interactions among beavers, muskrats, and mink at the southern end of the Americas</title>
-      <link>//localhost:4321/papers/article8/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article8/</link>
       <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article8/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Expansión de la invasión del Visón Norteamericano (Neovison vison) en la Reserva de la Biosfera de Cabo de Hornos, Chile</title>
-      <link>//localhost:4321/papers/article7/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article7/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article7/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Filosofía ambiental de campo: ecología y ética en las redes LTER-Chile e ILTER</title>
-      <link>//localhost:4321/papers/article6/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article6/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article6/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Potential impact of the alien American mink (Neovison vison) on Magellanic woodpeckers (Campephilus magallanicus) in Navarino Island, southern Chile</title>
-      <link>//localhost:4321/papers/article5/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article5/</link>
       <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article5/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Climate change and conservation implications for wet meadows in dry Patagonia</title>
-      <link>//localhost:4321/papers/article4/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article4/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article4/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling meadow distribution for conservation action in arid and semi-arid Patagonia, Argentina</title>
-      <link>//localhost:4321/papers/article3/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article3/</link>
       <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article3/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Capturing and radio ear-tagging neonatal vicuñas</title>
-      <link>//localhost:4321/papers/article2/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article2/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article2/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Una técnica para la estimación de la densidad y el monitoreo de poblaciones de inambú común (Nothura maculosa) en ambientes de pastizal</title>
-      <link>//localhost:4321/papers/article1/</link>
+      <link>http://localhost:4321/ramirodcrego.com/papers/article1/</link>
       <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/papers/article1/</guid>
+      <guid>http://localhost:4321/ramirodcrego.com/papers/article1/</guid>
       <description></description>
     </item>
     

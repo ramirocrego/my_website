@@ -2,6 +2,7 @@
 cascade:
 - _target:
     kind: page
+    path: /blog/**
   params:
     show_breadcrumb: true
 design:

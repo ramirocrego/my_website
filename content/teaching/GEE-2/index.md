@@ -2366,4 +2366,4 @@ Landsat products in order to access land cover change trough time.
 
 ## Species Distribution Models
 
-The tutorial for SDMs can be found here.
+The tutorial for SDMs can be found [here](https://ramirodcrego.com/teaching/gee/).

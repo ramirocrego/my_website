@@ -10,7 +10,9 @@ sections:
       image:
         filename: gazelle.jpg
         placement: 3
+        image_size: "contain"
         focal_point: "Smart"
+        image_parallax: true
         filters:
           brightness: 1
     css_class: dark
@@ -59,7 +61,7 @@ sections:
         - 1rem
         - 1rem
         - 1rem
-
+        
 # - block: hero
 #   design:
 #     background:
