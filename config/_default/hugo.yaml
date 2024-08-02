@@ -6,7 +6,7 @@
 # Website name
 title: ramirodcrego
 # Website URL
-baseURL: '/ramirodcrego.com'
+baseURL: '/'
 
 ############################
 ## LANGUAGE
