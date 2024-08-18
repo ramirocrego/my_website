@@ -2,475 +2,483 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:4321/ramirodcrego.com/event/example/</loc>
+    <loc>//localhost:4321/event/example/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/event/</loc>
+    <loc>//localhost:4321/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/publication_types/article-journal/</loc>
+    <loc>//localhost:4321/projects/gcf/</loc>
+    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/gee/</loc>
+    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/giraffe/</loc>
+    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/projects/</loc>
+    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/</loc>
+    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/publication_types/article-journal/</loc>
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article40/</loc>
+    <loc>//localhost:4321/papers/article40/</loc>
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/</loc>
+    <loc>//localhost:4321/papers/</loc>
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/publication_types/</loc>
+    <loc>//localhost:4321/publication_types/</loc>
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article39/</loc>
+    <loc>//localhost:4321/papers/article39/</loc>
     <lastmod>2024-07-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/teaching/r/</loc>
+    <loc>//localhost:4321/teaching/r/</loc>
     <lastmod>2024-07-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/r/</loc>
+    <loc>//localhost:4321/tags/r/</loc>
     <lastmod>2024-07-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/</loc>
+    <loc>//localhost:4321/teaching/</loc>
     <lastmod>2024-07-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/teaching/</loc>
-    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/apps/</loc>
+    <loc>//localhost:4321/apps/</loc>
     <lastmod>2024-07-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/</loc>
+    <loc>//localhost:4321/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/gcf/</loc>
+    <loc>//localhost:4321/tags/chbr/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/gee/</loc>
+    <loc>//localhost:4321/projects/argentina/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/argentina/</loc>
+    <loc>//localhost:4321/projects/gee/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/birdireland/</loc>
+    <loc>//localhost:4321/projects/distsampl/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/chbr/</loc>
+    <loc>//localhost:4321/projects/chbr/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/distsampling/</loc>
+    <loc>//localhost:4321/projects/birdireland/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/gee/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/killarney/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/projects/</loc>
-    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article38/</loc>
+    <loc>//localhost:4321/papers/article38/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article37/</loc>
+    <loc>//localhost:4321/papers/article37/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article36/</loc>
+    <loc>//localhost:4321/projects/killarney/</loc>
     <lastmod>2024-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/publications/</loc>
+    <loc>//localhost:4321/papers/article36/</loc>
+    <lastmod>2024-06-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/publications/</loc>
     <lastmod>2024-05-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/teaching/gee-2/</loc>
+    <loc>//localhost:4321/teaching/gee-2/</loc>
     <lastmod>2024-03-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/teaching/gee/</loc>
+    <loc>//localhost:4321/teaching/gee/</loc>
     <lastmod>2024-02-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/giraffe/</loc>
+    <loc>//localhost:4321/tags/africa/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/projects/nasa/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/webtools/gcf/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/webtools/gcf/</loc>
+    <loc>//localhost:4321/webtools/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/webtools/</loc>
-    <lastmod>2023-11-30T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article33/</loc>
+    <loc>//localhost:4321/papers/article33/</loc>
     <lastmod>2023-11-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article35/</loc>
+    <loc>//localhost:4321/papers/article35/</loc>
     <lastmod>2023-10-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/get-started/</loc>
+    <loc>//localhost:4321/post/get-started/</loc>
     <lastmod>2023-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/academic/</loc>
+    <loc>//localhost:4321/tags/academic/</loc>
     <lastmod>2023-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/</loc>
+    <loc>//localhost:4321/post/</loc>
     <lastmod>2023-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/hugo-blox/</loc>
+    <loc>//localhost:4321/tags/hugo-blox/</loc>
     <lastmod>2023-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/markdown/</loc>
+    <loc>//localhost:4321/tags/markdown/</loc>
     <lastmod>2023-10-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/webtools/distsampling/</loc>
+    <loc>//localhost:4321/webtools/distsampling/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/webtools/naboisho/</loc>
+    <loc>//localhost:4321/webtools/naboisho/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/second-brain/</loc>
+    <loc>//localhost:4321/tags/second-brain/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/shiny/</loc>
+    <loc>//localhost:4321/tags/shiny/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/second-brain/</loc>
+    <loc>//localhost:4321/post/second-brain/</loc>
     <lastmod>2023-10-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/data-visualization/</loc>
+    <loc>//localhost:4321/post/data-visualization/</loc>
     <lastmod>2023-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/hugo/</loc>
+    <loc>//localhost:4321/tags/hugo/</loc>
     <lastmod>2023-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/teach-courses/</loc>
+    <loc>//localhost:4321/post/teach-courses/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/hugo-blox-builder/</loc>
+    <loc>//localhost:4321/tags/hugo-blox-builder/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/javascript/</loc>
+    <loc>//localhost:4321/tags/javascript/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/js/</loc>
+    <loc>//localhost:4321/post/js/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/python/</loc>
+    <loc>//localhost:4321/post/python/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/python/</loc>
+    <loc>//localhost:4321/tags/python/</loc>
     <lastmod>2023-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/project-management/</loc>
+    <loc>//localhost:4321/post/project-management/</loc>
     <lastmod>2023-10-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article34/</loc>
+    <loc>//localhost:4321/papers/article34/</loc>
     <lastmod>2023-10-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/</loc>
+    <loc>//localhost:4321/blog/</loc>
     <lastmod>2023-08-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/news1/</loc>
+    <loc>//localhost:4321/blog/news1/</loc>
     <lastmod>2023-08-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/book-chapter/</loc>
+    <loc>//localhost:4321/tags/book-chapter/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/publication_types/book-section/</loc>
+    <loc>//localhost:4321/publication_types/book-section/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/books/</loc>
+    <loc>//localhost:4321/books/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/books/book2/</loc>
+    <loc>//localhost:4321/books/book2/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article32/</loc>
+    <loc>//localhost:4321/papers/article32/</loc>
     <lastmod>2023-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article31/</loc>
+    <loc>//localhost:4321/papers/article31/</loc>
     <lastmod>2023-05-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article30/</loc>
+    <loc>//localhost:4321/papers/article30/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/news2/</loc>
+    <loc>//localhost:4321/blog/news2/</loc>
     <lastmod>2022-09-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/chbr/</loc>
-    <lastmod>2022-09-02T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article29/</loc>
+    <loc>//localhost:4321/papers/article29/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article26/</loc>
+    <loc>//localhost:4321/papers/article26/</loc>
     <lastmod>2022-05-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article27/</loc>
+    <loc>//localhost:4321/papers/article27/</loc>
     <lastmod>2022-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article28/</loc>
+    <loc>//localhost:4321/papers/article28/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article25/</loc>
+    <loc>//localhost:4321/papers/article25/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/teaching/rgee/</loc>
+    <loc>//localhost:4321/teaching/rgee/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article24/</loc>
+    <loc>//localhost:4321/papers/article24/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article22/</loc>
+    <loc>//localhost:4321/papers/article22/</loc>
     <lastmod>2021-11-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article23/</loc>
+    <loc>//localhost:4321/papers/article23/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/podcast1/</loc>
+    <loc>//localhost:4321/blog/podcast1/</loc>
     <lastmod>2021-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/podcast/</loc>
+    <loc>//localhost:4321/tags/podcast/</loc>
     <lastmod>2021-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article21/</loc>
+    <loc>//localhost:4321/papers/article21/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/post/2020-12-01-r-rmarkdown/</loc>
+    <loc>//localhost:4321/post/2020-12-01-r-rmarkdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/plot/</loc>
+    <loc>//localhost:4321/tags/plot/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/r-markdown/</loc>
+    <loc>//localhost:4321/tags/r-markdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/regression/</loc>
+    <loc>//localhost:4321/tags/regression/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article20/</loc>
+    <loc>//localhost:4321/papers/article20/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article19/</loc>
+    <loc>//localhost:4321/papers/article19/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article17/</loc>
+    <loc>//localhost:4321/papers/article17/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article18/</loc>
+    <loc>//localhost:4321/papers/article18/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/webtools/laikipia/</loc>
+    <loc>//localhost:4321/webtools/laikipia/</loc>
     <lastmod>2020-03-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article16/</loc>
+    <loc>//localhost:4321/papers/article16/</loc>
     <lastmod>2020-02-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article15/</loc>
+    <loc>//localhost:4321/papers/article15/</loc>
     <lastmod>2019-12-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/tags/blog/</loc>
+    <loc>//localhost:4321/tags/blog/</loc>
     <lastmod>2019-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/blog3/</loc>
+    <loc>//localhost:4321/blog/blog3/</loc>
     <lastmod>2019-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/blog2/</loc>
+    <loc>//localhost:4321/blog/blog2/</loc>
     <lastmod>2019-08-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/blog/blog1/</loc>
+    <loc>//localhost:4321/blog/blog1/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article14/</loc>
+    <loc>//localhost:4321/papers/article14/</loc>
     <lastmod>2019-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/books/book1/</loc>
+    <loc>//localhost:4321/books/book1/</loc>
     <lastmod>2019-02-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article13/</loc>
+    <loc>//localhost:4321/papers/article13/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article11/</loc>
+    <loc>//localhost:4321/papers/article11/</loc>
     <lastmod>2018-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article12/</loc>
+    <loc>//localhost:4321/papers/article12/</loc>
     <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster4/</loc>
+    <loc>//localhost:4321/posters/poster4/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/publication_types/poster/</loc>
+    <loc>//localhost:4321/publication_types/poster/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/</loc>
+    <loc>//localhost:4321/posters/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article10/</loc>
+    <loc>//localhost:4321/papers/article10/</loc>
     <lastmod>2017-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article9/</loc>
+    <loc>//localhost:4321/papers/article9/</loc>
     <lastmod>2016-08-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article8/</loc>
+    <loc>//localhost:4321/papers/article8/</loc>
     <lastmod>2016-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster7/</loc>
+    <loc>//localhost:4321/posters/poster7/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article7/</loc>
+    <loc>//localhost:4321/papers/article7/</loc>
     <lastmod>2015-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article6/</loc>
+    <loc>//localhost:4321/papers/article6/</loc>
     <lastmod>2014-09-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article5/</loc>
+    <loc>//localhost:4321/papers/article5/</loc>
     <lastmod>2014-07-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article4/</loc>
+    <loc>//localhost:4321/papers/article4/</loc>
     <lastmod>2014-06-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article3/</loc>
+    <loc>//localhost:4321/papers/article3/</loc>
     <lastmod>2014-03-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article2/</loc>
+    <loc>//localhost:4321/papers/article2/</loc>
     <lastmod>2012-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster6/</loc>
+    <loc>//localhost:4321/posters/poster6/</loc>
     <lastmod>2011-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster8/</loc>
+    <loc>//localhost:4321/posters/poster8/</loc>
     <lastmod>2011-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster9/</loc>
+    <loc>//localhost:4321/posters/poster9/</loc>
     <lastmod>2011-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster1/</loc>
+    <loc>//localhost:4321/posters/poster1/</loc>
     <lastmod>2011-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster5/</loc>
+    <loc>//localhost:4321/posters/poster5/</loc>
     <lastmod>2009-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/papers/article1/</loc>
+    <loc>//localhost:4321/papers/article1/</loc>
     <lastmod>2009-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster3/</loc>
+    <loc>//localhost:4321/posters/poster3/</loc>
     <lastmod>2008-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/posters/poster2/</loc>
+    <loc>//localhost:4321/posters/poster2/</loc>
     <lastmod>2008-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>http://localhost:4321/ramirodcrego.com/experience/</loc>
+    <loc>//localhost:4321/experience/</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

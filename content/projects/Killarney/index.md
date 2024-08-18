@@ -1,30 +1,12 @@
 ---
-date: "2024-07-18"
+date: "2024-06-01"
 summary: 
 tags:
 - GEE
-title: Google Earth Engine for Ecologists and Practitioners
+title: Estimating Wildlife Activity using Camera Traps
 ---
 
-I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).
+Sika and red deer have been identified as problematic to the restoration and management of the yew wood at Reenadinna, which is a priority habitat for conservation in Killarney National Park. 
 
-Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.  
-
-Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.
-
-If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the **tutorial** section of this website.
-
--------------------------------------------------------------------
-# Case studies
-
-## Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe
-
-I am collaborating with the [Giraffe Conservation Foundation](https://giraffeconservation.org) to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species. 
-
-The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.
-
-Check out the last publications on this topic:
-
-
-
- 
+Information on the relative abundance and activity of deer in the woodland and across the park is essential in order to design and implement successful management strategies. Information on abundance can be obtained by complete counts but, as deer regularly move over large distances seasonally and daily, this is logistically difficult to obtain. Other methods involving the estimation of deer numbers based on the rate at which they produce faecal pellets (eg FAR faecal accumulation rate) are commonly used to provide estimates of deer density. These methods rely on accurate identification of pellets and sufficient sampling of large areas and thus require a great deal of personnel time. In addition, the decomposition rate of pellets in different weather conditions and across varying habitats is another complicating factor. Moreover, information on activity and habitat selection within the woodlands and neighbouring ecosystems is necessary for planning management and ensure forest regeneration.
+Over the last number of years a range of enumeration methods involving the use of camera traps have been developed for a range of wildlife species that can provide information on both, abundance and habitat use. Using camera traps has the advantage of continuous non-invasive monitoring (traps can be set to detect over 24 hours), over extended periods and over large areas. KNP has acquired 30 camera traps and it is proposed to use these traps to gain insights into the activity of deer across the peninsula.

@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Books | ramirodcrego</title>
-    <link>http://localhost:4321/ramirodcrego.com/books/</link>
-      <atom:link href="http://localhost:4321/ramirodcrego.com/books/index.xml" rel="self" type="application/rss+xml" />
+    <link>//localhost:4321/books/</link>
+      <atom:link href="//localhost:4321/books/index.xml" rel="self" type="application/rss+xml" />
     <description>Books</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:4321/ramirodcrego.com/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
+      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Books</title>
-      <link>http://localhost:4321/ramirodcrego.com/books/</link>
+      <link>//localhost:4321/books/</link>
     </image>
     
     <item>
       <title>The Eyes of the Tree: Applying Field Environmental Philosophy to Tackle Conservation Problems at Long-Term Socio-ecological Research Sites</title>
-      <link>http://localhost:4321/ramirodcrego.com/books/book2/</link>
+      <link>//localhost:4321/books/book2/</link>
       <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/books/book2/</guid>
+      <guid>//localhost:4321/books/book2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fur Trade and the Biotic Homogenization of Subpolar Ecosystems</title>
-      <link>http://localhost:4321/ramirodcrego.com/books/book1/</link>
+      <link>//localhost:4321/books/book1/</link>
       <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/books/book1/</guid>
+      <guid>//localhost:4321/books/book1/</guid>
       <description></description>
     </item>
     

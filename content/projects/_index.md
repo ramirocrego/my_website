@@ -10,6 +10,7 @@ design:
 sections:
 - block: collection
   content:
+    count: 10
     filters:
       folders:
       - projects

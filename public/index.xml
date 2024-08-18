@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ramirodcrego</title>
-    <link>http://localhost:4321/ramirodcrego.com/</link>
-      <atom:link href="http://localhost:4321/ramirodcrego.com/index.xml" rel="self" type="application/rss+xml" />
+    <link>//localhost:4321/</link>
+      <atom:link href="//localhost:4321/index.xml" rel="self" type="application/rss+xml" />
     <description>ramirodcrego</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:4321/ramirodcrego.com/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
+      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>ramirodcrego</title>
-      <link>http://localhost:4321/ramirodcrego.com/</link>
+      <link>//localhost:4321/</link>
     </image>
     
     <item>
       <title>Example Talk</title>
-      <link>http://localhost:4321/ramirodcrego.com/event/example/</link>
+      <link>//localhost:4321/event/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/event/example/</guid>
+      <guid>//localhost:4321/event/example/</guid>
       <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
 &lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
   &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
@@ -34,42 +34,10 @@
     </item>
     
     <item>
-      <title>Direct comparative assessment of radial and transect surveys to document wild mammal activity across diverse habitat types</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article40/</link>
-      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article40/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Human footprint and rainfall shape Masai giraffe&#39;s habitat suitability and connectivity in a multiple‐use landscape</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article39/</link>
-      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article39/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Introduction to spatial ecology with R</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/r/</link>
-      <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web apps</title>
-      <link>http://localhost:4321/ramirodcrego.com/apps/</link>
-      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/apps/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/gcf/</link>
-      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/gcf/</guid>
+      <link>//localhost:4321/projects/gcf/</link>
+      <pubDate>Fri, 02 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/projects/gcf/</guid>
       <description>&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
 &lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
 &lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
@@ -77,150 +45,141 @@
     </item>
     
     <item>
-      <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/argentina/</link>
+      <title>Direct comparative assessment of radial and transect surveys to document wild mammal activity across diverse habitat types</title>
+      <link>//localhost:4321/papers/article40/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article40/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Human footprint and rainfall shape Masai giraffe&#39;s habitat suitability and connectivity in a multiple‐use landscape</title>
+      <link>//localhost:4321/papers/article39/</link>
+      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article39/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction to spatial ecology with R</title>
+      <link>//localhost:4321/teaching/r/</link>
+      <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/teaching/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web apps</title>
+      <link>//localhost:4321/apps/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/apps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Collaborating with Rewilding Argentina</title>
+      <link>//localhost:4321/projects/argentina/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/argentina/</guid>
-      <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
-&lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
-&lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
-</description>
+      <guid>//localhost:4321/projects/argentina/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/birdireland/</link>
+      <link>//localhost:4321/projects/gee/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/birdireland/</guid>
+      <guid>//localhost:4321/projects/gee/</guid>
       <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
 &lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
 &lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
+&lt;p&gt;If you want to learn how to use GEE and implement any of the methodologies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/chbr/</link>
+      <title>Hierarchical Distance Sampling for Monitoring Large Herbivores</title>
+      <link>//localhost:4321/projects/distsampl/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/chbr/</guid>
-      <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
-&lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
-&lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
+      <guid>//localhost:4321/projects/distsampl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Invasive species and biocultural conservation in the Cape Horn Biosphere Reserve</title>
+      <link>//localhost:4321/projects/chbr/</link>
+      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/projects/chbr/</guid>
+      <description>&lt;p&gt;I conducted my PhD fieldwork in the Cape Horn Biosphere Reserve. Since then, I have continue working with my friends and colleagues.
+My PhD work focused on studying the dynamics and impact of invasive mammalian species across the region. Invasive species are a major global problem. In the past 70 years, twelve mammal species were introduced in the Cape Horn region. I focused on three of the most invasive and harmful species introduced by the fur industry: the American beaver (&lt;strong&gt;Castor canadensis&lt;/strong&gt;), the muskrat (&lt;strong&gt;Ondatra zibethica&lt;/strong&gt;), and the American mink (&lt;strong&gt;Neovison vison&lt;/strong&gt;). These species, native to North America and Canada that naturally interact in their native range, are now creating an assemblage that have a large impact on the structure and functioning of the Magellanic Sub-Antarctic ecosystems.&lt;/p&gt;
+&lt;p&gt;In this project, we have been addressing several questions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How does the invasive American mink adapt to a pristine-island ecosystem?&lt;/li&gt;
+&lt;li&gt;Which habitats are mink using and how that changes along the year?&lt;/li&gt;
+&lt;li&gt;How do prey species adapt to the new predator?&lt;/li&gt;
+&lt;li&gt;What is the impact that American mink predation has on native rodent and bird species?&lt;/li&gt;
+&lt;li&gt;How do the three non-indigenous mammal species (American beavers, muskrats, and American mink) interact among themselves to amplify their impacts on biodiversity?&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
-      <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/distsampling/</link>
+      <title>Modeling the unseen - studying birds occupancy and abundance using citizen science</title>
+      <link>//localhost:4321/projects/birdireland/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/distsampling/</guid>
-      <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
-&lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
-&lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/gee/</link>
-      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/gee/</guid>
-      <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
-&lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
-&lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/projects/killarney/</link>
-      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/projects/killarney/</guid>
-      <description>&lt;p&gt;I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).&lt;/p&gt;
-&lt;p&gt;Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.&lt;/p&gt;
-&lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
-&lt;p&gt;If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
-&lt;h2 id=&#34;combining-species-distribution-models-and-moderate-resolution-satellite-information-to-guide-conservation-programs-for-giraffe&#34;&gt;Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe&lt;/h2&gt;
-&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
-</description>
+      <guid>//localhost:4321/projects/birdireland/</guid>
+      <description></description>
     </item>
     
     <item>
       <title>A camera-trap assessment of the native and invasive mammals present in protected areas of Magallanes, Chilean Patagonia</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article38/</link>
+      <link>//localhost:4321/papers/article38/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article38/</guid>
+      <guid>//localhost:4321/papers/article38/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Understanding ground-nesting habitat selection by waterbirds to prioritize invasive predator control on islands</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article37/</link>
+      <link>//localhost:4321/papers/article37/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article37/</guid>
+      <guid>//localhost:4321/papers/article37/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Understanding the transition of community land use from shifting cultivation to cash cropping in southern Tanintharyi, Myanmar</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article36/</link>
+      <title>Estimating Wildlife Activity using Camera Traps</title>
+      <link>//localhost:4321/projects/killarney/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article36/</guid>
+      <guid>//localhost:4321/projects/killarney/</guid>
+      <description>&lt;p&gt;Sika and red deer have been identified as problematic to the restoration and management of the yew wood at Reenadinna, which is a priority habitat for conservation in Killarney National Park.&lt;/p&gt;
+&lt;p&gt;Information on the relative abundance and activity of deer in the woodland and across the park is essential in order to design and implement successful management strategies. Information on abundance can be obtained by complete counts but, as deer regularly move over large distances seasonally and daily, this is logistically difficult to obtain. Other methods involving the estimation of deer numbers based on the rate at which they produce faecal pellets (eg FAR faecal accumulation rate) are commonly used to provide estimates of deer density. These methods rely on accurate identification of pellets and sufficient sampling of large areas and thus require a great deal of personnel time. In addition, the decomposition rate of pellets in different weather conditions and across varying habitats is another complicating factor. Moreover, information on activity and habitat selection within the woodlands and neighbouring ecosystems is necessary for planning management and ensure forest regeneration.
+Over the last number of years a range of enumeration methods involving the use of camera traps have been developed for a range of wildlife species that can provide information on both, abundance and habitat use. Using camera traps has the advantage of continuous non-invasive monitoring (traps can be set to detect over 24 hours), over extended periods and over large areas. KNP has acquired 30 camera traps and it is proposed to use these traps to gain insights into the activity of deer across the peninsula.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Understanding the transition of community land use from shifting cultivation to cash cropping in southern Tanintharyi, Myanmar</title>
+      <link>//localhost:4321/papers/article36/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article36/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>http://localhost:4321/ramirodcrego.com/publications/</link>
+      <link>//localhost:4321/publications/</link>
       <pubDate>Sun, 19 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/publications/</guid>
+      <guid>//localhost:4321/publications/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Introduction to Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/gee-2/</link>
+      <link>//localhost:4321/teaching/gee-2/</link>
       <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/gee-2/</guid>
+      <guid>//localhost:4321/teaching/gee-2/</guid>
       <description>&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
 &lt;p&gt;Google Earth Engine is a cloud-based platform hosted by Google that uses
 Google’s high-performance and intrinsically parallel computing system
@@ -2217,9 +2176,9 @@ Landsat products in order to access land cover change trough time.&lt;/p&gt;
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/gee/</link>
+      <link>//localhost:4321/teaching/gee/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/gee/</guid>
+      <guid>//localhost:4321/teaching/gee/</guid>
       <description>&lt;p&gt;Ramiro D. Crego 1,2, Jared A. Stabach 1 and Grant Connette 1,2&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -5068,34 +5027,42 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     </item>
     
     <item>
+      <title>An Ecological Toolbox to Inform Livestock Grazing Allotments Across Wildlife Conservancies in Kenya</title>
+      <link>//localhost:4321/projects/nasa/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/projects/nasa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Reticulated giraffe habitat suitability</title>
-      <link>http://localhost:4321/ramirodcrego.com/webtools/gcf/</link>
+      <link>//localhost:4321/webtools/gcf/</link>
       <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/webtools/gcf/</guid>
+      <guid>//localhost:4321/webtools/gcf/</guid>
       <description>&lt;p&gt;This is a free web app powered by Goolge Earth Engine where managers can visualize and interact with the 30 m resolution map to help guide future surveys to search for existing populations and to inform future reintroduction assessments.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Beyond protected areas: The importance of mixed-use landscapes for the conservation of Sumatran elephants (Elephas maximus sumatranus)</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article33/</link>
+      <link>//localhost:4321/papers/article33/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article33/</guid>
+      <guid>//localhost:4321/papers/article33/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Non-systematic surveys reveal increases in areas occupied by endangered and data-deficient Nubian bustard</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article35/</link>
+      <link>//localhost:4321/papers/article35/</link>
       <pubDate>Tue, 31 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article35/</guid>
+      <guid>//localhost:4321/papers/article35/</guid>
       <description></description>
     </item>
     
     <item>
       <title>🎉 Easily create your own simple yet highly customizable blog</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/get-started/</link>
+      <link>//localhost:4321/post/get-started/</link>
       <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/get-started/</guid>
+      <guid>//localhost:4321/post/get-started/</guid>
       <description>&lt;p&gt;Welcome 👋&lt;/p&gt;
 
 
@@ -5179,25 +5146,25 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     
     <item>
       <title>Distance Sampling Demo</title>
-      <link>http://localhost:4321/ramirodcrego.com/webtools/distsampling/</link>
+      <link>//localhost:4321/webtools/distsampling/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/webtools/distsampling/</guid>
+      <guid>//localhost:4321/webtools/distsampling/</guid>
       <description>&lt;p&gt;This Shiny app aims to show how distance sampling works allowing you to change parameters and understand the theory behind this methodology to estimate abundance.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Naboisho Conservancy</title>
-      <link>http://localhost:4321/ramirodcrego.com/webtools/naboisho/</link>
+      <link>//localhost:4321/webtools/naboisho/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/webtools/naboisho/</guid>
+      <guid>//localhost:4321/webtools/naboisho/</guid>
       <description>&lt;p&gt;This Shiny app is the result of a collaboration with the Naboisho Conservancy in Kenya. It is a tool to help them monitor the impact of their conservation efforts on the abundance of large herbivores. The app allows users to explore the data collected by the conservancy and to visualize the abundance trends of large herbivores.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>🧠 Sharpen your thinking with a second brain</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/second-brain/</link>
+      <link>//localhost:4321/post/second-brain/</link>
       <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/second-brain/</guid>
+      <guid>//localhost:4321/post/second-brain/</guid>
       <description>&lt;p&gt;Create a personal knowledge base and share your knowledge with your peers.&lt;/p&gt;
 &lt;p&gt;Hugo Blox web framework empowers you with one of the most flexible note-taking capabilities out there.&lt;/p&gt;
 &lt;p&gt;Create a powerful knowledge base that works on top of a local folder of plain text Markdown files.&lt;/p&gt;
@@ -5299,9 +5266,9 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     
     <item>
       <title>📈 Communicate your results effectively with the best data visualizations</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/data-visualization/</link>
+      <link>//localhost:4321/post/data-visualization/</link>
       <pubDate>Wed, 25 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/data-visualization/</guid>
+      <guid>//localhost:4321/post/data-visualization/</guid>
       <description>&lt;p&gt;Hugo Blox is designed to give technical content creators a seamless experience. You can focus on the content and Hugo Blox handles the rest.&lt;/p&gt;
 &lt;p&gt;Use popular tools such as Plotly, Mermaid, and data frames.&lt;/p&gt;
 &lt;h2 id=&#34;charts&#34;&gt;Charts&lt;/h2&gt;
@@ -5312,7 +5279,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-634821975&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-815376429&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -5330,7 +5297,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-634821975&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-815376429&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -5505,9 +5472,9 @@ Crash --&amp;gt; [*]
     
     <item>
       <title>👩🏼‍🏫 Teach academic courses</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/teach-courses/</link>
+      <link>//localhost:4321/post/teach-courses/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/teach-courses/</guid>
+      <guid>//localhost:4321/post/teach-courses/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://hugoblox.com&#34;&gt;Hugo Blox Builder&lt;/a&gt; is designed to give technical content creators a seamless experience. You can focus on the content and the Hugo Blox Builder which this template is built upon handles the rest.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Embed videos, podcasts, code, LaTeX math, and even test students!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Hugo Blox.&lt;/p&gt;
@@ -5560,7 +5527,7 @@ Crash --&amp;gt; [*]
 
 
 &lt;audio controls &gt;
-  &lt;source src=&#34;http://localhost:4321/ramirodcrego.com/ramirodcrego.com/post/teach-courses/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+  &lt;source src=&#34;//localhost:4321/post/teach-courses/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
 &lt;/audio&gt;
 
 &lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
@@ -5621,9 +5588,9 @@ data.head()
     
     <item>
       <title>Learn JavaScript</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/js/</link>
+      <link>//localhost:4321/post/js/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/js/</guid>
+      <guid>//localhost:4321/post/js/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://hugoblox.com&#34;&gt;Hugo Blox Builder&lt;/a&gt; is designed to give technical content creators a seamless experience. You can focus on the content and the Hugo Blox Builder which this template is built upon handles the rest.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Embed videos, podcasts, code, LaTeX math, and even test students!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Hugo Blox.&lt;/p&gt;
@@ -5670,7 +5637,7 @@ data.head()
 
 
 &lt;audio controls &gt;
-  &lt;source src=&#34;http://localhost:4321/ramirodcrego.com/ramirodcrego.com/post/js/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+  &lt;source src=&#34;//localhost:4321/post/js/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
 &lt;/audio&gt;
 
 &lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
@@ -5747,9 +5714,9 @@ data.head()
     
     <item>
       <title>Learn Python</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/python/</link>
+      <link>//localhost:4321/post/python/</link>
       <pubDate>Tue, 24 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/python/</guid>
+      <guid>//localhost:4321/post/python/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://hugoblox.com&#34;&gt;Hugo Blox Builder&lt;/a&gt; is designed to give technical content creators a seamless experience. You can focus on the content and the Hugo Blox Builder which this template is built upon handles the rest.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Embed videos, podcasts, code, LaTeX math, and even test students!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;On this page, you&amp;rsquo;ll find some examples of the types of technical content that can be rendered with Hugo Blox.&lt;/p&gt;
@@ -5796,7 +5763,7 @@ data.head()
 
 
 &lt;audio controls &gt;
-  &lt;source src=&#34;http://localhost:4321/ramirodcrego.com/ramirodcrego.com/post/python/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
+  &lt;source src=&#34;//localhost:4321/post/python/ambient-piano.mp3&#34; type=&#34;audio/mpeg&#34;&gt;
 &lt;/audio&gt;
 
 &lt;h2 id=&#34;test-students&#34;&gt;Test students&lt;/h2&gt;
@@ -5873,9 +5840,9 @@ data.head()
     
     <item>
       <title>✅ Manage your projects</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/project-management/</link>
+      <link>//localhost:4321/post/project-management/</link>
       <pubDate>Mon, 23 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/project-management/</guid>
+      <guid>//localhost:4321/post/project-management/</guid>
       <description>&lt;p&gt;Easily manage your projects - create ideation mind maps, Gantt charts, todo lists, and more!&lt;/p&gt;
 &lt;h2 id=&#34;ideation&#34;&gt;Ideation&lt;/h2&gt;
 &lt;p&gt;Hugo Blox supports a Markdown extension for mindmaps.&lt;/p&gt;
@@ -5948,105 +5915,105 @@ Parallel 4   :         des6, after des4, 1d
     
     <item>
       <title>Monitoring spatiotemporal dynamics of large herbivores across an African rangeland using hierarchical multi‐species distance sampling</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article34/</link>
+      <link>//localhost:4321/papers/article34/</link>
       <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article34/</guid>
+      <guid>//localhost:4321/papers/article34/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Where are the giraffes hiding? Predictive tracking tech points the way</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/news1/</link>
+      <link>//localhost:4321/blog/news1/</link>
       <pubDate>Sun, 13 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/news1/</guid>
+      <guid>//localhost:4321/blog/news1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The Eyes of the Tree: Applying Field Environmental Philosophy to Tackle Conservation Problems at Long-Term Socio-ecological Research Sites</title>
-      <link>http://localhost:4321/ramirodcrego.com/books/book2/</link>
+      <link>//localhost:4321/books/book2/</link>
       <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/books/book2/</guid>
+      <guid>//localhost:4321/books/book2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Combining species distribution models and moderate resolution satellite information to guide conservation programs for reticulated giraffe</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article32/</link>
+      <link>//localhost:4321/papers/article32/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article32/</guid>
+      <guid>//localhost:4321/papers/article32/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ranging behaviours across ecological and anthropogenic disturbance gradients: a pan-African perspective of giraffe (Giraffa spp.) space use</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article31/</link>
+      <link>//localhost:4321/papers/article31/</link>
       <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article31/</guid>
+      <guid>//localhost:4321/papers/article31/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wild herbivores enhance resistance to invasion by exotic cacti in an African savanna</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article30/</link>
+      <link>//localhost:4321/papers/article30/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article30/</guid>
+      <guid>//localhost:4321/papers/article30/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A new bird species in Chile.</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/news2/</link>
+      <link>//localhost:4321/blog/news2/</link>
       <pubDate>Fri, 02 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/news2/</guid>
+      <guid>//localhost:4321/blog/news2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>The Subantarctic Rayadito (Aphrastura subantarctica), a new bird species on the southernmost islands of the Americas</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article29/</link>
+      <link>//localhost:4321/papers/article29/</link>
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article29/</guid>
+      <guid>//localhost:4321/papers/article29/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article26/</link>
+      <link>//localhost:4321/papers/article26/</link>
       <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article26/</guid>
+      <guid>//localhost:4321/papers/article26/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cascading effects of a disease outbreak in a remote protected area</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article27/</link>
+      <link>//localhost:4321/papers/article27/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article27/</guid>
+      <guid>//localhost:4321/papers/article27/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Increasing Anthropogenic Disturbance Restricts Wildebeest Movement Across East African Grazing Systems</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article28/</link>
+      <link>//localhost:4321/papers/article28/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article28/</guid>
+      <guid>//localhost:4321/papers/article28/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Less Is More: Lowering Cattle Stocking Rates Enhances Wild Herbivore Habitat Use and Cattle Foraging Efficiency</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article25/</link>
+      <link>//localhost:4321/papers/article25/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article25/</guid>
+      <guid>//localhost:4321/papers/article25/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/rgee/</link>
+      <link>//localhost:4321/teaching/rgee/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/rgee/</guid>
+      <guid>//localhost:4321/teaching/rgee/</guid>
       <description>&lt;p&gt;Ramiro D. Crego &lt;sup&gt;a,b&lt;/sup&gt;, Majaliwa M. Masolele &lt;sup&gt;c&lt;/sup&gt;, Grant Connette &lt;sup&gt;a,b&lt;/sup&gt;, and Jared A. Stabach &lt;sup&gt;a&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
 Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,
@@ -6434,49 +6401,49 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
     
     <item>
       <title>Spatial segregation between wild ungulates and livestock outside protected areas in the lowlands of Nepal</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article24/</link>
+      <link>//localhost:4321/papers/article24/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article24/</guid>
+      <guid>//localhost:4321/papers/article24/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Experimental evidence that effects of megaherbivores on mesoherbivore space use are influenced by species&#39; traits</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article22/</link>
+      <link>//localhost:4321/papers/article22/</link>
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article22/</guid>
+      <guid>//localhost:4321/papers/article22/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enhancing Animal Movement Analyses: Spatiotemporal Matching of Animal Positions with Remotely Sensed Data Using Google Earth Engine and R</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article23/</link>
+      <link>//localhost:4321/papers/article23/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article23/</guid>
+      <guid>//localhost:4321/papers/article23/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I was invited as a guest to the Nature Magic podcast. A lovely conversation with Mary about past experiences and reconnecting with nature.</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/podcast1/</link>
+      <link>//localhost:4321/blog/podcast1/</link>
       <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/podcast1/</guid>
+      <guid>//localhost:4321/blog/podcast1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Moving through the mosaic: identifying critical linkage zones for large herbivores across a multiple‐use African landscape</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article21/</link>
+      <link>//localhost:4321/papers/article21/</link>
       <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article21/</guid>
+      <guid>//localhost:4321/papers/article21/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hello R Markdown</title>
-      <link>http://localhost:4321/ramirodcrego.com/post/2020-12-01-r-rmarkdown/</link>
+      <link>//localhost:4321/post/2020-12-01-r-rmarkdown/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/post/2020-12-01-r-rmarkdown/</guid>
+      <guid>//localhost:4321/post/2020-12-01-r-rmarkdown/</guid>
       <description>&lt;h1 id=&#34;r-markdown&#34;&gt;R Markdown&lt;/h1&gt;
 &lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
@@ -6507,7 +6474,7 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;init.angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;-50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;border&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;NA&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://localhost:4321/ramirodcrego.com/ramirodcrego.com/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;//localhost:4321/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;Figure 1: A fancy pie chart.&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -6515,65 +6482,65 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
     
     <item>
       <title>Colaboración científica con la Armada de Chile en estudios ornitológicos a largo plazo en el archipiélago Diego Ramírez: Primer monitoreo del ciclo anual del ensamble de aves en la isla Gonzalo</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article20/</link>
+      <link>//localhost:4321/papers/article20/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article20/</guid>
+      <guid>//localhost:4321/papers/article20/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Un centinela para el monitoreo del cambio climático y su impacto sobre la biodiversidad en la cumbre austral de América: La nueva red de estudios a largo Plazo Cabo de Hornos</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article19/</link>
+      <link>//localhost:4321/papers/article19/</link>
       <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article19/</guid>
+      <guid>//localhost:4321/papers/article19/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nest-site selection and breeding success of passerines in the world’s southernmost forests</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article17/</link>
+      <link>//localhost:4321/papers/article17/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article17/</guid>
+      <guid>//localhost:4321/papers/article17/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unexpected lack of effect of the invasive American mink on the nesting survival of forest birds</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article18/</link>
+      <link>//localhost:4321/papers/article18/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article18/</guid>
+      <guid>//localhost:4321/papers/article18/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Laikipia Shiny app</title>
-      <link>http://localhost:4321/ramirodcrego.com/webtools/laikipia/</link>
+      <link>//localhost:4321/webtools/laikipia/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/webtools/laikipia/</guid>
+      <guid>//localhost:4321/webtools/laikipia/</guid>
       <description>&lt;p&gt;I have designed this Shiny app to help managers visualize the results of our studies across Laikipia, Kenya, and make decisions on the ground related to livestock management, fence deployment and their effects on herbivore species richness and landscape connectivity, and species abundance.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spatiotemporal dynamics of wild herbivore species richness and occupancy across a savannah rangeland: Implications for conservation</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article16/</link>
+      <link>//localhost:4321/papers/article16/</link>
       <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article16/</guid>
+      <guid>//localhost:4321/papers/article16/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Breeding strategies of open-cup-nesting birds in sub-Antarctic forests of Navarino Island, Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article15/</link>
+      <link>//localhost:4321/papers/article15/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article15/</guid>
+      <guid>//localhost:4321/papers/article15/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Natural TV</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/blog3/</link>
+      <link>//localhost:4321/blog/blog3/</link>
       <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/blog3/</guid>
+      <guid>//localhost:4321/blog/blog3/</guid>
       <description>&lt;p&gt;We love David Attenborough. If you don’t know him, he is an English broadcaster, naturalist and scientist that narrates and appears in lots of nature documentaries. He is pretty great and has spent basically all of his life advocating a love of nature and campaigning for its protection&lt;/p&gt;
 &lt;p&gt;We just finished watching another of his amazing documentaries online.&lt;/p&gt;
 &lt;p&gt;The footage is gorgeous: a blue whale gliding magnificently through a still ocean, brightly colored birds performing spectacular mating rituals, exotic insects perching on strange and wonderful plants. We love nature, thus, it’s a pleasure to watch documentaries showing the beauty of different natural places and its biodiversity around the world. It’s also beautiful to perceive the passion Attenborough transmits for what he loves. And because we think that one of the solutions to tackle environmental problems is to reconnect humans with nature, we wonder if documentaries are a good vehicle to that goal.&lt;/p&gt;
@@ -6596,9 +6563,9 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
     
     <item>
       <title>Do Not Blame all Human Beings</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/blog2/</link>
+      <link>//localhost:4321/blog/blog2/</link>
       <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/blog2/</guid>
+      <guid>//localhost:4321/blog/blog2/</guid>
       <description>&lt;p&gt;We wake up, prepare something for breakfast, and like every morning before starting work, read the news:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.theguardian.com/environment/2013/sep/27/ipcc-climate-report-un-secretary-general&#34;&gt;IPCC climate report: human impact is ‘unequivocal’&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bbc.com/news/science-environment-24292615&#34;&gt;IPCC climate report: humans ‘dominant cause’ of warming&lt;/a&gt;&lt;/p&gt;
@@ -6618,9 +6585,9 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
     
     <item>
       <title>A Natural Story of Reconnection</title>
-      <link>http://localhost:4321/ramirodcrego.com/blog/blog1/</link>
+      <link>//localhost:4321/blog/blog1/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/blog/blog1/</guid>
+      <guid>//localhost:4321/blog/blog1/</guid>
       <description>&lt;p&gt;It is a cool morning, we have just reached the peak of a mountain in Navarino Island after a hard hike. We are surrounded by one of the most beautiful landscapes on the planet, where our vision gets lost among mountains, clouds, forests, and lakes. Navarino Island is located at the southern end of the Americas, in Southern Chile, and remains predominantly a wilderness area, one that has escaped much of the environmental degradation caused by industrial society. We take a long deep breath, look at each other, and contemplate the beauty that surrounds us. The howl of the wind as it hits off the mountain brings with it an incredible serenity, and we suddenly feel smaller, like we are part of the mountain itself; just another rock or piece of soil or drop of rain.&lt;/p&gt;
 &lt;p&gt;More and more, philosophers, writers, and scientists are lamenting the disconnect from nature that is so apparent in our lives. As of 2014, and for the first time in recorded history, 54% of the world’s population now live in cities (expected to rise to 66% in 2050). In cities, and in most developed countries in general, we are often detached from the most natural and elemental aspects of our being: the food we eat, the water we drink, the medicine we take. Of course, modern life brings many benefits. We are no longer subject to the vagaries of nature and weather, we have access to modern medicine, and transportation; our lives on the whole are much more convenient, and less insecure. But perhaps these benefits come at a cost. Perhaps the influx of convenience has made us forget who we fundamentally are, that we are, first and foremost, natural beings, part of nature and not opposed to it.&lt;/p&gt;
 &lt;figure&gt;
@@ -6640,201 +6607,201 @@ tm_shape(Pres) + tm_dots(col = &#39;blue&#39;, title = &amp;quot;Presence&amp;qu
     
     <item>
       <title>New records of invasive mammals from the sub-Antarctic Cape Horn Archipelago</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article14/</link>
+      <link>//localhost:4321/papers/article14/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article14/</guid>
+      <guid>//localhost:4321/papers/article14/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fur Trade and the Biotic Homogenization of Subpolar Ecosystems</title>
-      <link>http://localhost:4321/ramirodcrego.com/books/book1/</link>
+      <link>//localhost:4321/books/book1/</link>
       <pubDate>Tue, 19 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/books/book1/</guid>
+      <guid>//localhost:4321/books/book1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Los ojos del árbol: percibiendo, registrando, comprendiendo y contrarrestando las invasiones biológicas en tiempos de rápida homogeneizacion biocultural</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article13/</link>
+      <link>//localhost:4321/papers/article13/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article13/</guid>
+      <guid>//localhost:4321/papers/article13/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Macro- and micro-habitat selection of small rodents and their predation risk perception under a novel invasive predator at the southern end of the Americas</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article11/</link>
+      <link>//localhost:4321/papers/article11/</link>
       <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article11/</guid>
+      <guid>//localhost:4321/papers/article11/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Potential niche expansion of the American mink invading a remote island free of native-predatory mammals</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article12/</link>
+      <link>//localhost:4321/papers/article12/</link>
       <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article12/</guid>
+      <guid>//localhost:4321/papers/article12/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Management regime mediates the precipitation-vegetation relationship in rangelands: Implications for ‘climate-smart’ ecological restoration planning</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster4/</link>
+      <link>//localhost:4321/posters/poster4/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster4/</guid>
+      <guid>//localhost:4321/posters/poster4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Native-predator-invasive-prey trophic interactions in Tierra del Fuego: the beginning of biological resistance?</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article10/</link>
+      <link>//localhost:4321/papers/article10/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article10/</guid>
+      <guid>//localhost:4321/papers/article10/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Primer registro de Vespula vulgaris (Linnaeus 1758) (Hymenoptera: Vespidae) en la isla Navarino, Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article9/</link>
+      <link>//localhost:4321/papers/article9/</link>
       <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article9/</guid>
+      <guid>//localhost:4321/papers/article9/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A synergistic trio of invasive mammals? Facilitative interactions among beavers, muskrats, and mink at the southern end of the Americas</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article8/</link>
+      <link>//localhost:4321/papers/article8/</link>
       <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article8/</guid>
+      <guid>//localhost:4321/papers/article8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Seasonal dynamic habitat use suggests niche expansion of an invasive predator at the southernmost forest of the world</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster7/</link>
+      <link>//localhost:4321/posters/poster7/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster7/</guid>
+      <guid>//localhost:4321/posters/poster7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Expansión de la invasión del Visón Norteamericano (Neovison vison) en la Reserva de la Biosfera de Cabo de Hornos, Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article7/</link>
+      <link>//localhost:4321/papers/article7/</link>
       <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article7/</guid>
+      <guid>//localhost:4321/papers/article7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Filosofía ambiental de campo: ecología y ética en las redes LTER-Chile e ILTER</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article6/</link>
+      <link>//localhost:4321/papers/article6/</link>
       <pubDate>Mon, 01 Sep 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article6/</guid>
+      <guid>//localhost:4321/papers/article6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Potential impact of the alien American mink (Neovison vison) on Magellanic woodpeckers (Campephilus magallanicus) in Navarino Island, southern Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article5/</link>
+      <link>//localhost:4321/papers/article5/</link>
       <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article5/</guid>
+      <guid>//localhost:4321/papers/article5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Climate change and conservation implications for wet meadows in dry Patagonia</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article4/</link>
+      <link>//localhost:4321/papers/article4/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article4/</guid>
+      <guid>//localhost:4321/papers/article4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling meadow distribution for conservation action in arid and semi-arid Patagonia, Argentina</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article3/</link>
+      <link>//localhost:4321/papers/article3/</link>
       <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article3/</guid>
+      <guid>//localhost:4321/papers/article3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Capturing and radio ear-tagging neonatal vicuñas</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article2/</link>
+      <link>//localhost:4321/papers/article2/</link>
       <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article2/</guid>
+      <guid>//localhost:4321/papers/article2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assessing habitat preference of invasive minks (Neovison vison) using trap-cameras in Navarino Island, Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster6/</link>
+      <link>//localhost:4321/posters/poster6/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster6/</guid>
+      <guid>//localhost:4321/posters/poster6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Breeding strategies of passerines in the world’s southernmost forests</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster8/</link>
+      <link>//localhost:4321/posters/poster8/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster8/</guid>
+      <guid>//localhost:4321/posters/poster8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Identifying nesting habitats of shorebirds under mink predation in subantarctic environments</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster9/</link>
+      <link>//localhost:4321/posters/poster9/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster9/</guid>
+      <guid>//localhost:4321/posters/poster9/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Movement patterns around dens in two Illinois beaver populations</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster1/</link>
+      <link>//localhost:4321/posters/poster1/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster1/</guid>
+      <guid>//localhost:4321/posters/poster1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Donkey and guanacos abundances and group characteristics before and after donkey removal in Northwestern Argentina</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster5/</link>
+      <link>//localhost:4321/posters/poster5/</link>
       <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster5/</guid>
+      <guid>//localhost:4321/posters/poster5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Una técnica para la estimación de la densidad y el monitoreo de poblaciones de inambú común (Nothura maculosa) en ambientes de pastizal</title>
-      <link>http://localhost:4321/ramirodcrego.com/papers/article1/</link>
+      <link>//localhost:4321/papers/article1/</link>
       <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/papers/article1/</guid>
+      <guid>//localhost:4321/papers/article1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Capturing and marking newborn vicuñas with ear tag transmitters at San Guillermo National Park, Argentina</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster3/</link>
+      <link>//localhost:4321/posters/poster3/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster3/</guid>
+      <guid>//localhost:4321/posters/poster3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vigilant and foraging budgets of vicuñas (Vicugna vicugna) in habitats with different vegetation structure</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster2/</link>
+      <link>//localhost:4321/posters/poster2/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster2/</guid>
+      <guid>//localhost:4321/posters/poster2/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>http://localhost:4321/ramirodcrego.com/experience/</link>
+      <link>//localhost:4321/experience/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/experience/</guid>
+      <guid>//localhost:4321/experience/</guid>
       <description></description>
     </item>
     

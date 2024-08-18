@@ -1,8 +1,9 @@
 ---
-date: "2024-07-18"
+date: "2024-08-02"
 summary: 
 tags:
 - GEE
+- Giraffe
 title: Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe
 ---
 

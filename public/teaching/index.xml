@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorials | ramirodcrego</title>
-    <link>http://localhost:4321/ramirodcrego.com/teaching/</link>
-      <atom:link href="http://localhost:4321/ramirodcrego.com/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <link>//localhost:4321/teaching/</link>
+      <atom:link href="//localhost:4321/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>Tutorials</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:4321/ramirodcrego.com/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
+      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Tutorials</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/</link>
+      <link>//localhost:4321/teaching/</link>
     </image>
     
     <item>
       <title>Introduction to spatial ecology with R</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/r/</link>
+      <link>//localhost:4321/teaching/r/</link>
       <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/r/</guid>
+      <guid>//localhost:4321/teaching/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Introduction to Google Earth Engine for Ecologists and Practitioners</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/gee-2/</link>
+      <link>//localhost:4321/teaching/gee-2/</link>
       <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/gee-2/</guid>
+      <guid>//localhost:4321/teaching/gee-2/</guid>
       <description>&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
 &lt;p&gt;Google Earth Engine is a cloud-based platform hosted by Google that uses
 Google’s high-performance and intrinsically parallel computing system
@@ -2021,9 +2021,9 @@ Landsat products in order to access land cover change trough time.&lt;/p&gt;
     
     <item>
       <title>Implementation of species distribution models in Google Earth Engine</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/gee/</link>
+      <link>//localhost:4321/teaching/gee/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/gee/</guid>
+      <guid>//localhost:4321/teaching/gee/</guid>
       <description>&lt;p&gt;Ramiro D. Crego 1,2, Jared A. Stabach 1 and Grant Connette 1,2&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -4873,9 +4873,9 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
     
     <item>
       <title>Enhancing animal movement analyses - Spatiotemporal matching of animal positions with remotely sensed data using Google Earth Engine and R</title>
-      <link>http://localhost:4321/ramirodcrego.com/teaching/rgee/</link>
+      <link>//localhost:4321/teaching/rgee/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/teaching/rgee/</guid>
+      <guid>//localhost:4321/teaching/rgee/</guid>
       <description>&lt;p&gt;Ramiro D. Crego &lt;sup&gt;a,b&lt;/sup&gt;, Majaliwa M. Masolele &lt;sup&gt;c&lt;/sup&gt;, Grant Connette &lt;sup&gt;a,b&lt;/sup&gt;, and Jared A. Stabach &lt;sup&gt;a&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;a - Smithsonian National Zoo and Conservation Biology Institute,
 Conservation Ecology Center, 1500 Remount Rd, Front Royal, VA 22630,

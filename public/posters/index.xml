@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posters | ramirodcrego</title>
-    <link>http://localhost:4321/ramirodcrego.com/posters/</link>
-      <atom:link href="http://localhost:4321/ramirodcrego.com/posters/index.xml" rel="self" type="application/rss+xml" />
+    <link>//localhost:4321/posters/</link>
+      <atom:link href="//localhost:4321/posters/index.xml" rel="self" type="application/rss+xml" />
     <description>Posters</description>
     <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://localhost:4321/ramirodcrego.com/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
+      <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Posters</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/</link>
+      <link>//localhost:4321/posters/</link>
     </image>
     
     <item>
       <title>Management regime mediates the precipitation-vegetation relationship in rangelands: Implications for ‘climate-smart’ ecological restoration planning</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster4/</link>
+      <link>//localhost:4321/posters/poster4/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster4/</guid>
+      <guid>//localhost:4321/posters/poster4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Seasonal dynamic habitat use suggests niche expansion of an invasive predator at the southernmost forest of the world</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster7/</link>
+      <link>//localhost:4321/posters/poster7/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster7/</guid>
+      <guid>//localhost:4321/posters/poster7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assessing habitat preference of invasive minks (Neovison vison) using trap-cameras in Navarino Island, Chile</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster6/</link>
+      <link>//localhost:4321/posters/poster6/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster6/</guid>
+      <guid>//localhost:4321/posters/poster6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Breeding strategies of passerines in the world’s southernmost forests</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster8/</link>
+      <link>//localhost:4321/posters/poster8/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster8/</guid>
+      <guid>//localhost:4321/posters/poster8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Identifying nesting habitats of shorebirds under mink predation in subantarctic environments</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster9/</link>
+      <link>//localhost:4321/posters/poster9/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster9/</guid>
+      <guid>//localhost:4321/posters/poster9/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Movement patterns around dens in two Illinois beaver populations</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster1/</link>
+      <link>//localhost:4321/posters/poster1/</link>
       <pubDate>Sat, 01 Jan 2011 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster1/</guid>
+      <guid>//localhost:4321/posters/poster1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Donkey and guanacos abundances and group characteristics before and after donkey removal in Northwestern Argentina</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster5/</link>
+      <link>//localhost:4321/posters/poster5/</link>
       <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster5/</guid>
+      <guid>//localhost:4321/posters/poster5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Capturing and marking newborn vicuñas with ear tag transmitters at San Guillermo National Park, Argentina</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster3/</link>
+      <link>//localhost:4321/posters/poster3/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster3/</guid>
+      <guid>//localhost:4321/posters/poster3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vigilant and foraging budgets of vicuñas (Vicugna vicugna) in habitats with different vegetation structure</title>
-      <link>http://localhost:4321/ramirodcrego.com/posters/poster2/</link>
+      <link>//localhost:4321/posters/poster2/</link>
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
-      <guid>http://localhost:4321/ramirodcrego.com/posters/poster2/</guid>
+      <guid>//localhost:4321/posters/poster2/</guid>
       <description></description>
     </item>
     

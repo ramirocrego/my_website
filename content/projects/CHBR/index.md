@@ -2,29 +2,19 @@
 date: "2024-07-18"
 summary: 
 tags:
-- GEE
-title: Google Earth Engine for Ecologists and Practitioners
+- CHBR
+title: Invasive species and biocultural conservation in the Cape Horn Biosphere Reserve
 ---
 
-I started working with Google Earth Engine in 2019, when I was a postdoctoral researcher at the Smithsonian Conservation Biology Institute (SCBI).
+I conducted my PhD fieldwork in the Cape Horn Biosphere Reserve. Since then, I have continue working with my friends and colleagues.
+My PhD work focused on studying the dynamics and impact of invasive mammalian species across the region. Invasive species are a major global problem. In the past 70 years, twelve mammal species were introduced in the Cape Horn region. I focused on three of the most invasive and harmful species introduced by the fur industry: the American beaver (**Castor canadensis**), the muskrat (**Ondatra zibethica**), and the American mink (**Neovison vison**). These species, native to North America and Canada that naturally interact in their native range, are now creating an assemblage that have a large impact on the structure and functioning of the Magellanic Sub-Antarctic ecosystems. 
 
-Google Earth Engine (GEE) is a free web-based spatial analysis platform that requires only a web browser and an internet connection to programmatically access and analyze data from its multi-petabyte catalog of regularly-updated satellite imagery (e.g., MODIS, Landsat, Sentinel) and other geospatial datasets.  
-
-Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.
-
-If you want to lear how to use GEE and implement any of the methodolgies developed, I have created multiple tutorials that you can find in the **tutorial** section of this website.
-
--------------------------------------------------------------------
-# Case studies
-
-## Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe
-
-I am collaborating with the [Giraffe Conservation Foundation](https://giraffeconservation.org) to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species. 
-
-The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.
-
-Check out the last publications on this topic:
+In this project, we have been addressing several questions: 
+- How does the invasive American mink adapt to a pristine-island ecosystem?
+- Which habitats are mink using and how that changes along the year? 
+- How do prey species adapt to the new predator?
+- What is the impact that American mink predation has on native rodent and bird species?
+- How do the three non-indigenous mammal species (American beavers, muskrats, and American mink) interact among themselves to amplify their impacts on biodiversity?
 
 
 
- 
