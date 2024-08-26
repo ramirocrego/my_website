@@ -20,6 +20,10 @@ publication_types: "article-journal"
 publishDate: "2023-10-01T00:00:00Z"
 summary: 
 tags: 
+ - R
+ - Shiny
+ - Bayes
+ - NASA
 abstract: null
 url_code: https://github.com/ramirocrego/Monitoring-spatiotemporal-dynamics-of-large-herbivores-across-Naboisho-Conservancy
 url_dataset: https://ramirodcrego.shinyapps.io/NaboishoSpAbu/

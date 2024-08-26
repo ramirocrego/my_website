@@ -37,7 +37,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2023-05-01T00:00:00Z"
 summary: 
-tags: 
+tags: GCF
 abstract: null
 url_code: https://github.com/MichaelBBrown/Brown_etal_2022_PanAfricanGiraffeSpaceUse.git
 url_dataset: https://github.com/MichaelBBrown/Brown_etal_2022_PanAfricanGiraffeSpaceUse.git

@@ -18,6 +18,8 @@ publication_types: "article-journal"
 publishDate: "2021-10-01T00:00:00Z"
 summary: 
 tags: 
+  - GEE
+  - R
 abstract: null
 url_code: https://smithsonian.github.io/SpatiotemporalMatchingOfAnimalPositionsWithRemotelySensedDataUsingGoogleEarthEngineAndR/
 url_dataset: 'https://github.com/Smithsonian/SpatiotemporalMatchingOfAnimalPositionsWithRemotelySensedDataUsingGoogleEarthEngineAndR'

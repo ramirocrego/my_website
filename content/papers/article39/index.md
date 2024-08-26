@@ -21,7 +21,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2024-07-25T00:00:00Z"
 summary: 
-tags: 
+tags: GEE
 abstract: null
 url_code: https://doi.org/10.5281/zenodo.10526779
 url_dataset: https://doi.org/10.5281/zenodo.10526779

@@ -16,7 +16,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2022-05-01T00:00:00Z"
 summary: 
-tags: 
+tags: GEE
 abstract: null
 url_code: https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/SDM_Manuscript
 url_dataset: 'https://smithsonian.github.io/SDMinGEE/'

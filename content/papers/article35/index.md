@@ -20,6 +20,7 @@ publication_types: "article-journal"
 publishDate: "2023-10-31T00:00:00Z"
 summary: 
 tags: 
+  - Bayes
 abstract: null
 url_code: https://github.com/Smithsonian/Increase-in-areas-occupied-by-endangered-and-data-deficient-Nubian-bustard
 url_dataset: https://github.com/Smithsonian/Increase-in-areas-occupied-by-endangered-and-data-deficient-Nubian-bustard

@@ -2,13 +2,17 @@
 date: "2024-01-01"
 external_link: https://cce.nasa.gov/biodiversity/_biomap/projmap.html?projType=project&projID=4277&progID=10
 tags:
-- R
-- GEE
-- Africa
+- NASA
 title: An Ecological Toolbox to Inform Livestock Grazing Allotments Across Wildlife Conservancies in Kenya
 ---
 
-
+Protected areas are recognized as an essential strategy for safeguarding planetary biodiversity. Yet, few reserves are large enough to sustain the full life cycle of the species they aim to protect. This is particularly true for migratory species in Kenya, where national parks and reserves cover just 8% of the country's land area. To address this shortcoming, local communities have united to create a network of private and communal wildlife conservancies, significantly extending the total area of land protected for wildlife and providing diverse income streams for local people.
+ 
+Despite the promise of this model as an economically viable approach for supporting human livelihoods and protecting wildlife, significant challenges exist. First, conservancy managers and staff often lack the scientific expertise to integrate field-based biodiversity monitoring efforts with remotely sensed data. Second, a lack of communication and data sharing across conservancy boundaries means that local management decisions are frequently made in isolation, without considering regional impacts. Third, the expansion of biodiversity conservation efforts across conservancies is increasingly at odds with the traditional pastoral communities that have historically grazed their livestock across vast areas of open rangeland. These conflicts are further exacerbated by a changing climate, which is leading to an increase in the frequency and intensity of droughts across the region.
+ 
+We will address these challenges by working with an established network of partners and conservancy managers across the Greater Mara Ecosystem in southern Kenya that have the authority to implement scientifically-informed conservation actions. In the first year of the project, we will develop a user-requested toolbox to assess spatiotemporal dynamics in large herbivore abundance in collaboration with three conservancies that have staff and the demonstrated ability to perform ground transect surveys for wildlife over time. This initial data product will provide the structure to incrementally expand data collection and implementation to the remaining 19 conservancies that comprise the Maasai Mara Wildlife Conservancies Association over the course of the study period.
+ 
+Our toolbox will integrate data on large-herbivore species and livestock collected from coordinated ground transects with satellite-derived estimates of water availability (OPERA DSWx-HLS) and vegetative structure (ALOS PALSAR), greenness (MODIS), and stress (ECOSTRESS) to accurately assess large-herbivore abundance and understand spatial and temporal dynamics across the landscape. Results will be visualized in a user-friendly R-shiny web application so that conservancy managers can evaluate the effect that different management scenarios (e.g., livestock density) or environmental conditions (i.e., vegetation and water variability) will have on trends in wild herbivore abundance. In doing so, we will adaptively determine wildlife-compatible grazing zones and provide a platform for abating the risk of human-wildlife conflict. Importantly, we will invest in building the analytical capacity of local Kenyan collaborators via hands-on training and internships to broaden study impacts and ensure long-term sustainability. Ultimately, we expect our tool to serve as a model for how earth observations can support integrated protected area management decisions within landscapes that feature multiple diverse stakeholders and complex socio-ecological interactions.
 
 
  

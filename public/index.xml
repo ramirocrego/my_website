@@ -38,9 +38,10 @@
       <link>//localhost:4321/projects/gcf/</link>
       <pubDate>Fri, 02 Aug 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/gcf/</guid>
-      <description>&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at 30-m spatial resolution across the potential range of the species.&lt;/p&gt;
-&lt;p&gt;The methos is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
-&lt;p&gt;Check out the last publications on this topic:&lt;/p&gt;
+      <description>&lt;p&gt;I am collaborating with the &lt;a href=&#34;https://giraffeconservation.org&#34;&gt;Giraffe Conservation Foundation&lt;/a&gt; to implement a species distribution modeling (SDM) workflow in Google Earth Engine, combining GPS telemetry data giraffe with high-resolution satellite data to predict suitable habitat at &amp;lt;100-m spatial resolution across the potential range of the species.&lt;/p&gt;
+&lt;p&gt;The methods is proving to be very useful to identify areas of high conservation value for giraffe, and to guide relocation programs to move animals into new habitats and help to recover giraffe species from areas where populations have gone extinct.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Click the &lt;strong&gt;GCF&lt;/strong&gt; tag below to see all publications and posts related to this project.&lt;/p&gt;
 </description>
     </item>
     
@@ -81,7 +82,10 @@
       <link>//localhost:4321/projects/argentina/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/argentina/</guid>
-      <description></description>
+      <description>&lt;p&gt;I am currently collaborating with &lt;a href=&#34;https://www.rewildingargentina.org/&#34;&gt;Rewilding Argentina&lt;/a&gt; to analyse telemetry datasets from several species with the objective of generating information to better understand the ecology of species of interest and inform the restoration and rewilding programs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Click the &lt;strong&gt;RewArg&lt;/strong&gt; tag below to see all publications and posts related to this project.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -94,16 +98,18 @@
 &lt;p&gt;Taking advantage of the extensive database and the computing power of Google computing network, we can now implement species distribution models, functional and structural connectivity analysis very quickly and without the need of multiple software to compile environmental variables and conduct analyses. We can also link GEE with R, through the package rGEE, to extract covariables from transects or even animal tracking data, matching the date and time data was collected with the date and time the remote sensing data was acquired. This has opened multiple opportunities for research.&lt;/p&gt;
 &lt;p&gt;If you want to learn how to use GEE and implement any of the methodologies developed, I have created multiple tutorials that you can find in the &lt;strong&gt;tutorial&lt;/strong&gt; section of this website.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;case-studies&#34;&gt;Case studies&lt;/h1&gt;
+&lt;p&gt;Click the &lt;strong&gt;GEE&lt;/strong&gt; tag below to see all publications and posts related to this project.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Hierarchical Distance Sampling for Monitoring Large Herbivores</title>
+      <title>Hierarchical Models to Study and Monitor Large Herbivores</title>
       <link>//localhost:4321/projects/distsampl/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/distsampl/</guid>
-      <description></description>
+      <description>&lt;hr&gt;
+&lt;p&gt;Click the &lt;strong&gt;Bayes&lt;/strong&gt; tag below to see all publications and posts related to this project.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -121,6 +127,8 @@ My PhD work focused on studying the dynamics and impact of invasive mammalian sp
 &lt;li&gt;What is the impact that American mink predation has on native rodent and bird species?&lt;/li&gt;
 &lt;li&gt;How do the three non-indigenous mammal species (American beavers, muskrats, and American mink) interact among themselves to amplify their impacts on biodiversity?&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Click the &lt;strong&gt;CHBR&lt;/strong&gt; tag below to see all publications and posts related to this project.&lt;/p&gt;
 </description>
     </item>
     
@@ -129,7 +137,11 @@ My PhD work focused on studying the dynamics and impact of invasive mammalian sp
       <link>//localhost:4321/projects/birdireland/</link>
       <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/birdireland/</guid>
-      <description></description>
+      <description>&lt;p&gt;Tackling the biodiversity crisis requires efficient biodiversity monitoring projects to inform conservation actions. Citizen science has become a tool for gathering the amount of data needed to accomplish this goal.&lt;/p&gt;
+&lt;p&gt;In this project, I aim to to evaluate the use of eBird, a citizen science project, for monitoring bird populations across Ireland.&lt;/p&gt;
+&lt;p&gt;I am also collaborating with Bird Watch Ireland to generate workflows that can enhance the usability of some of the datasets they collect, such as the Country Bird Data. I aim to implement hierarchical models than can account for detection probability issues and obtain unbiased estimates of species abundance.&lt;/p&gt;
+&lt;p&gt;Finally, I aim to use these data to generate tools that can aid with ecological restoration programs across Ireland.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -149,13 +161,14 @@ My PhD work focused on studying the dynamics and impact of invasive mammalian sp
     </item>
     
     <item>
-      <title>Estimating Wildlife Activity using Camera Traps</title>
+      <title>Estimating Wildlife Activity Using Camera Traps</title>
       <link>//localhost:4321/projects/killarney/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/killarney/</guid>
-      <description>&lt;p&gt;Sika and red deer have been identified as problematic to the restoration and management of the yew wood at Reenadinna, which is a priority habitat for conservation in Killarney National Park.&lt;/p&gt;
-&lt;p&gt;Information on the relative abundance and activity of deer in the woodland and across the park is essential in order to design and implement successful management strategies. Information on abundance can be obtained by complete counts but, as deer regularly move over large distances seasonally and daily, this is logistically difficult to obtain. Other methods involving the estimation of deer numbers based on the rate at which they produce faecal pellets (eg FAR faecal accumulation rate) are commonly used to provide estimates of deer density. These methods rely on accurate identification of pellets and sufficient sampling of large areas and thus require a great deal of personnel time. In addition, the decomposition rate of pellets in different weather conditions and across varying habitats is another complicating factor. Moreover, information on activity and habitat selection within the woodlands and neighbouring ecosystems is necessary for planning management and ensure forest regeneration.
-Over the last number of years a range of enumeration methods involving the use of camera traps have been developed for a range of wildlife species that can provide information on both, abundance and habitat use. Using camera traps has the advantage of continuous non-invasive monitoring (traps can be set to detect over 24 hours), over extended periods and over large areas. KNP has acquired 30 camera traps and it is proposed to use these traps to gain insights into the activity of deer across the peninsula.&lt;/p&gt;
+      <description>&lt;p&gt;Sika (&lt;em&gt;Cervus nippon&lt;/em&gt;) and red deer (&lt;em&gt;Cervus elaphus&lt;/em&gt;) have been identified as problematic to the restoration and management of the yew wood at Reenadinna, which is a priority habitat for conservation in Killarney National Park.&lt;/p&gt;
+&lt;p&gt;Information on the relative abundance and activity of deer in the woodland and across the park is essential in order to design and implement successful management strategies. Information on abundance can be obtained by complete counts but, as deer regularly move over large distances seasonally and daily, this is logistically difficult to obtain. Other methods involving the estimation of deer numbers based on the rate at which they produce faecal pellets (e.g., FAR faecal accumulation rate) are commonly used to provide estimates of deer density. These methods rely on accurate identification of pellets and sufficient sampling of large areas and thus require a great deal of personnel time. In addition, the decomposition rate of pellets in different weather conditions and across varying habitats is another complicating factor. Moreover, information on activity and habitat selection within the woodlands and neighbouring ecosystems is necessary for planning management and ensure forest regeneration.&lt;/p&gt;
+&lt;p&gt;Over the last number of years a range of enumeration methods involving the use of camera traps have been developed for a range of wildlife species that can provide information on both, abundance and habitat use. Using camera traps has the advantage of continuous non-invasive monitoring (traps can be set to detect over 24 hours), over extended periods and over large areas. KNP has acquired 30 camera traps and it is proposed to use these traps to gain insights into the activity of deer across the peninsula.&lt;/p&gt;
+&lt;p&gt;This project is being led by Colm Breslam as part of his master study at UCC.&lt;/p&gt;
 </description>
     </item>
     
@@ -5031,7 +5044,11 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
       <link>//localhost:4321/projects/nasa/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/projects/nasa/</guid>
-      <description></description>
+      <description>&lt;p&gt;Protected areas are recognized as an essential strategy for safeguarding planetary biodiversity. Yet, few reserves are large enough to sustain the full life cycle of the species they aim to protect. This is particularly true for migratory species in Kenya, where national parks and reserves cover just 8% of the country&amp;rsquo;s land area. To address this shortcoming, local communities have united to create a network of private and communal wildlife conservancies, significantly extending the total area of land protected for wildlife and providing diverse income streams for local people.&lt;/p&gt;
+&lt;p&gt;Despite the promise of this model as an economically viable approach for supporting human livelihoods and protecting wildlife, significant challenges exist. First, conservancy managers and staff often lack the scientific expertise to integrate field-based biodiversity monitoring efforts with remotely sensed data. Second, a lack of communication and data sharing across conservancy boundaries means that local management decisions are frequently made in isolation, without considering regional impacts. Third, the expansion of biodiversity conservation efforts across conservancies is increasingly at odds with the traditional pastoral communities that have historically grazed their livestock across vast areas of open rangeland. These conflicts are further exacerbated by a changing climate, which is leading to an increase in the frequency and intensity of droughts across the region.&lt;/p&gt;
+&lt;p&gt;We will address these challenges by working with an established network of partners and conservancy managers across the Greater Mara Ecosystem in southern Kenya that have the authority to implement scientifically-informed conservation actions. In the first year of the project, we will develop a user-requested toolbox to assess spatiotemporal dynamics in large herbivore abundance in collaboration with three conservancies that have staff and the demonstrated ability to perform ground transect surveys for wildlife over time. This initial data product will provide the structure to incrementally expand data collection and implementation to the remaining 19 conservancies that comprise the Maasai Mara Wildlife Conservancies Association over the course of the study period.&lt;/p&gt;
+&lt;p&gt;Our toolbox will integrate data on large-herbivore species and livestock collected from coordinated ground transects with satellite-derived estimates of water availability (OPERA DSWx-HLS) and vegetative structure (ALOS PALSAR), greenness (MODIS), and stress (ECOSTRESS) to accurately assess large-herbivore abundance and understand spatial and temporal dynamics across the landscape. Results will be visualized in a user-friendly R-shiny web application so that conservancy managers can evaluate the effect that different management scenarios (e.g., livestock density) or environmental conditions (i.e., vegetation and water variability) will have on trends in wild herbivore abundance. In doing so, we will adaptively determine wildlife-compatible grazing zones and provide a platform for abating the risk of human-wildlife conflict. Importantly, we will invest in building the analytical capacity of local Kenyan collaborators via hands-on training and internships to broaden study impacts and ensure long-term sustainability. Ultimately, we expect our tool to serve as a model for how earth observations can support integrated protected area management decisions within landscapes that feature multiple diverse stakeholders and complex socio-ecological interactions.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -5279,7 +5296,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-815376429&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-815247693&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -5297,7 +5314,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-815376429&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-815247693&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();

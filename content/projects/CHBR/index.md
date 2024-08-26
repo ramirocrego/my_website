@@ -16,5 +16,6 @@ In this project, we have been addressing several questions:
 - What is the impact that American mink predation has on native rodent and bird species?
 - How do the three non-indigenous mammal species (American beavers, muskrats, and American mink) interact among themselves to amplify their impacts on biodiversity?
 
-
+-------------------------------------------------------------------
+Click the **CHBR** tag below to see all publications and posts related to this project.
 

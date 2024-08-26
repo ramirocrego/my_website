@@ -23,6 +23,7 @@ summary:
 tags: 
   - Shiny
   - R
+  - Bayes
 abstract: null
 url_code: 'https://rpubs.com/ramirocrego/LaikipiaHerbCommDyn'
 url_dataset: 'https://ramirodcrego.shinyapps.io/Laikipia/'

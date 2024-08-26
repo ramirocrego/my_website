@@ -14,11 +14,7 @@
     <lastmod>2024-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/tags/gee/</loc>
-    <lastmod>2024-08-02T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/tags/giraffe/</loc>
+    <loc>//localhost:4321/tags/gcf/</loc>
     <lastmod>2024-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -46,6 +42,10 @@
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/tags/gee/</loc>
+    <lastmod>2024-07-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/papers/article39/</loc>
     <lastmod>2024-07-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -70,6 +70,10 @@
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/tags/bayes/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/tags/chbr/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -91,6 +95,10 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/projects/birdireland/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/rewarg/</loc>
     <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -122,12 +130,16 @@
     <lastmod>2024-02-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/tags/africa/</loc>
+    <loc>//localhost:4321/projects/nasa/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/projects/nasa/</loc>
+    <loc>//localhost:4321/tags/nasa/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/tags/giraffe/</loc>
+    <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>//localhost:4321/webtools/gcf/</loc>

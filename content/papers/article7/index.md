@@ -16,7 +16,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2015-01-01T00:00:00Z"
 summary: 
-tags: 
+tags: CHBR
 abstract: null
 url_code: 
 url_dataset: ''

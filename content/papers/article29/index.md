@@ -30,7 +30,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2022-08-01T00:00:00Z"
 summary: 
-tags: 
+tags: CHBR
 abstract: null
 url_code: 
 url_dataset: 'https://doi.org/10.5281/zenodo.6983420'

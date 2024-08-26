@@ -2,7 +2,9 @@
 date: "2024-07-18"
 summary: 
 tags:
-- GEE
-title: Hierarchical Distance Sampling for Monitoring Large Herbivores
+- Bayes
+title: Hierarchical Models to Study and Monitor Large Herbivores
 ---
 
+-------------------------------------------------------------------
+Click the **Bayes** tag below to see all publications and posts related to this project.

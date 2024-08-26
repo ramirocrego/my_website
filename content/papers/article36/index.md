@@ -21,6 +21,7 @@ publication_types: "article-journal"
 publishDate: "2024-06-01T00:00:00Z"
 summary: 
 tags: 
+ - GEE
 abstract: null
 url_code: 
 url_dataset: https://doi.org/10.25573/data.c.7040843

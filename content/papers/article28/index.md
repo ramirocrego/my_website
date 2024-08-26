@@ -1,8 +1,5 @@
 ---
-title: "Increasing Anthropogenic
-Disturbance Restricts Wildebeest
-Movement Across East African
-Grazing Systems"
+title: "Increasing Anthropogenic Disturbance Restricts Wildebeest Movement Across East African Grazing Systems"
 date: "2022-03-01T00:00:00Z"
 authors:
 - Stabach, Jared A. 

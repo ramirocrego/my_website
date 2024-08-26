@@ -19,7 +19,7 @@ publication_short: ''
 publication_types: "article-journal"
 publishDate: "2023-11-01T00:00:00Z"
 summary: 
-tags: 
+tags: GEE
 abstract: null
 url_code: https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fece3.10560&file=ece310560-sup-0001-Supinfo.docx
 url_dataset: https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fece3.10560&file=ece310560-sup-0001-Supinfo.docx

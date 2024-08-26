@@ -21,6 +21,8 @@ publication_types: "article-journal"
 publishDate: "2023-06-01T00:00:00Z"
 summary: 
 tags: 
+  - GEE
+  - GCF
 abstract: null
 url_code: 'https://code.earthengine.google.com/?accept_repo=users/gcfspatial/RetGirManuscript'
 url_dataset: 'https://gcfspatial.users.earthengine.app/view/reticulatedgiraffesdm'

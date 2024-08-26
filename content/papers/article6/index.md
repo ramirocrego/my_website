@@ -22,6 +22,7 @@ publication_types: "article-journal"
 publishDate: "2014-09-01T00:00:00Z"
 summary: 
 tags: 
+  CHBR
 abstract: null
 url_code: 
 url_dataset: ''

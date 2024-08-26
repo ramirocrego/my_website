@@ -15,5 +15,5 @@ Taking advantage of the extensive database and the computing power of Google com
 If you want to learn how to use GEE and implement any of the methodologies developed, I have created multiple tutorials that you can find in the **tutorial** section of this website.
 
 -------------------------------------------------------------------
-# Case studies
+Click the **GEE** tag below to see all publications and posts related to this project.
 
