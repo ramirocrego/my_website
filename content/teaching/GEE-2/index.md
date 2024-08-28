@@ -6,6 +6,8 @@ tags:
 title: Introduction to Google Earth Engine for Ecologists and Practitioners
 ---
 
+Ramiro D. Crego and Grant Connette
+
 ## Preface
 
 Google Earth Engine is a cloud-based platform hosted by Google that uses
@@ -39,7 +41,7 @@ matter of minutes. For ecologists, this has opened the horizons of
 research possibilities in unthinkable ways. And while lot of attention
 has been put into the use of Google Earth Engine for remote sensing
 scientists (Tamimina et al., 2020), the tool has not reached yet the
-spatial ecological field in its full capacity. In this book, we explore
+spatial ecological field in its full capacity. In this tutorial, we explore
 the different applications that this platform provides to analyze data
 for projects focused on spatial ecology.
 
@@ -63,7 +65,7 @@ remote sensing and geographic information system theory. For instance, I
 assume that you are familiar with raster files, image bands, and the
 different type of image resolutions. Similarly, I assume you know the
 different type of vector data. While not knowing those terms will not
-prevent you from using the book, it will definitely make it easier for
+prevent you from using the tutorial, it will definitely make it easier for
 you to follow the more advance analyses.
 
 ### References
@@ -124,7 +126,7 @@ range of geospatial data fast and for free, without the need to access a
 supercomputers (Gorelick et al., 2017).
 
 Google Earth Engine Application Programming Interface (API) can be run
-in popular coding languages, such as JavaScript and Phyton. In this book
+in popular coding languages, such as JavaScript and Phyton. In this tutorial
 we will focus on the use of JavaScript. In this first chapter we will
 explore the basics of Google Earth Engine, from understanding how to set
 up an account, to understand the interface to explaining the basics of
@@ -255,7 +257,7 @@ panel. The **drop-down button** will allow you to clear the script to
 start a new one.
 
 Next is the **Apps button**. This opens the App window display that we
-will explore later on the book.
+will explore later on the tutorial.
 
 Finally, there is a **Settings button** that allows you to activate
 options to underline code suggestions and to auto-complete pairs such as
@@ -337,7 +339,7 @@ configured to be accessed using Git, so you can manage and edit your
 scripts outside the Code Editor, or sync them with an external system
 like Git Hub (Fig. 6).
 
-For this book we have created a repository that you can access in the
+For this tutorial we have created a repository that you can access in the
 reader level.
 
 <center>
@@ -514,8 +516,8 @@ link. Then choose the type of geometry you want to draw and start
 clicking on the map to draw your geometries. In the case of polylines
 and polygons, double click to finalize the drawing. Geometry display on
 the map can be activated and deactivated from the **Geometry Imports**
-section. We will learn more about geometries in the second chapter of
-this book. You can delete geometries by activating them using the hand
+section. We will learn more about geometries in the second section of
+this tutorial. You can delete geometries by activating them using the hand
 tool, and pressing **Delete** on your keyboard or by directly clicking
 the **delete button** on the **Imports section** of the script.
 
@@ -811,7 +813,7 @@ create the same variable:
 
 Now that the `ee.List` has been saved as a variable, you can use other
 Earth Engine functions to interact with this object. This will be the
-building block of many functions that we will be using along this book.
+building block of many functions that we will be using along this tutorial.
 One important function is `get`, that gets something from the `ee.List`
 object. For example, you can get the second component of the list.
 
@@ -908,7 +910,7 @@ handy for multiple operations.
     var now = Date.now();
     print('Milliseconds since January 1, 1970', now);
 
-Later in this book, we will explore different functions to filter data
+Later in this tutorial, we will explore different functions to filter data
 sets by date or use data in more complex analysis.
 
 #### Final notes on operations
@@ -1413,7 +1415,7 @@ stack of all matching bands but retain the original band names.
 
     Map.addLayer(l8_mosaic_2, {bands: ['B4', 'B3', 'B2'], min: 7000, max: 12800}, 'Landsat8-Mosaic', 1);
 
-As we develop more complex analysis along the book, we will learn more
+As we develop more complex analysis along the tutorial, we will learn more
 specifics on the reducer functions. You can look into the `ee.Reduce`
 methods that exist in the API.
 
@@ -1707,7 +1709,7 @@ These include images, map tiles, features, tables and videos. The data
 can be exported to your linked Google Drive account, as a new Earth
 Engine asset that will appear on your asset manager, or to Google Cloud
 Storage (Note this is a fee-based service). We will not cover Cloud
-Storage in this book, but you can learn about Cloud Storage
+Storage in this tutorial, but you can learn about Cloud Storage
 [here](https://developers.google.com/earth-engine/cloud/earthengine_cloud_project_setup?hl=en)
 and how to set projects
 [here](https://developers.google.com/earth-engine/cloud/projects?hl=en).
@@ -2357,12 +2359,6 @@ over the total.
 
     var frOvAccuracy = rfAccuracy.accuracy().getInfo();
     print('RF Overall Accuracy: ', frOvAccuracy);
-
-### Conclussion
-
-This concludes the supervised classification exercise. In the next
-chapter, we will see how to perform classifications using multiple
-Landsat products in order to access land cover change trough time.
 
 ## Species Distribution Models
 

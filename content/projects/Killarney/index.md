@@ -2,7 +2,7 @@
 date: "2024-06-01"
 summary: 
 tags:
-- GEE
+- CamTraps
 title: Estimating Wildlife Activity Using Camera Traps
 ---
 
