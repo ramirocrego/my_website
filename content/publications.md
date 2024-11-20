@@ -10,7 +10,7 @@ sections:
   id: section-1
   content:
     title: A map of my publications
-    text: <iframe width=100% height="630" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
+    text: <iframe width=200% height="630" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
   design:
     columns: '1'
     spacing:
@@ -65,5 +65,5 @@ sections:
   id: section-2
   content:
     title: "Google Scholar Metrics"
-    text: <table id="gsc_rsb_st"><thead><tr><th class="gsc_rsb_sth"></th><th class="gsc_rsb_sth">All</th><th class="gsc_rsb_sth">Since 2019</th></tr></thead><tbody><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">Citations</a></td><td class="gsc_rsb_std">674</td><td class="gsc_rsb_std">568</td></tr><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">h-index</a></td><td class="gsc_rsb_std">17</td><td class="gsc_rsb_std">16</td></tr><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">i10-index</a></td><td class="gsc_rsb_std">23</td><td class="gsc_rsb_std">21</td></tr></tbody></table>
+    text: <table id="gsc_rsb_st"><thead><tr><th class="gsc_rsb_sth"></th><th class="gsc_rsb_sth">All</th><th class="gsc_rsb_sth">Since 2019</th></tr></thead><tbody><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">Citations</a></td><td class="gsc_rsb_std">725</td><td class="gsc_rsb_std">618</td></tr><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">h-index</a></td><td class="gsc_rsb_std">18</td><td class="gsc_rsb_std">17</td></tr><tr><td class="gsc_rsb_sc1"><a href="javascript:void(0)" class="gsc_rsb_f gs_ibl">i10-index</a></td><td class="gsc_rsb_std">25</td><td class="gsc_rsb_std">23</td></tr></tbody></table>
 ---
