@@ -34,6 +34,14 @@
     </item>
     
     <item>
+      <title>A Subjective and Intuitive Approach to Rapid, Holistic Assessment of Natural Ecosystem Integrity Across a Community-Managed Conservation Area in Southern Tanzania</title>
+      <link>//localhost:4321/papers/article41/</link>
+      <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article41/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Combining species distribution models and moderate resolution satellite information to guide conservation programs for giraffe</title>
       <link>//localhost:4321/projects/gcf/</link>
       <pubDate>Fri, 02 Aug 2024 00:00:00 +0000</pubDate>
@@ -5293,7 +5301,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-859671342&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-328476591&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -5311,7 +5319,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-859671342&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-328476591&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();

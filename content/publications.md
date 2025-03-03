@@ -10,7 +10,7 @@ sections:
   id: section-1
   content:
     title: A map of my publications
-    text: <iframe width=200% height="630" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
+    text: <iframe width=100% height="630" name="iframe" allowfullscreen=true  src="https://ramirocrego.github.io/PapersMap//" style="solid black"></iframe>
   design:
     columns: '1'
     spacing:

@@ -10,6 +10,22 @@
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>//localhost:4321/papers/article41/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/publication_types/article-journal/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/papers/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>//localhost:4321/publication_types/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>//localhost:4321/projects/gcf/</loc>
     <lastmod>2024-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -26,19 +42,7 @@
     <lastmod>2024-08-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>//localhost:4321/publication_types/article-journal/</loc>
-    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
     <loc>//localhost:4321/papers/article40/</loc>
-    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/papers/</loc>
-    <lastmod>2024-07-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>//localhost:4321/publication_types/</loc>
     <lastmod>2024-07-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
