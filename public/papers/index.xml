@@ -5,12 +5,20 @@
     <link>//localhost:4321/papers/</link>
       <atom:link href="//localhost:4321/papers/index.xml" rel="self" type="application/rss+xml" />
     <description>Papers</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 03 May 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Papers</title>
       <link>//localhost:4321/papers/</link>
     </image>
+    
+    <item>
+      <title>Adaptive response in waterbirds after mink introduction in subantarctic ecosystems</title>
+      <link>//localhost:4321/papers/article42/</link>
+      <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article42/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>A Subjective and Intuitive Approach to Rapid, Holistic Assessment of Natural Ecosystem Integrity Across a Community-Managed Conservation Area in Southern Tanzania</title>

@@ -34,6 +34,14 @@
     </item>
     
     <item>
+      <title>Adaptive response in waterbirds after mink introduction in subantarctic ecosystems</title>
+      <link>//localhost:4321/papers/article42/</link>
+      <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/papers/article42/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>A Subjective and Intuitive Approach to Rapid, Holistic Assessment of Natural Ecosystem Integrity Across a Community-Managed Conservation Area in Southern Tanzania</title>
       <link>//localhost:4321/papers/article41/</link>
       <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
@@ -5301,7 +5309,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-328476591&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-491582367&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -5319,7 +5327,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-328476591&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-491582367&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
