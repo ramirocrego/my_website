@@ -5,7 +5,7 @@
     <link>//localhost:4321/teaching/</link>
       <atom:link href="//localhost:4321/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>Tutorials</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>//localhost:4321/media/icon_hu261cb7f7f0462e5b62aedf74fb702d34_367518_512x512_fill_lanczos_center_3.png</url>
       <title>Tutorials</title>
@@ -13,17 +13,9 @@
     </image>
     
     <item>
-      <title>Introduction to spatial ecology with R</title>
-      <link>//localhost:4321/teaching/r/</link>
-      <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/teaching/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Introduction to Google Earth Engine for Ecologists and Practitioners</title>
       <link>//localhost:4321/teaching/gee-2/</link>
-      <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/teaching/gee-2/</guid>
       <description>&lt;p&gt;Ramiro D. Crego and Grant Connette&lt;/p&gt;
 &lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
@@ -67,7 +59,7 @@ using Google Earth Engine interface.&lt;/p&gt;
 introduction to Google Earth Engine and the JavaScript language we use
 to code. Chapter 2 will guide you on the use of images and geometries,
 or raster and vector data. Chapter 3 is an introduction to image
-classifications. I have a differnet tutorial for fitting Species
+classifications. I have a different tutorial for fitting Species
 Distribution Models with GEE, that you can check out [here](link to SDM).&lt;/p&gt;
 &lt;p&gt;Each chapter will guide you on the use of code and all that code is
 available &lt;a href=&#34;https://code.earthengine.google.com/?accept_repo=users/ramirocrego84/IntroToGEE&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -148,10 +140,7 @@ JavaScript coding language.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/p&gt;
 &lt;h3 id=&#34;setting-up-a-google-earth-engine-account&#34;&gt;Setting up a Google Earth Engine account:&lt;/h3&gt;
-&lt;p&gt;The first step to start using Google Earth Engine is to create an
-account in this &lt;a href=&#34;https://signup.earthengine.google.com/#!/&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Once you have been accepted, you will receive an email with instruction
-on how to complete the account setting process.&lt;/p&gt;
+&lt;p&gt;The first step to start using Google Earth Engine is to set up a Google Cloud project. In this &lt;a href=&#34;https://console.cloud.google.com/earth-engine/welcome?inv=1&amp;amp;invt=Ab42LQ&#34;&gt;link&lt;/a&gt; you will find the instructions. If you are working in research or for non-profit organizations, you can register a free or charge non-commercial project.&lt;/p&gt;
 &lt;h3 id=&#34;the-google-earth-engine-interface&#34;&gt;The Google Earth Engine Interface&lt;/h3&gt;
 &lt;p&gt;Once your Google Earth Engine account is set, you will be able to aces
 the Code Editor to start working on it in your browser at
@@ -232,7 +221,7 @@ environment.&lt;/figcaption&gt;
 &lt;p&gt;The &lt;strong&gt;code editor panel&lt;/strong&gt; is the area where you will write the
 JavaScript code to perform all type of analysis. Above the code editor
 panel are buttons to save your current script, run it, and clear the
-script. The &lt;strong&gt;Get Link button&lt;/strong&gt; (Fig. 4) generates a unique URL for the
+script. The &lt;strong&gt;Get Link button&lt;/strong&gt; (Fig. 3) generates a unique URL for the
 script in the address bar that allows you to share the script and/or
 open it in a new browser tab. This is a unique characteristic of GEE
 that allows you to share your work and make it reproducible by any other
@@ -2014,6 +2003,14 @@ print(&#39;RF Overall Accuracy: &#39;, frOvAccuracy);
 &lt;h2 id=&#34;species-distribution-models&#34;&gt;Species Distribution Models&lt;/h2&gt;
 &lt;p&gt;The tutorial for SDMs can be found &lt;a href=&#34;https://ramirodcrego.com/teaching/gee/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Introduction to spatial ecology with R</title>
+      <link>//localhost:4321/teaching/r/</link>
+      <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/teaching/r/</guid>
+      <description></description>
     </item>
     
     <item>

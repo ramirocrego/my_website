@@ -1,5 +1,5 @@
 ---
-date: "2024-03-18"
+date: "2025-08-08"
 summary: An introduction to Google Earth Engine
 tags:
 - GEE
@@ -54,7 +54,7 @@ The tutorial is organized in 3 main chapters. Chapter 1 is an
 introduction to Google Earth Engine and the JavaScript language we use
 to code. Chapter 2 will guide you on the use of images and geometries,
 or raster and vector data. Chapter 3 is an introduction to image
-classifications. I have a differnet tutorial for fitting Species
+classifications. I have a different tutorial for fitting Species
 Distribution Models with GEE, that you can check out [here](link to SDM).
 
 Each chapter will guide you on the use of code and all that code is
@@ -139,11 +139,7 @@ This video will run you through the materials of this chapter.
 
 ### Setting up a Google Earth Engine account:
 
-The first step to start using Google Earth Engine is to create an
-account in this [link](https://signup.earthengine.google.com/#!/).
-
-Once you have been accepted, you will receive an email with instruction
-on how to complete the account setting process.
+The first step to start using Google Earth Engine is to set up a Google Cloud project. In this [link](https://console.cloud.google.com/earth-engine/welcome?inv=1&invt=Ab42LQ) you will find the instructions. If you are working in research or for non-profit organizations, you can register a free or charge non-commercial project. 
 
 ### The Google Earth Engine Interface
 
@@ -221,7 +217,7 @@ Let’s explore the different panels and elements more in detail.
 The **code editor panel** is the area where you will write the
 JavaScript code to perform all type of analysis. Above the code editor
 panel are buttons to save your current script, run it, and clear the
-script. The **Get Link button** (Fig. 4) generates a unique URL for the
+script. The **Get Link button** (Fig. 3) generates a unique URL for the
 script in the address bar that allows you to share the script and/or
 open it in a new browser tab. This is a unique characteristic of GEE
 that allows you to share your work and make it reproducible by any other
