@@ -1,0 +1,8 @@
+/* Make the hero background image resize to fit instead of cover */
+.home-section.wg-hero {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-color: black; /* optional: matches your YAML background color */
+  min-height: 400px; /* adjust as needed */
+}

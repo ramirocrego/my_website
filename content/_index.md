@@ -1,5 +1,5 @@
 ---
-date: "2024-07-18"
+date: "2025-11-05"
 design:
   spacing: 6rem
 sections:
@@ -15,7 +15,6 @@ sections:
         image_parallax: true
         filters:
           brightness: 1
-    css_class: dark
 - block: resume-biography-3
   id: about
   content:

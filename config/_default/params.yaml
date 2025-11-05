@@ -37,6 +37,7 @@ header:
     highlight_active_link: true
     logo:
       text: "RDC"
+      image: "media/LabLogo.png"
 # Site footer
 footer:
   copyright:
@@ -79,3 +80,7 @@ features:
 icon:
   pack:
    ai:true
+   
+params:
+  custom_css:
+    - "css/custom.css"
