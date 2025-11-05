@@ -4,5 +4,5 @@
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-color: black; /* optional: matches your YAML background color */
-  min-height: 400px; /* adjust as needed */
+  min-width: 20px; /* adjust as needed */
 }

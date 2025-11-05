@@ -5314,7 +5314,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
 
 
-&lt;div id=&#34;chart-347512896&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-261543798&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -5332,7 +5332,7 @@ distribution models. Methods in Ecology and Evolution, 10(2), 225–232.
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-347512896&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-261543798&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
