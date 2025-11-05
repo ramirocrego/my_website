@@ -6,3 +6,12 @@
   background-color: black; /* optional: matches your YAML background color */
   min-width: 20px; /* adjust as needed */
 }
+
+/* Responsive adjustment for hero section on small screens */
+@media (max-width: 768px) {
+  .home-section.wg-hero {
+    min-height: 100px !important;   /* reduce height on mobile */
+    background-size: contain !important;
+    background-position: center center !important;
+  }
+}
