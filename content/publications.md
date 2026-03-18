@@ -9,7 +9,7 @@ sections:
 - block: markdown
   id: section-1
   content:
-    title: A map of my publications
+    title: A map of my publications. Click on icon to display paper cover and link.
     text: "<div style='width:100vw; margin-left:calc(-50vw + 50%);'><iframe src='https://ramirocrego.github.io/PapersMap//' style='width:100%; height:70vh; border:1px solid black;' allowfullscreen></iframe></div>"
   design:
     columns: '1'
